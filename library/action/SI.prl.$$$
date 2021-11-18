@@ -1,0 +1,127 @@
+#!/usr/local/bin/perl
+#
+# usage: action.prl {job}
+# example action program
+  $ar = 0;
+  ${job} = $ARGV[$ar];
+  ++$ar;
+  ${cov} = $ARGV[$ar];
+  $system = $ENV{ 'SYSTEMTYPE' };
+
+  if ( $system eq "unix") {
+         require "ctime.pl";
+         require "getcwd.pl";
+         $dir     = getcwd();
+         $rundate = &ctime(time);
+         chop($rundate);
+         chop($rundate);
+         $user       = `whoami`;
+         chomp($user);
+         chop($user);
+         $opsys   = `uname -pri`;
+         chop($opsys);
+         $machine = `uname -n`;
+         chop($machine);
+         $rm = "rm -f";
+         $sep = "/";
+         $cpx = "cp -f";        
+         $mv = "mv";
+  }  elsif ( $system eq "dos") {
+         require "ctime.pl";
+         $dir = Win32::GetCwd();
+         $user = Win32::LoginName();
+         ($string, $major, $minor, $build, $id) = Win32::GetOSVersion;
+         @os = qw(Wins, Win95, WinNT);
+         $opsys = "@os[$id] $major\.$minor $string (Build $build)";
+         $machine = Win32::NodeName;
+         $rundate = &ctime(time);
+#        $rm = "del /F";
+         $rm = "rm -f";
+         $sep = "\\";
+         $cpx = "copy";     
+         $mv = "move";
+  }  else {
+         print "Error in system variable = $system \n";
+         exit 9;
+  }
+  $base        = "..".$sep;
+#
+# form work_dir from snl-work and username if unix, else use snl-work
+#
+  if ( $system eq "unix") {
+       $work_dir = $base."snl-work-".substr($user,0,3);
+  } else {
+    $work_dir = $base."snl-work";
+  }
+
+#  $command = "ls -la";
+#  print "Starting action command = $command \n";
+#  system ("$command");
+#  $command = "more ${job}";
+#  print "Final action command = $command \n";
+#  system ("$command");
+#  $comand = "which type";
+#  system ("$command");
+   $command = "$cpx ${job} ${base}input${sep}template";
+#   print "template copy command: $command \n";
+   system ("$command");
+   $command = "${base}${sep}input${sep}Manipulate-2010 template";
+   print "Manipulate action command = $command \n";
+   print "Cross section covariance status = ${cov} \n";
+   $iflag = 0;
+   if ( ${cov} eq "yes") {
+      $iflag = 1;
+      system("$command");
+   } elsif (${cov} eq "no") {
+      $iflag = 2;
+      print "No covariance, bypass Manipulate run \n";
+   } elsif (${cov} eq "unk") {
+      $iflag = 3;
+      print "Covariance status unknown, try it \n";
+      system("$command");
+   }
+#  
+#  Extract grep_in file contents from run output
+#
+#   print "iflag status = $iflag ${cov} \n";
+   unlink ("grep_in");
+   if ( $iflag != 2) {
+#      print "inside grep-in portion of script ${cov}\n";
+      $grep_open = "grep_in";
+      open(GREP_OUT, ">$grep_open") 
+            || die "\n\n Can't open $grep_open file: $!\n";
+      $Manipulate_out = "manipulate.ext";
+      if (-r $Manipulate_out) {
+         open(ManipulateIN, "<$Manipulate_out") 
+               || die "\n\n Can't open $Manipulate_out file: $!\\nn";
+         $icnt = 0;
+         while ($Manipulate_record=<ManipulateIN>) {
+           ($x1, $x2, $x3, $x4, $x5, $x6) = split(' ',$Manipulate_record,6);
+           ++$icnt;
+#           if (($x1 eq "EXTRACT" ) || ($x1 eq "relative" && $x2 eq "covariance") || ($x1 eq "viewr...display" ) ) {
+           if ( ($x1 eq "EXTRACT" ) ) {
+              $len = length($Manipulate_record);
+              $sr = syswrite(GREP_OUT, $Manipulate_record,$len,0);
+                   die "\n\n system write error from $Manipulate_record: $!\n\n"
+                         unless defined $sr;  
+           }
+         }
+         close (ManipulateIN);
+#         print "End of master list \n";
+      } else {
+         print "No Manipulate_out file contents for case \n";
+#        die ( "\n\n master_list file $Manipulate_out does not exist !! \n\n");
+      }
+     close (GREP_OUT);
+   } else {
+      $grep_open = "grep_in";
+      open(GREP_OUT, ">$grep_open") 
+            || die "\n\n Can't open $grep_open file: $!\n";
+      $Manipulate_record = "   No covariance file indicated, ${cov} \n";
+      $len = length($Manipulate_record);
+      $sr = syswrite(GREP_OUT, $Manipulate_record,$len,0);
+              die "\n\n system write error from $Manipulate_record: $!\n\n"
+              unless defined $sr;  
+     close (GREP_OUT);
+   }
+  exit;

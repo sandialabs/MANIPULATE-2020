@@ -1,0 +1,9 @@
+SigmaPlot Covariance Interface: Cf252(s.f.) spontaneous fission from IRDFF-II - with std. dev. fixed
+14 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 5 0 0
+ 1 1.0   '../output/test_cor_plot_interface'
+ 2 'U235_IRDFF-II_725grp_spectrum_validation_fix'        0 1.0
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+-----------
+
+

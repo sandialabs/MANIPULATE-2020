@@ -1,0 +1,50 @@
+    library      iso   ireac    iname     cover     type    cov_status
+#
+#    -----------------------------------------------------------------
+#   
+    IRDFF       f192     16     f192    void-bare    SI      yes
+    IRDFF       na23g   102     na23g   void-bare    SI      yes
+    IRDFF       mg24p   103     mg24p   void-bare    SI      yes
+    IRDFF       al27p   103     al27p   void-bare    SI      yes
+    IRDFF       al27a   107     al27a   void-bare    SI      yes
+    IRDFF       p31p    103     p31p    void-bare    SI      yes
+    IRDFF       s32p    103     s32p    void-bare    SI      yes
+    IRDFF       ti462    16     ti462   void-bare    SI      yes
+    IRDFF       ti46p   103     ti46p   void-bare    SI      yes
+    IRDFF       ti47p   103     ti47p   void-bare    SI      yes
+    IRDFF       ti48p   103     ti48p   void-bare    SI      yes
+    IRDFF       v51a    107     v51a    void-bare    SI      yes
+    IRDFF       mn552    16     mn552   void-bare    SI      yes
+    IRDFF       fe56p   103     fe56p   void-bare    SI      yes
+    IRDFF       fe54p   103     fe54p   void-bare    SI      yes
+    IRDFF       co592    16     co592   void-bare    SI      yes
+    IRDFF       co59p   103     co59p   void-bare    SI      yes
+    IRDFF       co59a   107     co59a   void-bare    SI      yes
+    IRDFF       ni582    16     ni582   void-bare    SI      yes 
+    IRDFF       ni58p   103     ni58p   void-bare    SI      yes
+    IRDFF       ni60p   103     ni60p   void-bare    SI      yes
+    IRDFF       cu632    16     cu632   void-bare    SI      yes
+    IRDFF       cu63g   102     cu63g   void-bare    SI      yes
+    IRDFF       cu63a   107     cu63a   void-bare    SI      yes
+    IRDFF       cu652    16     cu652   void-bare    SI      yes
+    IRDFF       zn64p   103     zn64p   void-bare    SI      yes
+    IRDFF       zr902    16     zr902   void-bare    SI      yes
+    IRDFF       nb932    16     nb932   void-bare    SI      yes
+    IRDFF       nb93n     4     nb93n   void-bare    SI      yes
+    IRDFF       rh103n    4     rh103n  void-bare    SI      yes
+    IRDFF       in113n    4     in113n  void-bare    SI      yes
+    IRDFF       in115n    4     in115n  void-bare    SI      yes
+    IRDFF       in115g  102     in115g  void-bare    SI      yes
+    IRDFF       i1272    16     i1272   void-bare    SI      yes
+    IRDFF       tm1692   16     tm1692  void-bare    SI      yes
+    IRDFF       ta181g  102     ta181g  void-bare    SI      yes
+    IRDFF       au1972   16     au1972  void-bare    SI      yes
+    IRDFF       au197g  102     au197g  void-bare    SI      yes
+    IRDFF       hg199n    4     hg199n  void-bare    SI      yes
+    IRDFF       pb204n    4     pb204n  void-bare    SI      yes 
+    IRDFF       th232g  102     th232g  void-bare    SI      yes
+    IRDFF       u235f    18     u235f   void-bare    SI      yes
+    IRDFF       u238f    18     u238f   void-bare    SI      yes
+    IRDFF       np237f   18     np237f  void-bare    SI      yes
+    IRDFF       pu239f   18     pu239f  void-bare    SI      yes
+# 

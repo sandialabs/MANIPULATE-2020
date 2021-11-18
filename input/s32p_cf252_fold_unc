@@ -1,0 +1,27 @@
+cross section characterization for IRDFF - eng. rsp. & xsec unc & spectrum unc; SPR3CC
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'cf252-LSL'  's32p'
+ 'cf252vi.ref-list' 12  -1
+ 's32p_IRDFF.103' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 's32p_IRDFF.103' 0 1 
+ 6 'cf252-cov' 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 's32p_IRDFF.103' 0 1 
+ 2 'Cf252_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1 0
+ 2 's32_IRDFF_103_tpl' 1
+ -1 'cf252vi.ref-list' 12  -1
+   's32p_IRDFF.103' 0 1
+   'generic-void-bare'
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+----------------
+
+
+

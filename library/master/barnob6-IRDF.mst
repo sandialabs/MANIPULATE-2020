@@ -1,0 +1,23 @@
+    library      iso   ireac    iname     cover     type    cov_status
+#
+#    -----------------------------------------------------------------
+#   
+    IRDFF       al27   107     al27a  	ml3x-cdnm    SI      yes
+    IRDFF       zr90    16     zr902  	mil5-cdnm    SI      yes
+    IRDFF       mn55   102     mn55g  	wcu2-fiss    SI      yes
+    IRDFF       na23   102     na23g  	pelt-cdna    SI      yes
+    IRDFF       au197  102     au197g   dil5-cdnm    SI      yes
+    IRDFF       au197  102     au197g   dil5-bare    SI      yes
+    IRDFF       fe54   103     fe54p  	mil5-cdnm    SI      yes
+    IRDFF       fe56   103     fe56p  	mil5-cdnm    SI      yes
+    IRDFF       in115    4     in115n   mil5-bare    SI      yes
+    IRDFF       u235    18     u235f  	void-fiss    SI      yes
+    IRDFF       pu239   18     pu239f   void-fiss    SI      yes
+    IRDFF       np237   18     np237f   void-fiss    SI      yes
+    IRDFF       u238    18     u238f  	void-fiss    SI      yes
+    IRDFF       mg24   103     mg24p  	mil5-cdnm    SI      yes
+    IRDFF       ni58   103     ni58p  	mil5-cdnm    SI      yes
+    IRDFF       s32    103     s32p  	sulf-bare    SI      yes
+    IRDFF       in115  102     in115g   mil5-cdnm    SI      yes
+    IRDFF       ni58   103     ni58p  	bsni-fiss    SI      yes
+# 

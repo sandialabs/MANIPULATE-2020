@@ -1,0 +1,79 @@
+GaAs nopart composite; SA in GaAs: latest AME2016 numbers - normalized
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.445'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.445'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.445'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.2'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.2'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.2'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0  'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.445'
+         'As-75_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY2016_xsec_survey.445'  0   0 1.0000
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0  'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.2'
+         'As-75_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY2016_xsec_survey.2'  0   0 1.0000
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_nopart_DK_NJOY-2016.445'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.445'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.445'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_nopart_DK_NJOY-2016.2'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.2'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.2'  0   0 0.5
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0  'GaAs-ele_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'GaAs-ele_770grp_nopart_DK_NJOY-2016.445'      0   1 1.0
+         'GaAs-ele_770grp_nopart_DK_NJOY-2016.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'Ga-69_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.445'      0   1 1.0
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'Ga-71_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.445'      0   1 1.0
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY2016_xsec_survey.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'As-75_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'As-75_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY2016_xsec_survey.445'      0   1 1.0
+         'As-75_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY2016_xsec_survey.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.445'      0   1 1.0
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_nopart_DK_NJOY-2016.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'As-ele_SA_in_GaAs_ENDFB-VIII_0_nopart_DK.elastic_recoil_energy'
+         'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.445'      0   1 1.0
+         'As-ele_SA_in_GaAs_ENDFB-VIII_0_770grp_nopart_DK_NJOY-2016.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'As-75_SA_in_GaAs_ENDL84_nopart_DK_recreate_legacy.elastic_recoil_energy'
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.445'      0   1 1.0
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'As-ele_SA_in_GaAs_ENDL84_nopart_DK_recreate_legacy.elastic_recoil_energy'
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.445'      0   1 1.0
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.2'        0   1 1.0
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'Ga-ele_SA_in_GaAs_ENDFB6_nopart_DK_xsec_survey.elastic_recoil_energy'
+         'Ga-ele_SA_in_GaAs_ENDFB6_770grp_nopart_DK_NJOY2016_xsec_survey.445'      0   1 1.0
+         'Ga-ele_SA_in_GaAs_ENDFB6_770grp_nopart_DK_NJOY2016_xsec_survey.2'        0   1 1.0
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.445'
+         'Ga-ele_SA_in_GaAs_ENDFB6_770grp_nopart_DK_NJOY2016_xsec_survey.445'       0   0 0.5
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.445'    0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.2'
+         'Ga-ele_SA_in_GaAs_ENDFB6_770grp_nopart_DK_NJOY2016_xsec_survey.2'    0   0 0.5
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.2'    0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.1'
+         'Ga-ele_SA_in_GaAs_ENDFB6_770grp_nopart_DK_NJOY2016_xsec_survey.1'    0   0 0.5
+         'As-75_SA_in_GaAs_ENDL84_770grp_nopart_DK_NJOY2016_recreate_legacy.1'    0   0 0.5
+-7 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.0e0 'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.elastic_recoil_energy'
+         'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.445'      0   1 1.0
+         'GaAs-ele_legacy_770grp_nopart_DK_NJOY-2016.2'        0   1 1.0
+ 9 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+

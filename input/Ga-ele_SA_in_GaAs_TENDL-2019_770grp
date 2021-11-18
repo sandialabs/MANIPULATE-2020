@@ -1,0 +1,38 @@
+Ga-ele composite; SA in GaAs: latest AME2016 numbers - normalized
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.444'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.444'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.444'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.443'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.443'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.443'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.301'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.301'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY2016_xsec_survey.301'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.444'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.444'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.444'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.443'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.443'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.443'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.301'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.301'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY2016_survey.301'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.444'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.444'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.444'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.443'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.443'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.443'  0   0 .398921
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.301'
+         'Ga-69_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.301'  0   0 .601079
+         'Ga-71_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY2016_survey.301'  0   0 .398921
+ 9 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

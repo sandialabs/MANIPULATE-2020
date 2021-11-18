@@ -1,0 +1,46 @@
+    library      iso   ireac    iname     cover     type    cov_status
+#
+#    -----------------------------------------------------------------
+#   
+    IRDFF       nb93   102     nb93g 	void-cdnm    SI      yes
+    IRDFF       ni58   103     ni58p 	void-bare    SI      yes
+    IRDFF       ni58   103     ni58p 	void-cdnm    SI      yes
+    IRDFF        s32   103      s32p  	void-bare    SI      yes
+    IRDFF       na23   102     na23g  	void-bare    SI      yes
+    IRDFF       na23   102     na23g   void-cdna    SI      yes
+    IRDFF       na23   102     na23g   void-fiss    SI      yes
+    IRDFF       mg24   103     mg24p   void-cdnm    SI      yes
+    IRDFF       al27   107     al27a   void-cdnm    SI      yes
+    IRDFF       sc45   102     sc45g  	void-cdnm    SI      yes
+    IRDFF       sc45   102     sc45g 	void-bare    SI      yes
+    IRDFF       ti46   103     ti46p   void-cdnm    SI      yes
+    IRDFF       ti48   103     ti48p   void-cdnm    SI      yes
+    IRDFF       ti47   103     ti47p	void-cdnm    SI      yes
+    IRDFF       mn55   102     mn55g	void-cdnm    SI      yes
+    IRDFF       fe54   103     fe54p	void-cdnm    SI      yes
+    IRDFF       fe56   103     fe56p 	void-cdnm    SI      yes
+    IRDFF       fe56   103     fe56p	void-fiss    SI      yes
+    IRDFF       fe58   102     fe58g	void-cdnm    SI      yes
+    IRDFF       co59   103     co59p	void-cdnm    SI      yes
+    IRDFF       co59   102     co59g	void-cdnm    SI      yes
+    IRDFF       co59   102     co59g	void-bare    SI      yes
+    IRDFF       co59    16     co592	void-cdnm    SI      yes
+    IRDFF       ni58    16     ni582	void-cdnm    SI      yes
+    IRDFF       ni60   103     ni60p	void-cdnm    SI      yes
+    IRDFF       cu63   102     cu63g	void-cdnm    SI      yes
+    IRDFF       cu63   102     cu63g	void-bare    SI      yes
+    IRDFF       zn64   103     zn64p	void-cdnm    SI      yes
+    IRDFF       zr90    16     zr902	void-cdnm    SI      yes
+    IRDFF       nb93    16     nb932	void-cdnm    SI      yes
+    IRDFF       in115  102     in115g	void-bare    SI      yes
+    IRDFF       in115  102     in115g	void-cdnm    SI      yes
+#    IRDFF       in115  102     in115g	void-fiss    SI      yes
+    IRDFF       in115    4     in115n	void-cdnm    SI      yes
+    IRDFF       au197  102     au197g	void-bare    SI      yes
+    IRDFF       au197  102     au197g	void-cdnm    SI      yes
+    IRDFF       au197  102     au197g	void-fiss    SI      yes
+    IRDFF       np237   18     np237f 	void-fiss    SI      yes
+    IRDFF       u235    18     u235f	void-fiss    SI      yes
+    IRDFF       u238    18     u238f	void-fiss    SI      yes
+    IRDFF       pu239   18     pu239f	void-fiss    SI      yes
+# 

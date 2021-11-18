@@ -1,0 +1,46 @@
+C 
+C.. Parameters .. 
+      integer, parameter :: my_status_size = 20
+C 
+C.. Local Scalars .. 
+      character(LEN=404) :: mpi_message ! only 400 accessible to user
+C 
+C.. Local Arrays .. 
+      real, dimension(101) :: mpi_mesbuf
+C 
+C.. Common Blocks .. 
+      common /mpi_char/ mpi_message
+      common /mpicom/ mynum,numproc,mpi_flag,mpi_data,mpistatus,
+     &                myl1rank,sizel1group,mpi_l1comm,myl2rank,
+     &                sizel2group,mpi_l2comm,myl3rank,sizel3group,
+     &                mpi_l3comm,myrootl1rank,numactive,myl4rank,
+     &                sizel4group,mpi_l4comm
+C     For mynum: Maybe Read, Maybe Written
+C     For numproc to mpi_l4comm: Not Read, Not Written
+C 
+C... Variables in Common Block /mpicom/ ... 
+      integer :: mynum
+      integer :: numproc
+      integer :: mpi_flag
+      integer :: mpi_data
+      integer, dimension(my_status_size) :: mpistatus
+      integer :: myl1rank
+      integer :: sizel1group
+      integer :: mpi_l1comm
+      integer :: myl2rank
+      integer :: sizel2group
+      integer :: mpi_l2comm
+      integer :: myl3rank
+      integer :: sizel3group
+      integer :: mpi_l3comm
+      integer :: myrootl1rank
+      integer :: numactive
+      integer :: myl4rank
+      integer :: sizel4group
+      integer :: mpi_l4comm
+C 
+C.. Equivalences .. 
+      equivalence (mpi_message,mpi_mesbuf)
+C 
+C.. Save Declarations .. 
+      save

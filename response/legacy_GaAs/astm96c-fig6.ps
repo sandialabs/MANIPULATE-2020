@@ -1,0 +1,1297 @@
+%!
+
+/reencodedict 12 dict def
+/ReEncode
+ { reencodedict begin
+  /newcodesandnames exch def
+  /newfontname exch def
+  /basefontname exch def
+  /basefontdict basefontname findfont def
+  /newfont basefontdict maxlength dict def
+  basefontdict
+   { exch dup /FID ne
+    { dup /Encoding eq
+     { exch dup length array copy newfont 3 1 roll put }
+     { exch newfont 3 1 roll put }
+    ifelse }
+    { pop pop }
+   ifelse
+  } forall
+ newfont /FontName newfontname put
+  0 1 newcodesandnames length 1 sub
+  { dup newfont /Encoding get 3 1 roll newcodesandnames exch get put}
+  for
+ newfontname newfont definefont pop
+ end
+} def
+
+
+/ExtEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quoteright /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /quoteleft /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quotesingle /grave /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+
+/Times-Roman /Times-Roman-Ext ExtEncoding ReEncode
+0. setgray
+522 756 translate
+-90 rotate
+0.262500 -0.262500 scale
+%%BeginObject Graph
+%%BeginObject XLabel
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+0
+(Neutron Energy \(MeV\)) stringwidth pop add
+neg 91 add 651 add 2 div 462 moveto
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+(Neutron Energy \(MeV\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject YLabel
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+0
+(Cross Section \(barn\)) stringwidth pop add
+412 add 66 add 2 div 31 exch moveto
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+90.0 rotate
+(Cross Section \(barn\)) show
+-90.0 rotate
+1 -1 scale
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject Messages
+%%EndObject
+%%BeginObject Arrows
+%%EndObject
+%%BeginObject Frame
+1 setlinewidth
+newpath
+651 412 moveto
+651 66 lineto
+91 66 lineto
+91 412 lineto
+651 412 lineto
+closepath
+stroke
+%%EndObject
+gsave
+newpath
+91 412 moveto
+91 66 lineto
+651 66 lineto
+651 412 lineto
+91 412 moveto
+clip
+%%BeginObject Curve 1
+%%BeginObject Lines 1
+[] 0 setdash
+1 setlinewidth
+newpath
+0 382.159 moveto
+2.8 383.201 lineto
+5.6 378.182 lineto
+8.75 383.782 lineto
+12.25 386.86 lineto
+15.75 389.648 lineto
+19.25 393.214 lineto
+22.75 398.568 lineto
+26.25 402.146 lineto
+29.75 107.987 lineto
+33.25 342.075 lineto
+37.1 365.062 lineto
+41.3 372.639 lineto
+45.5 373.111 lineto
+49.7 376.132 lineto
+54.6 378.672 lineto
+60.2 381.412 lineto
+65.8 383.166 lineto
+71.4 384.882 lineto
+77 386.616 lineto
+82.6 388.411 lineto
+88.2 389.923 lineto
+94.5 391.501 lineto
+101.5 393.382 lineto
+108.5 395.535 lineto
+115.5 397.697 lineto
+124.25 400.396 lineto
+134.75 403.529 lineto
+145.25 406.131 lineto
+155.75 408.393 lineto
+168 402.096 lineto
+182 370.567 lineto
+196 275.728 lineto
+210 176.668 lineto
+224 187.775 lineto
+238 232.547 lineto
+252 264.229 lineto
+266 285.805 lineto
+280 299.986 lineto
+297.5 314.101 lineto
+318.5 324.196 lineto
+336 331.131 lineto
+357 336.261 lineto
+385 341.596 lineto
+413 346.177 lineto
+441 348.032 lineto
+469 351.075 lineto
+497 350.594 lineto
+528.5 353.995 lineto
+563.5 356.917 lineto
+598.5 359.475 lineto
+633.5 360.799 lineto
+668.5 362.057 lineto
+703.5 350.964 lineto
+738.5 286.004 lineto
+773 342.413 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 2
+%%BeginObject Lines 2
+[2] 0 setdash
+1 setlinewidth
+newpath
+0 382.765 moveto
+2.8 383.547 lineto
+5.6 382.779 lineto
+8.75 385.695 lineto
+12.25 387.418 lineto
+15.75 389.754 lineto
+19.25 393.276 lineto
+22.75 399.398 lineto
+26.25 399.83 lineto
+29.75 95.1678 lineto
+33.25 338.743 lineto
+37.1 362.884 lineto
+41.3 371.039 lineto
+45.5 375.106 lineto
+49.7 377.724 lineto
+54.6 379.938 lineto
+60.2 381.965 lineto
+65.8 383.709 lineto
+71.4 385.306 lineto
+77 386.827 lineto
+82.6 388.323 lineto
+88.2 389.825 lineto
+94.5 391.548 lineto
+101.5 393.517 lineto
+108.5 395.57 lineto
+115.5 397.717 lineto
+124.25 400.536 lineto
+134.75 404.013 lineto
+145.25 407.265 lineto
+155.75 409.267 lineto
+168 405.4 lineto
+182 373.26 lineto
+196 268.405 lineto
+210 164.696 lineto
+224 185.526 lineto
+238 233.983 lineto
+252 266.955 lineto
+266 288.295 lineto
+280 302.302 lineto
+297.5 314.864 lineto
+318.5 324.905 lineto
+336 330.915 lineto
+357 336.274 lineto
+385 341.656 lineto
+413 345.677 lineto
+441 346.864 lineto
+469 351.272 lineto
+497 353.44 lineto
+528.5 355.407 lineto
+563.5 357.453 lineto
+598.5 359.171 lineto
+633.5 360.673 lineto
+668.5 361.641 lineto
+703.5 355.522 lineto
+738.5 292.128 lineto
+773 343.764 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 3
+%%BeginObject Lines 3
+[12 4] 0 setdash
+1 setlinewidth
+newpath
+0 386.656 moveto
+2.8 387.233 lineto
+5.6 387.806 lineto
+8.75 388.475 lineto
+12.25 389.27 lineto
+15.75 389.993 lineto
+19.25 390.666 lineto
+22.75 391.384 lineto
+26.25 392.133 lineto
+29.75 392.88 lineto
+33.25 393.629 lineto
+37.1 394.451 lineto
+41.3 395.35 lineto
+45.5 396.151 lineto
+49.7 395.767 lineto
+54.6 398.247 lineto
+60.2 399.486 lineto
+65.8 400.726 lineto
+71.4 402.025 lineto
+77 403.5 lineto
+82.6 404.737 lineto
+88.2 405.752 lineto
+94.5 406.988 lineto
+101.5 408.321 lineto
+108.5 409.536 lineto
+115.5 410.455 lineto
+124.25 411.106 lineto
+134.75 410.673 lineto
+145.25 408.061 lineto
+155.75 401.638 lineto
+168 385.026 lineto
+182 347.578 lineto
+196 280.991 lineto
+210 204.054 lineto
+224 158.849 lineto
+238 155.147 lineto
+252 178.069 lineto
+266 204.85 lineto
+280 227.34 lineto
+297.5 250.396 lineto
+318.5 273.347 lineto
+336 287.8 lineto
+357 299.265 lineto
+385 312.262 lineto
+413 321.538 lineto
+441 326.106 lineto
+469 333.852 lineto
+497 337.652 lineto
+528.5 342.373 lineto
+563.5 346.236 lineto
+598.5 349.448 lineto
+633.5 352.133 lineto
+668.5 353.791 lineto
+703.5 346.872 lineto
+738.5 279.039 lineto
+773 338.209 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 4
+%%BeginObject Lines 4
+[12 4] 0 setdash
+1 setlinewidth
+newpath
+0 390.391 moveto
+2.8 391.723 lineto
+5.6 388.975 lineto
+8.75 395.223 lineto
+12.25 397.848 lineto
+15.75 401.068 lineto
+19.25 405.051 lineto
+22.75 408.446 lineto
+26.25 366.709 lineto
+29.0824 0 lineto
+stroke
+newpath
+30.608 0 moveto
+33.25 266.13 lineto
+37.1 341.447 lineto
+41.3 357.226 lineto
+45.5 306.435 lineto
+49.7 377.282 lineto
+54.6 382.341 lineto
+60.2 386.161 lineto
+65.8 389.159 lineto
+71.4 391.7 lineto
+77 393.961 lineto
+82.6 396.02 lineto
+88.2 397.953 lineto
+94.5 400 lineto
+101.5 402.103 lineto
+108.5 404.023 lineto
+115.5 405.718 lineto
+124.25 407.366 lineto
+134.75 408.286 lineto
+145.25 407.209 lineto
+155.75 402.612 lineto
+168 388.846 lineto
+182 355.239 lineto
+196 293.983 lineto
+210 213.777 lineto
+224 166.651 lineto
+238 163.416 lineto
+252 182.81 lineto
+266 207.704 lineto
+280 229.987 lineto
+297.5 252.923 lineto
+318.5 273.299 lineto
+336 286.072 lineto
+357 297.68 lineto
+385 309.24 lineto
+413 318.103 lineto
+441 320.827 lineto
+469 330.034 lineto
+497 331.259 lineto
+528.5 338.243 lineto
+563.5 342.421 lineto
+598.5 345.724 lineto
+633.5 348.561 lineto
+668.5 350.748 lineto
+703.5 338.553 lineto
+738.5 280.715 lineto
+773 336.526 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 5
+%%BeginObject Lines 5
+[6 10 2 3 2 10] 0 setdash
+1 setlinewidth
+newpath
+0 385.169 moveto
+2.8 383.772 lineto
+5.6 377.153 lineto
+8.75 384.429 lineto
+12.25 385.924 lineto
+15.75 388.924 lineto
+19.25 393.8 lineto
+22.75 400.498 lineto
+26.25 401.906 lineto
+29.75 86.7254 lineto
+33.25 329.285 lineto
+37.1 363.28 lineto
+41.3 371.594 lineto
+45.5 336.228 lineto
+49.7 368.205 lineto
+54.6 377.106 lineto
+60.2 381.017 lineto
+65.8 384.471 lineto
+71.4 386.931 lineto
+77 383.792 lineto
+82.6 386.531 lineto
+88.2 389.783 lineto
+94.5 393.046 lineto
+101.5 394.482 lineto
+108.5 395.963 lineto
+115.5 398.336 lineto
+124.25 400.583 lineto
+134.75 402.775 lineto
+145.25 405.055 lineto
+155.75 408.194 lineto
+168 400.871 lineto
+182 370.231 lineto
+196 276.219 lineto
+210 176.651 lineto
+224 197.445 lineto
+238 247.16 lineto
+252 267.194 lineto
+266 282.362 lineto
+280 293.232 lineto
+297.5 306.833 lineto
+318.5 322.426 lineto
+336 329.918 lineto
+357 334.984 lineto
+385 340.381 lineto
+413 345.644 lineto
+441 347.405 lineto
+469 350.459 lineto
+497 352.121 lineto
+528.5 354.019 lineto
+563.5 357.325 lineto
+598.5 359.884 lineto
+633.5 361.001 lineto
+668.5 361.136 lineto
+703.5 348.455 lineto
+738.5 284.34 lineto
+773 335.425 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 6
+%%BeginObject Lines 6
+[] 0 setdash
+1 setlinewidth
+newpath
+0 388.09 moveto
+2.8 387.975 lineto
+5.6 387.823 lineto
+8.75 387.41 lineto
+12.25 386.73 lineto
+15.75 386.05 lineto
+19.25 385.368 lineto
+22.75 384.688 lineto
+26.25 384.009 lineto
+29.75 382.507 lineto
+33.25 380.17 lineto
+37.1 377.4 lineto
+41.3 374.404 lineto
+45.5 374.321 lineto
+49.7 375.513 lineto
+54.6 378.315 lineto
+60.2 381.633 lineto
+65.8 384.505 lineto
+71.4 386.925 lineto
+77 389.252 lineto
+82.6 390.989 lineto
+88.2 392.254 lineto
+94.5 393.375 lineto
+101.5 394.499 lineto
+108.5 395.753 lineto
+115.5 397.396 lineto
+124.25 399.615 lineto
+134.75 402.092 lineto
+145.25 404.383 lineto
+155.75 405.915 lineto
+168 402.889 lineto
+182 384.557 lineto
+196 325.896 lineto
+210 233.914 lineto
+224 191.269 lineto
+238 218.967 lineto
+252 250.733 lineto
+266 277.486 lineto
+280 294.82 lineto
+297.5 309.619 lineto
+318.5 321.287 lineto
+336 328.341 lineto
+357 334.385 lineto
+385 340.387 lineto
+413 344.824 lineto
+441 348.165 lineto
+469 350.511 lineto
+497 352.469 lineto
+528.5 354.561 lineto
+563.5 356.662 lineto
+598.5 358.751 lineto
+633.5 360.588 lineto
+668.5 362.301 lineto
+703.5 355.844 lineto
+738.5 292.441 lineto
+773 345.73 lineto
+stroke
+%%EndObject
+%%EndObject
+grestore
+%%BeginObject XTics
+1 setlinewidth
+[] 0 setdash
+newpath
+91 412 moveto
+651 412 lineto
+stroke
+[] 0 setdash
+0.5 setlinewidth
+newpath
+91 412 moveto
+91 400 lineto
+stroke
+newpath
+231 412 moveto
+231 400 lineto
+stroke
+newpath
+371 412 moveto
+371 400 lineto
+stroke
+newpath
+511 412 moveto
+511 400 lineto
+stroke
+newpath
+651 412 moveto
+651 400 lineto
+stroke
+newpath
+91 412 moveto
+91 400 lineto
+stroke
+newpath
+231 412 moveto
+231 400 lineto
+stroke
+newpath
+371 412 moveto
+371 400 lineto
+stroke
+newpath
+511 412 moveto
+511 400 lineto
+stroke
+newpath
+651 412 moveto
+651 400 lineto
+stroke
+newpath
+91 66 moveto
+91 78 lineto
+stroke
+newpath
+231 66 moveto
+231 78 lineto
+stroke
+newpath
+371 66 moveto
+371 78 lineto
+stroke
+newpath
+511 66 moveto
+511 78 lineto
+stroke
+newpath
+651 66 moveto
+651 78 lineto
+stroke
+newpath
+91 412 moveto
+91 408 lineto
+stroke
+newpath
+161 412 moveto
+161 408 lineto
+stroke
+newpath
+231 412 moveto
+231 408 lineto
+stroke
+newpath
+91 412 moveto
+91 408 lineto
+stroke
+newpath
+161 412 moveto
+161 408 lineto
+stroke
+newpath
+231 412 moveto
+231 408 lineto
+stroke
+newpath
+91 66 moveto
+91 70 lineto
+stroke
+newpath
+161 66 moveto
+161 70 lineto
+stroke
+newpath
+231 66 moveto
+231 70 lineto
+stroke
+newpath
+231 412 moveto
+231 408 lineto
+stroke
+newpath
+301 412 moveto
+301 408 lineto
+stroke
+newpath
+371 412 moveto
+371 408 lineto
+stroke
+newpath
+231 412 moveto
+231 408 lineto
+stroke
+newpath
+301 412 moveto
+301 408 lineto
+stroke
+newpath
+371 412 moveto
+371 408 lineto
+stroke
+newpath
+231 66 moveto
+231 70 lineto
+stroke
+newpath
+301 66 moveto
+301 70 lineto
+stroke
+newpath
+371 66 moveto
+371 70 lineto
+stroke
+newpath
+371 412 moveto
+371 408 lineto
+stroke
+newpath
+441 412 moveto
+441 408 lineto
+stroke
+newpath
+511 412 moveto
+511 408 lineto
+stroke
+newpath
+371 412 moveto
+371 408 lineto
+stroke
+newpath
+441 412 moveto
+441 408 lineto
+stroke
+newpath
+511 412 moveto
+511 408 lineto
+stroke
+newpath
+371 66 moveto
+371 70 lineto
+stroke
+newpath
+441 66 moveto
+441 70 lineto
+stroke
+newpath
+511 66 moveto
+511 70 lineto
+stroke
+newpath
+511 412 moveto
+511 408 lineto
+stroke
+newpath
+581 412 moveto
+581 408 lineto
+stroke
+newpath
+651 412 moveto
+651 408 lineto
+stroke
+newpath
+511 412 moveto
+511 408 lineto
+stroke
+newpath
+581 412 moveto
+581 408 lineto
+stroke
+newpath
+651 412 moveto
+651 408 lineto
+stroke
+newpath
+511 66 moveto
+511 70 lineto
+stroke
+newpath
+581 66 moveto
+581 70 lineto
+stroke
+newpath
+651 66 moveto
+651 70 lineto
+stroke
+%%EndObject
+%%BeginObject YTics
+1 setlinewidth
+[] 0 setdash
+newpath
+91 412 moveto
+91 66 lineto
+stroke
+[] 0 setdash
+0.5 setlinewidth
+newpath
+91 412 moveto
+103 412 lineto
+stroke
+newpath
+91 325.5 moveto
+103 325.5 lineto
+stroke
+newpath
+91 239 moveto
+103 239 lineto
+stroke
+newpath
+91 152.5 moveto
+103 152.5 lineto
+stroke
+newpath
+91 66 moveto
+103 66 lineto
+stroke
+newpath
+91 412 moveto
+103 412 lineto
+stroke
+newpath
+91 325.5 moveto
+103 325.5 lineto
+stroke
+newpath
+91 239 moveto
+103 239 lineto
+stroke
+newpath
+91 152.5 moveto
+103 152.5 lineto
+stroke
+newpath
+91 66 moveto
+103 66 lineto
+stroke
+newpath
+651 412 moveto
+639 412 lineto
+stroke
+newpath
+651 325.5 moveto
+639 325.5 lineto
+stroke
+newpath
+651 239 moveto
+639 239 lineto
+stroke
+newpath
+651 152.5 moveto
+639 152.5 lineto
+stroke
+newpath
+651 66 moveto
+639 66 lineto
+stroke
+newpath
+91 412 moveto
+95 412 lineto
+stroke
+newpath
+91 368.75 moveto
+95 368.75 lineto
+stroke
+newpath
+91 325.5 moveto
+95 325.5 lineto
+stroke
+newpath
+91 412 moveto
+95 412 lineto
+stroke
+newpath
+91 368.75 moveto
+95 368.75 lineto
+stroke
+newpath
+91 325.5 moveto
+95 325.5 lineto
+stroke
+newpath
+651 412 moveto
+647 412 lineto
+stroke
+newpath
+651 368.75 moveto
+647 368.75 lineto
+stroke
+newpath
+651 325.5 moveto
+647 325.5 lineto
+stroke
+newpath
+91 325.5 moveto
+95 325.5 lineto
+stroke
+newpath
+91 282.25 moveto
+95 282.25 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 325.5 moveto
+95 325.5 lineto
+stroke
+newpath
+91 282.25 moveto
+95 282.25 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+651 325.5 moveto
+647 325.5 lineto
+stroke
+newpath
+651 282.25 moveto
+647 282.25 lineto
+stroke
+newpath
+651 239 moveto
+647 239 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 195.75 moveto
+95 195.75 lineto
+stroke
+newpath
+91 152.5 moveto
+95 152.5 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 195.75 moveto
+95 195.75 lineto
+stroke
+newpath
+91 152.5 moveto
+95 152.5 lineto
+stroke
+newpath
+651 239 moveto
+647 239 lineto
+stroke
+newpath
+651 195.75 moveto
+647 195.75 lineto
+stroke
+newpath
+651 152.5 moveto
+647 152.5 lineto
+stroke
+newpath
+91 152.5 moveto
+95 152.5 lineto
+stroke
+newpath
+91 109.25 moveto
+95 109.25 lineto
+stroke
+newpath
+91 66 moveto
+95 66 lineto
+stroke
+newpath
+91 152.5 moveto
+95 152.5 lineto
+stroke
+newpath
+91 109.25 moveto
+95 109.25 lineto
+stroke
+newpath
+91 66 moveto
+95 66 lineto
+stroke
+newpath
+651 152.5 moveto
+647 152.5 lineto
+stroke
+newpath
+651 109.25 moveto
+647 109.25 lineto
+stroke
+newpath
+651 66 moveto
+647 66 lineto
+stroke
+%%EndObject
+%%BeginObject XNumbers
+72 440 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.10)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+212 440 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.20)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+352 440 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.30)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+492 440 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.40)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+632 440 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.50)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject YNumbers
+47 420 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(0.0)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+47 333.5 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(5.0)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+37 247 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(10.0)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+37 160.5 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(15.0)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+37 74 moveto
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+(20.0)
+dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [22.000000 0 0 22.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject Legend
+/Times-Roman-Ext findfont [18.000000 0 0 18.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+459 312 moveto
+459 83 lineto
+635 83 lineto
+635 312 lineto
+459 312 lineto
+closepath
+currentgray 1.0 setgray
+fill
+setgray
+[] 0 setdash
+1 setlinewidth
+newpath
+635 312 moveto
+635 83 lineto
+459 83 lineto
+459 312 lineto
+635 312 lineto
+closepath
+stroke
+1.26966 setlinewidth
+[] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 110 moveto
+0
+(ENDF/B-VI) stringwidth pop add
+pop
+510 110 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 115 moveto
+1 -1 scale
+(ENDF/B-VI) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.26966 setlinewidth
+[2] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 146 moveto
+0
+(JENDL 3) stringwidth pop add
+pop
+510 146 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 151 moveto
+1 -1 scale
+(JENDL 3) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.26966 setlinewidth
+[12 4] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 182 moveto
+0
+(JEF 2.2) stringwidth pop add
+pop
+510 182 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 187 moveto
+1 -1 scale
+(JEF 2.2) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.26966 setlinewidth
+[12 4] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 218 moveto
+0
+(BROND 2) stringwidth pop add
+pop
+510 218 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 223 moveto
+1 -1 scale
+(BROND 2) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.26966 setlinewidth
+[6 10 2 3 2 10] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 254 moveto
+0
+(CENDL) stringwidth pop add
+pop
+510 254 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 259 moveto
+1 -1 scale
+(CENDL) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.26966 setlinewidth
+[] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+472 290 moveto
+0
+(ENDF/B-IV) stringwidth pop add
+pop
+510 290 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+515 295 moveto
+1 -1 scale
+(ENDF/B-IV) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+%%EndObject
+%%EndObject
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+0 572 moveto
+1 -1 scale
+(TempleGraph 2.7, Origin: pjgriff@sass1281 - Tue Aug 20 18:44:00 1996\12 \(data file was /bx2/application/manipulate/response/ans95-20.mif.data\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+showpage

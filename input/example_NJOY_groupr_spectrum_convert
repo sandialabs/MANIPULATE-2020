@@ -1,0 +1,18 @@
+NJOY-2016 Process NJOY extraction of benhcmark field neutron spectrum from the IRDFF-II Library 
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252_640nrg_IRDFF_MF33.groupr' 261  '../spectrum/Cf252_640nrg_IRDFF_MF33_spectrum_list' 1.0
+ 4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+   1 1.0 'spectrum/dummy.spc'  
+ '../spectrum/Cf252_640nrg_IRDFF_MF33_spectrum_list.261' 12 -1
+ 'dummy'
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235_640nrg_IRDFF-II_MF33.groupr' 261  '../spectrum/U235_640nrg_IRDFF-II_MF33_spectrum_list' 1.0
+ 4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+   1 1.0 'spectrum/dummy.spc'  
+ '../spectrum/U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12 -1
+ 'dummy'
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+------------------
+
+ Note: requires that the NJOY-2016 calculations, Cf252_IRDFF-II_640grp_spectrum_validation.inp and
+ U235_640grp_spectrum_validation.inp have been run.

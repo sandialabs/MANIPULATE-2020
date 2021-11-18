@@ -1,0 +1,10 @@
+NJOY Process Conversion for NJOY response: As-75 total kerma and displacement kerma
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016_xsec_survey' 301 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_TK_NJOY2016' 1.0
+ 3 0 1 0 1 1 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016_xsec_survey' 444 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016' 1.0
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+------------------
+
+ Note: requires that the NJOY-2016 calculation, As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016_xsec_survey, 
+ has been run and the groupr files are present on this computer and in the NJOY-2016/groupr diectory

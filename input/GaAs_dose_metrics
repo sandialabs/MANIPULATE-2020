@@ -1,0 +1,58 @@
+GaAs dose metrics; dose conversion, AW(GaAs)= 72.3223; AW(GaN) = 41.86485; C = 9.6451838E-15/AW
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_DK_NJOY-2016.444'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.444'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY-2016.444'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_DK_NJOY-2016.443'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.443'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY-2016.443'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_DK_NJOY-2016.301'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_DK_NJOY-2016.301'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY-2016.301'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_NRT-DE_NJOY-2016.444'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.444'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_NRT-DE_NJOY-2016.444'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_NRT-DE_NJOY-2016.443'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.443'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_NRT-DE_NJOY-2016.443'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_NRT-DE_NJOY-2016.301'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_NRT-DE_NJOY-2016.301'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_NRT-DE_NJOY-2016.301'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_ASTM-DE_NJOY-2016.444'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.444'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_ASTM-DE_NJOY-2016.444'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_ASTM-DE_NJOY-2016.443'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.443'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_ASTM-DE_NJOY-2016.443'  0   0 0.5
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_ASTM-DE_NJOY-2016.301'
+         'Ga-ele_SA_in_GaAs_TENDL-2019_770grp_ASTM-DE_NJOY-2016.301'    0   0 0.5
+         'As-ele_SA_in_GaAs_ENDFB_VIII_0_770grp_ASTM-DE_NJOY-2016.301'  0   0 0.5
+ 5 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0 'GaAs-ele_770grp_IK_443_444_NJOY-2016.IK'
+ 'GaAs-ele_770grp_NRT-DE_NJOY-2016.443'       0   0 +1.0 
+ 'GaAs-ele_770grp_DK_NJOY-2016.444'           0   0 -1.0 
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.333638974e-16  'GaAs-ele_770grp_NJOY-2016.displacement_kerma-rad'
+                    'GaAs-ele_770grp_DK_NJOY-2016.444'    0   0 1.0
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.333638974e-16  'GaAs-ele_770grp_NJOY-2016.kinlmt_kerma-rad'
+                    'GaAs-ele_770grp_NRT-DE_NJOY-2016.443'    0   0 1.0
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 1 1.333638974e-16  'GaAs-ele_770grp_NJOY-2016.total_kerma-rad'
+                    'GaAs-ele_770grp_NRT-DE_NJOY-2016.301'    0   0 1.0
+ 5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0  'GaAs-ele_770grp_NJOY-2016.ionizing_kerma-rad'
+        'GaAs-ele_770grp_NJOY-2016.kinlmt_kerma-rad'        0   0 +1.0
+        'GaAs-ele_770grp_NJOY-2016.displacement_kerma-rad'  0   0 -1.0
+ 9 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+----------------
+
+

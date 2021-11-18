@@ -1,0 +1,60 @@
+1
+
+     MANIPULATE Version 2020
+     title: Manipulate-2020 fold of source and response                                     
+
+
+ control parameters:  6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ renormalized filein imode=12 spectrum number fraction from  9.9999988E-07 to 1.0 
+
+
+
+     final folded summation:  0.4866173E-02
+     final folded summation above 3 mev:  0.3747340E-03
+     final folded summation above 10 kev:  0.4749599E-02
+      ---- if normed to fluence > 10 kev:  0.4751631E-02
+     first function =  0.9995724     of a total response =   1.000000    
+     second function =   2.113951     of a total response =   23915.35    
+     E05 energy =  0.4729635E-01
+     E10 energy =  0.1220285    
+     E25 energy =  0.3640857    
+     E75 energy =   1.569146    
+     E90 energy =   2.645345    
+     E95 energy =   3.447955    
+     E50 energy =  0.8814562    
+
+1
+
+     MANIPULATE Version 2020
+     title: Manipulate-2020 fold of source and response                                     
+
+
+ control parameters:  6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+ sand-ii energy grid is imposed 
+
+ renormalized filein imode=12 spectrum number fraction from  1.0000313E-06 to 1.0 
+
+
+
+     final folded summation:  0.4864278E-02
+     final folded summation above 3 mev:  0.3740836E-03
+     final folded summation above 10 kev:  0.4747997E-02
+      ---- if normed to fluence > 10 kev:  0.4750024E-02
+     first function =  0.9995733     of a total response =  0.9999998    
+     second function =   2.113951     of a total response =   23915.44    
+     E05 energy =   3.546166    
+     E10 energy =   2.744078    
+     E25 energy =   1.671455    
+     E75 energy =  0.3848922    
+     E90 energy =  0.1294376    
+     E95 energy =  0.5018385E-01
+     E50 energy =  0.9229966    
+
+1
+
+     MANIPULATE Version 2020
+     title: Manipulate-2020 fold of source and response                                     
+
+
+ control parameters:  9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

@@ -1,0 +1,86 @@
+    library     file                mat       iso   ireac   iname  cov  broaden  xscnmb   covnmb   
+#
+#    ---------------------------------------------------------------------------------------------------
+#   
+    IRDFF   IRDFF-v1-02.endf        325       li6    105     li6t   yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf        525       b10    107     b10a   yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf        925       f19     16     f192   yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1125       na23    16     na232  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1125       na23   102     na23g  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1225       mg24   103     mg24p  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1325       al27   103     al27p  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1325       al27   107     al27a  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1525        p31   103     p31p   yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       1625        s32   103     s32p   yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2125       sc45   102     sc45g  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2225       ti46    16     ti462  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2225       ti46   103     ti46p  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2228       ti47   103     ti47p  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2228       ti47     5     ti47d  yes   nbrd     10       40 
+    IRDFF   IRDFF-v1-02.endf       2231       ti48   103     ti48p  yes   nbrd      3       33 
+    IRDFF   IRDFF-v1-02.endf       2231       ti48     5     ti48d  yes   nbrd     10       40 
+    IRDFF   IRDFF-v1-02.endf       2234       ti49     5     ti49d  yes   nbrd     10       40 
+    IRDFF   IRDFF-v1-02.endf       2328        v51   107     v51a   yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2431       cr52    16     cr522  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2525       mn55    16     mn552  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2525       mn55   102     mn55g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2625       fe54    16     fe542  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2625       fe54   103     fe54p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2625       fe54   107     fe54a  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2631       fe56   103     fe56p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2637       fe58   102     fe58g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2725       co59    16     co592  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2725       co59    17     co593  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2725       co59   102     co59g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2725       co59   103     co59p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2725       co59   107     co59a  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2825       ni58    16     ni582  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2825       ni58   103     ni58p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2831       ni60   103     ni60p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2925       cu63    16     cu632  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2925       cu63   102     cu63g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2925       cu63   107     cu63a  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       2931       cu65    16     cu652  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       3025       zn64   103     zn64p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       3034       zn67   103     zn67p  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       3325       as75    16     as752  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       3925        y89    16     y892   yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       4025       zr90    16     zr902  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       4125       nb93     4     nb93n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       4125       nb93    16     nb932  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       4125       nb93   102     nb93g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       4225       mo92   103     mo92p  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       4525      rh103     4    rh103n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       4731      ag109   102    ag109g  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       4925      in113     4    in113n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02mod.endf    4931      in115     4    in115n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02mod.endf    4931      in115    16    in1152  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02mod.endf    4931      in115   102    in115g  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       5325       i127    16     i1272  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       5728      la139   102    la139g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       5925      pr141    16    pr1412  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       6925      tm169    16    tm1692  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       6925      tm169    17    tm1693  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       7328      ta181   102    ta181g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       7443       w186   102     w186g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       7925      au197    16    au1972  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       7925      au197   102    au197g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       8034      hg199     4    hg199n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       8225      pb204     4    pb204n  yes   nbrd     10       40
+    IRDFF   IRDFF-v1-02.endf       8325      bi209    17    bi2093  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9040      th232    18    th232f  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9040      th232   102    th232g  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9228       u235    18     u235f  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9228       u235   102     u235g  yes   nbrd      3       33  extra
+    IRDFF   IRDFF-v1-02.endf       9237       u238    18     u238f  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9237       u238   102     u238g  yes   nbrd      3       33  
+    IRDFF   IRDFF-v1-02.endf       9346      np237    18    np237f  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9437      pu239    18    pu239f  yes   nbrd      3       33
+    IRDFF   IRDFF-v1-02.endf       9543      am241    18    am241f  yes   nbrd      3       33 
+#
+#   Note - In115 error in MF=10, MT=102, LFS parameter, value of 2 needed, 1 provided
+#          Source is File 8/10 mismatch on LFS and number of states
+#   Note - B10 IRDFF covariance is a single group - invalid.  Over-ride with CNDC covariance
+#          Problem is that with the 107 File 33 entry.  The details are in the 800 and 801
+#          entries.
+#   Note - U235g is an extra reaction not seen in reaction list from web site

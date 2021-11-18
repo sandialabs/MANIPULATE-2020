@@ -1,0 +1,16 @@
+NJOY-2016 Process Conversion for IRDFF-II Library for U235(nth) thermal fission spectrum - and list
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Co59g_IRDFF-II_640grp_xsec' 102  'Co59g_IRDFF-II_640grp' 1.0
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Ag109g_IRDFF-II_640grp_xsec' 102  'Ag109g_IRDFF-II_640grp' 1.0
+ 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'S32p_IRDFF-II_640grp_xsec' 103  'S32p_IRDFF-II_640grp' 1.0
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+------------------
+
+ Note: requires that the NJOY-2016 calculations:
+		Ag109g_IRDFF-II_640grp_xsec.inp
+		Co59g_IRDFF-II_640grp_xsec.inp 
+		S32p_IRDFF-II_640grp_xsec.inp 	
+       have been run.
+		

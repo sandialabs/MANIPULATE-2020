@@ -1,0 +1,9 @@
+NJOY Process Combination of responses: ionizing dose = total kerma - displacment dose
+ 5 0 1 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 2 1.0 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_IK_301_444_NJOY2016.IK'
+ 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_TK_NJOY2016.301'       0   0 +1.0 
+ 'As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016.444'       0   0 -1.0 
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+------------------
+
+Note: This calculation builds upon the response functions produced in the example_NJOY_groupr_convert example

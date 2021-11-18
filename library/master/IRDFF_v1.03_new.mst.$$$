@@ -1,0 +1,10 @@
+    library          file                mat       iso   ireac  iname   cov  broaden  xscnmb   covnmb   
+#
+#    ---------------------------------------------------------------------------------------------------
+#   
+    IRDFF_v1.03   IRDFF-v1-03.endf       2625       fe54    16   fe542   yes   nbrd      3       33
+    IRDFF_v1.03   IRDFF-v1-03.endf       2825       ni58    16   ni582   yes   nbrd      3       33
+    IRDFF_v1.03   IRDFF-v1-03.endf       4125       nb93   102   nb93g   yes   nbrd      3       33
+    IRDFF_v1.03   IRDFF-v1-03.endf       4931      in115   102   in115g  yes   nbrd     10       40
+    IRDFF_v1.03   IRDFF-v1-03.endf       9237       u238    16   u2352   yes   nbrd      3       33
+#

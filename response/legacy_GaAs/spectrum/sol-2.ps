@@ -1,0 +1,3927 @@
+%!
+
+/reencodedict 12 dict def
+/ReEncode
+ { reencodedict begin
+  /newcodesandnames exch def
+  /newfontname exch def
+  /basefontname exch def
+  /basefontdict basefontname findfont def
+  /newfont basefontdict maxlength dict def
+  basefontdict
+   { exch dup /FID ne
+    { dup /Encoding eq
+     { exch dup length array copy newfont 3 1 roll put }
+     { exch newfont 3 1 roll put }
+    ifelse }
+    { pop pop }
+   ifelse
+  } forall
+ newfont /FontName newfontname put
+  0 1 newcodesandnames length 1 sub
+  { dup newfont /Encoding get 3 1 roll newcodesandnames exch get put}
+  for
+ newfontname newfont definefont pop
+ end
+} def
+
+
+/ExtEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quoteright /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /quoteleft /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quotesingle /grave /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+
+/Times-Roman /Times-Roman-Ext ExtEncoding ReEncode
+0. setgray
+522 756 translate
+-90 rotate
+0.875000 -0.875000 scale
+%%BeginObject Graph
+%%BeginObject XLabel
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+0
+(Neutron Energy \(MeV\)) stringwidth pop add
+neg 91 add 651 add 2 div 462 moveto
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+(Neutron Energy \(MeV\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject YLabel
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+0
+(Diff. Number Spectrum, ) stringwidth pop add
+/Symbol findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+(F) stringwidth pop add
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+(\(E\)) stringwidth pop add
+412 add 66 add 2 div 31 exch moveto
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+90.0 rotate
+(Diff. Number Spectrum, ) show
+-90.0 rotate
+1 -1 scale
+/Symbol findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+90.0 rotate
+(F) show
+-90.0 rotate
+1 -1 scale
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+1 -1 scale
+90.0 rotate
+(\(E\)) show
+-90.0 rotate
+1 -1 scale
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [30.000000 0 0 30.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject Messages
+%%EndObject
+%%BeginObject Arrows
+%%EndObject
+%%BeginObject Frame
+1 setlinewidth
+newpath
+651 412 moveto
+651 66 lineto
+91 66 lineto
+91 412 lineto
+651 412 lineto
+closepath
+stroke
+%%EndObject
+gsave
+newpath
+91 412 moveto
+91 66 lineto
+651 66 lineto
+651 412 lineto
+91 412 moveto
+clip
+%%BeginObject Curve 1
+%%BeginObject Lines 1
+[] 0 setdash
+1 setlinewidth
+newpath
+626.172 492 moveto
+625.945 490.962 lineto
+625.574 488.03 lineto
+625.199 485.063 lineto
+624.821 482.069 lineto
+624.439 479.048 lineto
+624.053 475.993 lineto
+623.663 472.907 lineto
+623.269 469.793 lineto
+622.871 466.642 lineto
+622.469 463.463 lineto
+622.063 461.01 lineto
+621.652 459.298 lineto
+621.237 457.542 lineto
+620.817 455.79 lineto
+620.393 454.005 lineto
+619.964 452.202 lineto
+619.531 450.379 lineto
+619.092 448.538 lineto
+618.648 446.668 lineto
+618.2 444.786 lineto
+617.746 443.016 lineto
+617.286 441.363 lineto
+616.821 439.687 lineto
+616.35 438 lineto
+615.874 436.288 lineto
+615.391 434.55 lineto
+614.903 432.792 lineto
+614.408 431.013 lineto
+613.907 429.216 lineto
+613.399 427.391 lineto
+612.884 425.837 lineto
+612.363 424.565 lineto
+611.834 423.272 lineto
+611.298 421.96 lineto
+610.754 420.633 lineto
+610.203 419.287 lineto
+609.643 417.919 lineto
+609.076 416.532 lineto
+608.5 415.125 lineto
+607.915 413.695 lineto
+607.321 412.112 lineto
+606.718 410.377 lineto
+606.105 408.612 lineto
+605.483 406.827 lineto
+604.85 404.993 lineto
+604.206 403.149 lineto
+603.552 401.27 lineto
+602.887 399.355 lineto
+602.21 397.407 lineto
+601.52 395.414 lineto
+600.819 393.634 lineto
+600.104 392.047 lineto
+599.375 390.437 lineto
+598.633 388.783 lineto
+597.876 387.109 lineto
+597.104 385.387 lineto
+596.317 383.643 lineto
+595.513 381.871 lineto
+594.691 380.078 lineto
+593.852 378.254 lineto
+592.994 376.387 lineto
+592.117 374.477 lineto
+591.219 372.76 lineto
+590.3 371.451 lineto
+589.359 370.347 lineto
+588.394 369.211 lineto
+587.404 368.047 lineto
+586.388 366.726 lineto
+585.345 365.114 lineto
+584.273 363.326 lineto
+583.17 361.491 lineto
+582.035 359.598 lineto
+580.865 357.753 lineto
+579.659 356.046 lineto
+578.414 354.388 lineto
+577.127 352.674 lineto
+575.796 350.898 lineto
+574.417 349.612 lineto
+572.987 348.783 lineto
+571.503 347.937 lineto
+569.959 346.894 lineto
+568.35 345.425 lineto
+566.672 343.711 lineto
+564.917 342.31 lineto
+563.079 341.589 lineto
+561.148 341.227 lineto
+559.117 340.268 lineto
+556.972 338.657 lineto
+554.701 336.965 lineto
+552.287 335.148 lineto
+549.713 334.417 lineto
+546.955 334.868 lineto
+543.985 334.805 lineto
+540.766 334.17 lineto
+537.255 333.84 lineto
+534.592 333.84 lineto
+532.984 333.098 lineto
+531.305 331.346 lineto
+529.55 329.331 lineto
+527.712 327.531 lineto
+525.782 325.87 lineto
+523.75 324.849 lineto
+521.88 324.747 lineto
+520.201 324.874 lineto
+518.447 324.994 lineto
+516.608 325.113 lineto
+514.843 325.225 lineto
+513.164 324.68 lineto
+511.409 323.472 lineto
+509.571 323.835 lineto
+507.641 325.888 lineto
+505.609 327.522 lineto
+503.464 328.71 lineto
+501.193 328.454 lineto
+499.028 326.842 lineto
+496.996 325.302 lineto
+494.851 323.649 lineto
+492.58 322.105 lineto
+490.167 321.379 lineto
+487.593 321.291 lineto
+485.543 321.129 lineto
+483.747 320.702 lineto
+481.476 320.042 lineto
+479.476 319.468 lineto
+477.797 319.034 lineto
+476.043 318.694 lineto
+474.204 318.384 lineto
+472.274 318.059 lineto
+470.242 317.725 lineto
+468.097 317.326 lineto
+465.826 316.841 lineto
+463.413 316.287 lineto
+461.17 315.768 lineto
+459.138 315.301 lineto
+456.993 314.808 lineto
+454.722 313.921 lineto
+452.722 312.712 lineto
+451.044 311.549 lineto
+449.289 310.328 lineto
+447.451 309.051 lineto
+445.718 307.853 lineto
+444.109 306.734 lineto
+442.431 305.905 lineto
+440.676 305.722 lineto
+438.838 305.881 lineto
+436.907 306.044 lineto
+434.875 306.217 lineto
+433.005 306.213 lineto
+431.327 305.687 lineto
+429.572 304.799 lineto
+427.734 303.869 lineto
+425.968 302.979 lineto
+424.29 302.129 lineto
+422.535 301.242 lineto
+420.697 300.315 lineto
+418.766 299.615 lineto
+416.734 299.161 lineto
+414.59 298.679 lineto
+412.318 298.171 lineto
+410.154 297.685 lineto
+408.122 297.231 lineto
+405.977 296.751 lineto
+403.706 296.24 lineto
+401.293 295.7 lineto
+398.718 294.931 lineto
+396.668 294.184 lineto
+394.873 293.52 lineto
+392.602 292.662 lineto
+390.601 291.922 lineto
+388.923 291.315 lineto
+387.168 290.657 lineto
+385.33 289.974 lineto
+383.4 289.268 lineto
+381.368 288.521 lineto
+379.223 287.719 lineto
+376.952 286.886 lineto
+374.539 285.99 lineto
+372.296 284.883 lineto
+370.264 283.545 lineto
+368.119 282.119 lineto
+365.848 280.626 lineto
+363.848 279.312 lineto
+362.169 278.208 lineto
+360.414 277.05 lineto
+358.576 275.848 lineto
+356.843 274.711 lineto
+355.235 273.646 lineto
+353.556 272.541 lineto
+351.802 271.382 lineto
+349.963 270.168 lineto
+348.033 268.993 lineto
+346.001 267.835 lineto
+344.131 266.779 lineto
+342.453 265.829 lineto
+340.698 264.829 lineto
+338.859 263.786 lineto
+337.094 262.785 lineto
+335.415 261.836 lineto
+333.661 260.836 lineto
+331.822 259.798 lineto
+329.892 258.699 lineto
+327.86 257.547 lineto
+325.715 256.32 lineto
+323.444 255.004 lineto
+321.279 253.758 lineto
+319.247 252.581 lineto
+317.102 251.343 lineto
+314.831 250.027 lineto
+312.418 248.635 lineto
+309.844 247.144 lineto
+307.794 245.968 lineto
+305.999 244.926 lineto
+303.727 243.612 lineto
+301.727 242.461 lineto
+300.049 241.491 lineto
+298.294 240.475 lineto
+296.456 239.413 lineto
+294.525 238.315 lineto
+292.493 237.174 lineto
+290.349 235.975 lineto
+288.077 234.692 lineto
+285.664 233.339 lineto
+283.422 232.077 lineto
+281.39 230.934 lineto
+279.245 229.747 lineto
+276.974 228.468 lineto
+274.973 227.337 lineto
+273.295 226.405 lineto
+271.54 225.426 lineto
+269.702 224.391 lineto
+267.969 223.412 lineto
+266.36 222.513 lineto
+264.682 221.577 lineto
+262.927 220.581 lineto
+261.089 219.497 lineto
+259.159 218.337 lineto
+257.127 217.114 lineto
+255.257 215.98 lineto
+253.578 214.969 lineto
+251.823 213.916 lineto
+249.985 212.809 lineto
+248.219 211.749 lineto
+246.541 210.732 lineto
+244.786 209.797 lineto
+242.948 208.946 lineto
+241.018 208.05 lineto
+238.986 207.101 lineto
+236.841 206.105 lineto
+234.57 205.054 lineto
+232.405 204.046 lineto
+230.373 203.103 lineto
+228.228 202.106 lineto
+225.957 201.05 lineto
+223.544 199.933 lineto
+220.97 198.615 lineto
+218.92 197.489 lineto
+217.124 196.496 lineto
+214.853 195.238 lineto
+212.853 194.136 lineto
+211.174 193.208 lineto
+209.42 192.241 lineto
+207.581 191.224 lineto
+205.651 190.157 lineto
+203.619 189.032 lineto
+201.474 187.848 lineto
+199.203 186.592 lineto
+196.79 185.256 lineto
+194.547 183.974 lineto
+192.515 182.75 lineto
+190.37 181.462 lineto
+188.099 180.098 lineto
+186.099 178.901 lineto
+184.421 177.898 lineto
+182.666 176.841 lineto
+180.827 175.738 lineto
+179.095 174.683 lineto
+177.486 173.73 lineto
+175.808 172.715 lineto
+174.053 171.665 lineto
+172.215 170.549 lineto
+170.284 169.396 lineto
+168.252 168.162 lineto
+166.382 167.049 lineto
+164.704 166.028 lineto
+162.949 164.975 lineto
+161.111 163.855 lineto
+159.345 162.796 lineto
+157.667 161.78 lineto
+155.912 160.719 lineto
+154.074 159.608 lineto
+152.143 158.445 lineto
+150.111 157.218 lineto
+147.967 155.918 lineto
+145.695 154.55 lineto
+143.53 153.244 lineto
+141.499 152.011 lineto
+139.354 150.714 lineto
+137.083 149.342 lineto
+134.669 147.882 lineto
+132.095 146.373 lineto
+130.045 145.208 lineto
+128.25 144.176 lineto
+125.979 142.881 lineto
+123.978 141.74 lineto
+122.3 140.779 lineto
+120.545 139.775 lineto
+118.707 138.724 lineto
+116.777 137.624 lineto
+114.745 136.46 lineto
+112.6 135.234 lineto
+110.329 133.936 lineto
+107.916 132.557 lineto
+105.673 131.276 lineto
+103.641 130.117 lineto
+101.496 128.888 lineto
+99.2249 127.59 lineto
+97.2246 126.451 lineto
+95.5461 125.492 lineto
+93.7914 124.488 lineto
+91.9531 123.436 lineto
+90.2202 122.449 lineto
+88.6118 121.528 lineto
+86.9333 120.569 lineto
+85.1786 119.568 lineto
+83.3403 118.516 lineto
+81.41 117.42 lineto
+79.3781 116.247 lineto
+77.5079 115.186 lineto
+75.8295 114.224 lineto
+74.0747 113.225 lineto
+72.2364 112.177 lineto
+70.4707 111.155 lineto
+68.7923 110.205 lineto
+67.0376 110.285 lineto
+65.1992 111.474 lineto
+63.2689 112.722 lineto
+61.237 114.055 lineto
+59.0922 115.442 lineto
+56.8211 116.911 lineto
+54.6561 118.315 lineto
+52.6242 119.638 lineto
+50.4793 121.035 lineto
+48.2082 122.502 lineto
+45.7951 124.068 lineto
+43.221 125.739 lineto
+41.1711 127.071 lineto
+39.3755 128.235 lineto
+37.1044 129.708 lineto
+35.1041 131.005 lineto
+33.4256 132.094 lineto
+31.6709 133.233 lineto
+29.8326 134.426 lineto
+27.9023 135.679 lineto
+25.8704 136.998 lineto
+23.7255 138.39 lineto
+21.4544 139.864 lineto
+19.0412 141.43 lineto
+16.7984 142.881 lineto
+14.7665 144.201 lineto
+12.6216 145.595 lineto
+10.3505 147.07 lineto
+8.35021 148.364 lineto
+6.67179 149.457 lineto
+4.91705 150.592 lineto
+3.07872 151.79 lineto
+1.34586 152.914 lineto
+0 153.783 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 2
+%%BeginObject Lines 2
+[2] 0 setdash
+1 setlinewidth
+newpath
+625.509 492 moveto
+625.199 489.681 lineto
+624.821 486.858 lineto
+624.439 484.012 lineto
+624.053 481.13 lineto
+623.663 478.222 lineto
+623.269 475.285 lineto
+622.871 472.318 lineto
+622.469 469.317 lineto
+622.063 466.615 lineto
+621.652 464.196 lineto
+621.237 461.753 lineto
+620.817 459.273 lineto
+620.393 456.777 lineto
+619.964 454.253 lineto
+619.531 451.713 lineto
+619.092 449.134 lineto
+618.648 446.508 lineto
+618.2 443.872 lineto
+617.746 442.322 lineto
+617.286 441.866 lineto
+616.821 441.406 lineto
+616.35 440.942 lineto
+615.874 440.465 lineto
+615.391 439.986 lineto
+614.903 439.494 lineto
+614.408 439.011 lineto
+613.907 438.506 lineto
+613.399 438.002 lineto
+612.884 436.738 lineto
+612.363 434.717 lineto
+611.834 432.665 lineto
+611.298 430.586 lineto
+610.754 428.484 lineto
+610.203 426.346 lineto
+609.643 424.175 lineto
+609.076 421.972 lineto
+608.5 419.74 lineto
+607.915 417.475 lineto
+607.321 415.22 lineto
+606.718 412.981 lineto
+606.105 410.706 lineto
+605.483 408.398 lineto
+604.85 406.046 lineto
+604.206 403.658 lineto
+603.552 401.227 lineto
+602.887 398.768 lineto
+602.21 396.238 lineto
+601.52 393.678 lineto
+600.819 391.643 lineto
+600.104 390.105 lineto
+599.375 388.542 lineto
+598.633 386.952 lineto
+597.876 385.319 lineto
+597.104 383.669 lineto
+596.317 381.968 lineto
+595.513 380.417 lineto
+594.691 379.179 lineto
+593.852 378.073 lineto
+592.994 376.952 lineto
+592.117 375.803 lineto
+591.219 374.574 lineto
+590.3 373.202 lineto
+589.359 371.741 lineto
+588.394 370.238 lineto
+587.404 368.698 lineto
+586.388 367.223 lineto
+585.345 365.905 lineto
+584.273 364.647 lineto
+583.17 363.356 lineto
+582.035 362.03 lineto
+580.865 360.561 lineto
+579.659 358.842 lineto
+578.414 356.968 lineto
+577.127 355.031 lineto
+575.796 353.029 lineto
+574.417 351.077 lineto
+572.987 349.178 lineto
+571.503 347.203 lineto
+569.959 345.522 lineto
+568.35 344.518 lineto
+566.672 343.844 lineto
+564.917 343.561 lineto
+563.079 344.131 lineto
+561.148 345.161 lineto
+559.117 344.397 lineto
+556.972 341.726 lineto
+554.701 339.573 lineto
+552.287 337.944 lineto
+549.713 336.914 lineto
+546.955 336.521 lineto
+543.985 335.632 lineto
+540.766 334.169 lineto
+537.255 333.437 lineto
+534.592 333.516 lineto
+532.984 333.172 lineto
+531.305 332.273 lineto
+529.55 331.318 lineto
+527.712 330.734 lineto
+525.782 330.468 lineto
+523.75 329.809 lineto
+521.88 328.785 lineto
+520.201 327.752 lineto
+518.447 327.135 lineto
+516.608 327.183 lineto
+514.843 327.454 lineto
+513.164 327.702 lineto
+511.409 327.927 lineto
+509.571 328.759 lineto
+507.641 330.233 lineto
+505.609 330.178 lineto
+503.464 328.449 lineto
+501.193 327.062 lineto
+499.028 326.131 lineto
+496.996 325.472 lineto
+494.851 325.064 lineto
+492.58 324.575 lineto
+490.167 323.477 lineto
+487.593 321.875 lineto
+485.543 320.792 lineto
+483.747 320.425 lineto
+481.476 320.193 lineto
+479.476 319.991 lineto
+477.797 319.89 lineto
+476.043 319.936 lineto
+474.204 320.055 lineto
+472.274 320.193 lineto
+470.242 320.323 lineto
+468.097 320.258 lineto
+465.826 319.735 lineto
+463.413 318.958 lineto
+461.17 318.238 lineto
+459.138 317.581 lineto
+456.993 316.891 lineto
+454.722 315.968 lineto
+452.722 314.951 lineto
+451.044 314.017 lineto
+449.289 313.039 lineto
+447.451 312.012 lineto
+445.718 311.051 lineto
+444.109 310.15 lineto
+442.431 309.406 lineto
+440.676 309.007 lineto
+438.838 308.789 lineto
+436.907 308.556 lineto
+434.875 308.313 lineto
+433.005 307.987 lineto
+431.327 307.37 lineto
+429.572 306.521 lineto
+427.734 305.627 lineto
+425.968 304.769 lineto
+424.29 303.954 lineto
+422.535 303.103 lineto
+420.697 302.209 lineto
+418.766 301.223 lineto
+416.734 300.146 lineto
+414.59 299.006 lineto
+412.318 297.799 lineto
+410.154 296.65 lineto
+408.122 295.569 lineto
+405.977 294.427 lineto
+403.706 293.221 lineto
+401.293 291.939 lineto
+398.718 290.668 lineto
+396.668 289.738 lineto
+394.873 288.917 lineto
+392.602 287.881 lineto
+390.601 286.974 lineto
+388.923 286.201 lineto
+387.168 285.405 lineto
+385.33 284.567 lineto
+383.4 283.691 lineto
+381.368 282.762 lineto
+379.223 281.786 lineto
+376.952 280.732 lineto
+374.539 279.647 lineto
+372.296 278.432 lineto
+370.264 277.124 lineto
+368.119 275.739 lineto
+365.848 274.279 lineto
+363.848 272.997 lineto
+362.169 271.912 lineto
+360.414 270.795 lineto
+358.576 269.59 lineto
+356.843 268.499 lineto
+355.235 267.443 lineto
+353.556 266.375 lineto
+351.802 265.237 lineto
+349.963 264.061 lineto
+348.033 263.021 lineto
+346.001 262.151 lineto
+344.131 261.344 lineto
+342.453 260.632 lineto
+340.698 259.872 lineto
+338.859 259.087 lineto
+337.094 258.325 lineto
+335.415 257.609 lineto
+333.661 256.853 lineto
+331.822 256.063 lineto
+329.892 255.234 lineto
+327.86 254.365 lineto
+325.715 253.224 lineto
+323.444 251.793 lineto
+321.279 250.429 lineto
+319.247 249.145 lineto
+317.102 247.796 lineto
+314.831 246.364 lineto
+312.418 244.841 lineto
+309.844 243.221 lineto
+307.794 241.934 lineto
+305.999 240.802 lineto
+303.727 239.369 lineto
+301.727 238.111 lineto
+300.049 237.056 lineto
+298.294 235.948 lineto
+296.456 234.789 lineto
+294.525 233.669 lineto
+292.493 232.589 lineto
+290.349 231.447 lineto
+288.077 230.239 lineto
+285.664 228.966 lineto
+283.422 227.762 lineto
+281.39 226.679 lineto
+279.245 225.535 lineto
+276.974 224.34 lineto
+274.973 223.276 lineto
+273.295 222.386 lineto
+271.54 221.437 lineto
+269.702 220.471 lineto
+267.969 219.54 lineto
+266.36 218.691 lineto
+264.682 217.792 lineto
+262.927 216.82 lineto
+261.089 215.67 lineto
+259.159 214.326 lineto
+257.127 212.923 lineto
+255.257 211.643 lineto
+253.578 210.483 lineto
+251.823 209.275 lineto
+249.985 208.007 lineto
+248.219 206.79 lineto
+246.541 205.629 lineto
+244.786 204.366 lineto
+242.948 202.999 lineto
+241.018 201.557 lineto
+238.986 200.041 lineto
+236.841 198.446 lineto
+234.57 196.745 lineto
+232.405 195.134 lineto
+230.373 193.62 lineto
+228.228 192.021 lineto
+225.957 190.325 lineto
+223.544 188.524 lineto
+220.97 186.83 lineto
+218.92 185.653 lineto
+217.124 184.615 lineto
+214.853 183.303 lineto
+212.853 182.154 lineto
+211.174 181.183 lineto
+209.42 180.174 lineto
+207.581 179.11 lineto
+205.651 177.998 lineto
+203.619 176.825 lineto
+201.474 175.589 lineto
+199.203 174.277 lineto
+196.79 172.883 lineto
+194.547 171.764 lineto
+192.515 170.963 lineto
+190.37 170.095 lineto
+188.099 169.189 lineto
+186.099 168.379 lineto
+184.421 167.721 lineto
+182.666 167.017 lineto
+180.827 166.274 lineto
+179.095 165.59 lineto
+177.486 164.944 lineto
+175.808 164.277 lineto
+174.053 163.574 lineto
+172.215 162.838 lineto
+170.284 162.057 lineto
+168.252 160.976 lineto
+166.382 159.665 lineto
+164.704 158.419 lineto
+162.949 157.109 lineto
+161.111 155.733 lineto
+159.345 154.417 lineto
+157.667 153.166 lineto
+155.912 151.852 lineto
+154.074 150.477 lineto
+152.143 149.034 lineto
+150.111 147.519 lineto
+147.967 145.914 lineto
+145.695 144.225 lineto
+143.53 142.612 lineto
+141.499 141.089 lineto
+139.354 139.49 lineto
+137.083 137.789 lineto
+134.669 135.989 lineto
+132.095 134.276 lineto
+130.045 133.075 lineto
+128.25 132.01 lineto
+125.979 130.675 lineto
+123.978 129.499 lineto
+122.3 128.507 lineto
+120.545 127.472 lineto
+118.707 126.39 lineto
+116.777 125.252 lineto
+114.745 124.054 lineto
+112.6 122.788 lineto
+110.329 121.447 lineto
+107.916 120.024 lineto
+105.673 118.707 lineto
+103.641 117.506 lineto
+101.496 116.242 lineto
+99.2249 114.904 lineto
+97.2246 113.73 lineto
+95.5461 112.73 lineto
+93.7914 111.701 lineto
+91.9531 110.627 lineto
+90.2202 109.597 lineto
+88.6118 108.647 lineto
+86.9333 107.656 lineto
+85.1786 106.629 lineto
+83.3403 105.537 lineto
+81.41 104.407 lineto
+79.3781 103.214 lineto
+77.5079 102.105 lineto
+75.8295 101.117 lineto
+74.0747 100.082 lineto
+72.2364 98.993 lineto
+70.4707 97.9626 lineto
+68.7923 96.9729 lineto
+67.0376 97.0352 lineto
+65.1992 98.2359 lineto
+63.2689 99.4833 lineto
+61.237 100.796 lineto
+59.0922 102.197 lineto
+56.8211 103.665 lineto
+54.6561 105.068 lineto
+52.6242 106.392 lineto
+50.4793 107.789 lineto
+48.2082 109.249 lineto
+45.7951 110.821 lineto
+43.221 112.498 lineto
+41.1711 113.827 lineto
+39.3755 114.985 lineto
+37.1044 116.461 lineto
+35.1041 117.756 lineto
+33.4256 118.846 lineto
+31.6709 119.986 lineto
+29.8326 121.177 lineto
+27.9023 122.431 lineto
+25.8704 123.748 lineto
+23.7255 125.141 lineto
+21.4544 126.612 lineto
+19.0412 128.18 lineto
+16.7984 129.636 lineto
+14.7665 130.954 lineto
+12.6216 132.345 lineto
+10.3505 133.817 lineto
+8.35021 135.118 lineto
+6.67179 136.209 lineto
+4.91705 137.342 lineto
+3.07872 138.537 lineto
+1.34586 139.66 lineto
+0 140.537 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 3
+%%BeginObject Lines 3
+[6 2] 0 setdash
+1 setlinewidth
+newpath
+626.739 492 moveto
+626.677 491.73 lineto
+626.313 490.166 lineto
+625.945 488.084 lineto
+625.574 485.5 lineto
+625.199 482.905 lineto
+624.821 480.275 lineto
+624.439 477.621 lineto
+624.053 474.935 lineto
+623.663 472.233 lineto
+623.269 469.489 lineto
+622.871 466.729 lineto
+622.469 463.938 lineto
+622.063 461.667 lineto
+621.652 459.924 lineto
+621.237 458.152 lineto
+620.817 456.367 lineto
+620.393 454.56 lineto
+619.964 452.736 lineto
+619.531 450.886 lineto
+619.092 449.019 lineto
+618.648 447.13 lineto
+618.2 445.221 lineto
+617.746 443.406 lineto
+617.286 441.69 lineto
+616.821 439.952 lineto
+616.35 438.191 lineto
+615.874 436.4 lineto
+615.391 434.607 lineto
+614.903 432.782 lineto
+614.408 430.939 lineto
+613.907 429.059 lineto
+613.399 427.159 lineto
+612.884 425.407 lineto
+612.363 423.783 lineto
+611.834 422.133 lineto
+611.298 420.47 lineto
+610.754 418.78 lineto
+610.203 417.065 lineto
+609.643 415.318 lineto
+609.076 413.553 lineto
+608.5 411.765 lineto
+607.915 409.944 lineto
+607.321 408.417 lineto
+606.718 407.181 lineto
+606.105 405.933 lineto
+605.483 404.657 lineto
+604.85 403.367 lineto
+604.206 402.051 lineto
+603.552 400.711 lineto
+602.887 399.349 lineto
+602.21 397.964 lineto
+601.52 396.557 lineto
+600.819 394.985 lineto
+600.104 393.251 lineto
+599.375 391.487 lineto
+598.633 389.686 lineto
+597.876 387.848 lineto
+597.104 385.978 lineto
+596.317 384.067 lineto
+595.513 382.215 lineto
+594.691 380.524 lineto
+593.852 378.887 lineto
+592.994 377.227 lineto
+592.117 375.516 lineto
+591.219 374.004 lineto
+590.3 372.906 lineto
+589.359 372.02 lineto
+588.394 371.101 lineto
+587.404 370.167 lineto
+586.388 369.043 lineto
+585.345 367.558 lineto
+584.273 365.879 lineto
+583.17 364.147 lineto
+582.035 362.356 lineto
+580.865 360.493 lineto
+579.659 358.515 lineto
+578.414 356.446 lineto
+577.127 354.312 lineto
+575.796 352.103 lineto
+574.417 350.226 lineto
+572.987 348.691 lineto
+571.503 347.095 lineto
+569.959 345.87 lineto
+568.35 345.484 lineto
+566.672 345.531 lineto
+564.917 345.479 lineto
+563.079 345.213 lineto
+561.148 344.832 lineto
+559.117 344.147 lineto
+556.972 343.144 lineto
+554.701 341.733 lineto
+552.287 339.881 lineto
+549.713 338.837 lineto
+546.955 338.659 lineto
+543.985 338.457 lineto
+540.766 338.226 lineto
+537.255 337.617 lineto
+534.592 336.92 lineto
+532.984 335.828 lineto
+531.305 333.802 lineto
+529.55 331.596 lineto
+527.712 329.835 lineto
+525.782 328.399 lineto
+523.75 327.865 lineto
+521.88 328.478 lineto
+520.201 329.319 lineto
+518.447 329.763 lineto
+516.608 329.563 lineto
+514.843 329.167 lineto
+513.164 328.517 lineto
+511.409 327.56 lineto
+509.571 327.569 lineto
+507.641 328.605 lineto
+505.609 329.742 lineto
+503.464 330.991 lineto
+501.193 330.518 lineto
+499.028 328.434 lineto
+496.996 326.713 lineto
+494.851 325.216 lineto
+492.58 323.84 lineto
+490.167 322.881 lineto
+487.593 322.277 lineto
+485.543 321.777 lineto
+483.747 321.331 lineto
+481.476 320.741 lineto
+479.476 320.228 lineto
+477.797 319.788 lineto
+476.043 319.314 lineto
+474.204 318.79 lineto
+472.274 318.256 lineto
+470.242 317.676 lineto
+468.097 317.054 lineto
+465.826 316.374 lineto
+463.413 315.623 lineto
+461.17 314.929 lineto
+459.138 314.304 lineto
+456.993 313.645 lineto
+454.722 313.066 lineto
+452.722 312.672 lineto
+451.044 312.407 lineto
+449.289 312.115 lineto
+447.451 311.826 lineto
+445.718 311.54 lineto
+444.109 311.272 lineto
+442.431 310.934 lineto
+440.676 310.429 lineto
+438.838 309.821 lineto
+436.907 309.187 lineto
+434.875 308.529 lineto
+433.005 307.823 lineto
+431.327 306.887 lineto
+429.572 305.722 lineto
+427.734 304.508 lineto
+425.968 303.339 lineto
+424.29 302.222 lineto
+422.535 301.054 lineto
+420.697 299.844 lineto
+418.766 298.861 lineto
+416.734 298.132 lineto
+414.59 297.365 lineto
+412.318 296.547 lineto
+410.154 295.778 lineto
+408.122 295.048 lineto
+405.977 294.278 lineto
+403.706 293.466 lineto
+401.293 292.595 lineto
+398.718 291.429 lineto
+396.668 290.316 lineto
+394.873 289.336 lineto
+392.602 288.098 lineto
+390.601 287.013 lineto
+388.923 286.098 lineto
+387.168 285.142 lineto
+385.33 284.141 lineto
+383.4 283.092 lineto
+381.368 281.983 lineto
+379.223 280.817 lineto
+376.952 279.576 lineto
+374.539 278.264 lineto
+372.296 277.073 lineto
+370.264 276.03 lineto
+368.119 274.928 lineto
+365.848 273.764 lineto
+363.848 272.739 lineto
+362.169 271.878 lineto
+360.414 270.977 lineto
+358.576 270.033 lineto
+356.843 269.145 lineto
+355.235 268.32 lineto
+353.556 267.456 lineto
+351.802 266.567 lineto
+349.963 265.617 lineto
+348.033 264.496 lineto
+346.001 263.226 lineto
+344.131 262.038 lineto
+342.453 260.984 lineto
+340.698 259.876 lineto
+338.859 258.707 lineto
+337.094 257.59 lineto
+335.415 256.537 lineto
+333.661 255.431 lineto
+331.822 254.265 lineto
+329.892 253.05 lineto
+327.86 251.767 lineto
+325.715 250.454 lineto
+323.444 249.133 lineto
+321.279 247.867 lineto
+319.247 246.684 lineto
+317.102 245.425 lineto
+314.831 244.095 lineto
+312.418 242.689 lineto
+309.844 241.176 lineto
+307.794 239.989 lineto
+305.999 238.929 lineto
+303.727 237.606 lineto
+301.727 236.439 lineto
+300.049 235.46 lineto
+298.294 234.435 lineto
+296.456 233.357 lineto
+294.525 232.179 lineto
+292.493 230.893 lineto
+290.349 229.533 lineto
+288.077 228.098 lineto
+285.664 226.565 lineto
+283.422 225.153 lineto
+281.39 223.862 lineto
+279.245 222.505 lineto
+276.974 221.065 lineto
+274.973 219.802 lineto
+273.295 218.739 lineto
+271.54 217.628 lineto
+269.702 216.467 lineto
+267.969 215.37 lineto
+266.36 214.353 lineto
+264.682 213.287 lineto
+262.927 212.179 lineto
+261.089 211.021 lineto
+259.159 209.81 lineto
+257.127 208.531 lineto
+255.257 207.36 lineto
+253.578 206.309 lineto
+251.823 205.214 lineto
+249.985 204.063 lineto
+248.219 202.942 lineto
+246.541 201.908 lineto
+244.786 200.986 lineto
+242.948 200.22 lineto
+241.018 199.425 lineto
+238.986 198.573 lineto
+236.841 197.685 lineto
+234.57 196.736 lineto
+232.405 195.85 lineto
+230.373 194.995 lineto
+228.228 194.114 lineto
+225.957 193.169 lineto
+223.544 192.157 lineto
+220.97 190.663 lineto
+218.92 189.152 lineto
+217.124 187.823 lineto
+214.853 186.147 lineto
+212.853 184.67 lineto
+211.174 183.428 lineto
+209.42 182.134 lineto
+207.581 180.774 lineto
+205.651 179.346 lineto
+203.619 177.843 lineto
+201.474 176.257 lineto
+199.203 174.576 lineto
+196.79 172.794 lineto
+194.547 171.18 lineto
+192.515 169.751 lineto
+190.37 168.248 lineto
+188.099 166.655 lineto
+186.099 165.256 lineto
+184.421 164.081 lineto
+182.666 162.851 lineto
+180.827 161.559 lineto
+179.095 160.348 lineto
+177.486 159.22 lineto
+175.808 158.043 lineto
+174.053 156.813 lineto
+172.215 155.522 lineto
+170.284 154.169 lineto
+168.252 152.827 lineto
+166.382 151.687 lineto
+164.704 150.694 lineto
+162.949 149.647 lineto
+161.111 148.531 lineto
+159.345 147.483 lineto
+157.667 146.478 lineto
+155.912 145.433 lineto
+154.074 144.335 lineto
+152.143 143.193 lineto
+150.111 141.981 lineto
+147.967 140.693 lineto
+145.695 139.345 lineto
+143.53 138.051 lineto
+141.499 136.835 lineto
+139.354 135.555 lineto
+137.083 134.199 lineto
+134.669 132.77 lineto
+132.095 131.227 lineto
+130.045 130.017 lineto
+128.25 128.945 lineto
+125.979 127.596 lineto
+123.978 126.407 lineto
+122.3 125.405 lineto
+120.545 124.365 lineto
+118.707 123.269 lineto
+116.777 122.125 lineto
+114.745 120.913 lineto
+112.6 119.637 lineto
+110.329 118.289 lineto
+107.916 116.852 lineto
+105.673 115.517 lineto
+103.641 114.313 lineto
+101.496 113.033 lineto
+99.2249 111.682 lineto
+97.2246 110.493 lineto
+95.5461 109.499 lineto
+93.7914 108.452 lineto
+91.9531 107.361 lineto
+90.2202 106.331 lineto
+88.6118 105.375 lineto
+86.9333 104.377 lineto
+85.1786 103.333 lineto
+83.3403 102.239 lineto
+81.41 101.09 lineto
+79.3781 99.8796 lineto
+77.5079 98.7708 lineto
+75.8295 97.7705 lineto
+74.0747 96.7269 lineto
+72.2364 95.6333 lineto
+70.4707 94.5828 lineto
+68.7923 93.592 lineto
+67.0376 93.6417 lineto
+65.1992 94.8426 lineto
+63.2689 96.0958 lineto
+61.237 97.412 lineto
+59.0922 98.8044 lineto
+56.8211 100.279 lineto
+54.6561 101.684 lineto
+52.6242 103.001 lineto
+50.4793 104.392 lineto
+48.2082 105.865 lineto
+45.7951 107.434 lineto
+43.221 109.103 lineto
+41.1711 110.435 lineto
+39.3755 111.596 lineto
+37.1044 113.071 lineto
+35.1041 114.37 lineto
+33.4256 115.458 lineto
+31.6709 116.596 lineto
+29.8326 117.788 lineto
+27.9023 119.04 lineto
+25.8704 120.364 lineto
+23.7255 121.755 lineto
+21.4544 123.228 lineto
+19.0412 124.793 lineto
+16.7984 126.251 lineto
+14.7665 127.567 lineto
+12.6216 128.955 lineto
+10.3505 130.436 lineto
+8.35021 131.723 lineto
+6.67179 132.817 lineto
+4.91705 133.961 lineto
+3.07872 135.147 lineto
+1.34586 136.269 lineto
+0 137.144 lineto
+stroke
+%%EndObject
+%%EndObject
+%%BeginObject Curve 4
+%%BeginObject Lines 4
+[12 4] 0 setdash
+1 setlinewidth
+newpath
+627.316 492 moveto
+627.038 489.264 lineto
+626.677 485.723 lineto
+626.313 482.139 lineto
+625.945 479.604 lineto
+625.574 478.04 lineto
+625.199 476.462 lineto
+624.821 474.879 lineto
+624.439 473.281 lineto
+624.053 471.663 lineto
+623.663 470.034 lineto
+623.269 468.377 lineto
+622.871 466.715 lineto
+622.469 465.034 lineto
+622.063 463.209 lineto
+621.652 461.258 lineto
+621.237 459.279 lineto
+620.817 457.29 lineto
+620.393 455.265 lineto
+619.964 453.224 lineto
+619.531 451.164 lineto
+619.092 449.077 lineto
+618.648 446.967 lineto
+618.2 444.83 lineto
+617.746 443.065 lineto
+617.286 441.673 lineto
+616.821 440.263 lineto
+616.35 438.835 lineto
+615.874 437.391 lineto
+615.391 435.924 lineto
+614.903 434.443 lineto
+614.408 432.943 lineto
+613.907 431.422 lineto
+613.399 429.882 lineto
+612.884 428.143 lineto
+612.363 426.206 lineto
+611.834 424.253 lineto
+611.298 422.258 lineto
+610.754 420.243 lineto
+610.203 418.205 lineto
+609.643 416.131 lineto
+609.076 414.025 lineto
+608.5 411.882 lineto
+607.915 409.712 lineto
+607.321 407.942 lineto
+606.718 406.546 lineto
+606.105 405.132 lineto
+605.483 403.697 lineto
+604.85 402.24 lineto
+604.206 400.751 lineto
+603.552 399.242 lineto
+602.887 397.712 lineto
+602.21 396.148 lineto
+601.52 394.556 lineto
+600.819 392.966 lineto
+600.104 391.375 lineto
+599.375 389.759 lineto
+598.633 388.111 lineto
+597.876 386.424 lineto
+597.104 384.709 lineto
+596.317 382.955 lineto
+595.513 381.313 lineto
+594.691 379.924 lineto
+593.852 378.647 lineto
+592.994 377.341 lineto
+592.117 376.007 lineto
+591.219 374.747 lineto
+590.3 373.66 lineto
+589.359 372.651 lineto
+588.394 371.618 lineto
+587.404 370.556 lineto
+586.388 369.454 lineto
+585.345 368.258 lineto
+584.273 367.005 lineto
+583.17 365.727 lineto
+582.035 364.41 lineto
+580.865 362.876 lineto
+579.659 360.989 lineto
+578.414 358.878 lineto
+577.127 356.68 lineto
+575.796 354.417 lineto
+574.417 352.291 lineto
+572.987 350.275 lineto
+571.503 348.188 lineto
+569.959 346.565 lineto
+568.35 345.973 lineto
+566.672 345.906 lineto
+564.917 345.724 lineto
+563.079 345.291 lineto
+561.148 344.7 lineto
+559.117 343.49 lineto
+556.972 341.607 lineto
+554.701 340.403 lineto
+552.287 339.901 lineto
+549.713 339.021 lineto
+546.955 337.711 lineto
+543.985 336.93 lineto
+540.766 336.73 lineto
+537.255 336.604 lineto
+534.592 336.578 lineto
+532.984 335.532 lineto
+531.305 333.064 lineto
+529.55 330.517 lineto
+527.712 329.408 lineto
+525.782 329.418 lineto
+523.75 329.24 lineto
+521.88 328.864 lineto
+520.201 328.465 lineto
+518.447 328.152 lineto
+516.608 327.978 lineto
+514.843 327.862 lineto
+513.164 327.51 lineto
+511.409 326.907 lineto
+509.571 327.908 lineto
+507.641 330.641 lineto
+505.609 331.802 lineto
+503.464 331.247 lineto
+501.193 329.772 lineto
+499.028 327.566 lineto
+496.996 325.953 lineto
+494.851 324.868 lineto
+492.58 323.987 lineto
+490.167 323.474 lineto
+487.593 323.26 lineto
+485.543 323.036 lineto
+483.747 322.682 lineto
+481.476 322.168 lineto
+479.476 321.72 lineto
+477.797 321.337 lineto
+476.043 320.924 lineto
+474.204 320.483 lineto
+472.274 320.019 lineto
+470.242 319.53 lineto
+468.097 318.881 lineto
+465.826 317.914 lineto
+463.413 316.747 lineto
+461.17 315.665 lineto
+459.138 314.68 lineto
+456.993 313.643 lineto
+454.722 312.764 lineto
+452.722 312.257 lineto
+451.044 311.91 lineto
+449.289 311.568 lineto
+447.451 311.182 lineto
+445.718 310.826 lineto
+444.109 310.521 lineto
+442.431 310.036 lineto
+440.676 309.227 lineto
+438.838 308.251 lineto
+436.907 307.229 lineto
+434.875 306.15 lineto
+433.005 305.209 lineto
+431.327 304.558 lineto
+429.572 303.995 lineto
+427.734 303.41 lineto
+425.968 302.837 lineto
+424.29 302.295 lineto
+422.535 301.731 lineto
+420.697 301.147 lineto
+418.766 300.421 lineto
+416.734 299.549 lineto
+414.59 298.634 lineto
+412.318 297.653 lineto
+410.154 296.737 lineto
+408.122 295.865 lineto
+405.977 294.948 lineto
+403.706 293.967 lineto
+401.293 292.93 lineto
+398.718 291.702 lineto
+396.668 290.637 lineto
+394.873 289.697 lineto
+392.602 288.508 lineto
+390.601 287.466 lineto
+388.923 286.591 lineto
+387.168 285.676 lineto
+385.33 284.718 lineto
+383.4 283.708 lineto
+381.368 282.645 lineto
+379.223 281.522 lineto
+376.952 280.336 lineto
+374.539 279.077 lineto
+372.296 277.916 lineto
+370.264 276.867 lineto
+368.119 275.761 lineto
+365.848 274.597 lineto
+363.848 273.569 lineto
+362.169 272.705 lineto
+360.414 271.801 lineto
+358.576 270.856 lineto
+356.843 269.968 lineto
+355.235 269.138 lineto
+353.556 268.278 lineto
+351.802 267.371 lineto
+349.963 266.428 lineto
+348.033 265.251 lineto
+346.001 263.832 lineto
+344.131 262.527 lineto
+342.453 261.355 lineto
+340.698 260.129 lineto
+338.859 258.845 lineto
+337.094 257.612 lineto
+335.415 256.437 lineto
+333.661 255.212 lineto
+331.822 253.925 lineto
+329.892 252.576 lineto
+327.86 251.165 lineto
+325.715 249.727 lineto
+323.444 248.288 lineto
+321.279 246.928 lineto
+319.247 245.638 lineto
+317.102 244.278 lineto
+314.831 242.848 lineto
+312.418 241.317 lineto
+309.844 239.696 lineto
+307.794 238.407 lineto
+305.999 237.269 lineto
+303.727 235.835 lineto
+301.727 234.569 lineto
+300.049 233.514 lineto
+298.294 232.398 lineto
+296.456 231.241 lineto
+294.525 230.07 lineto
+292.493 228.888 lineto
+290.349 227.649 lineto
+288.077 226.33 lineto
+285.664 224.94 lineto
+283.422 223.644 lineto
+281.39 222.467 lineto
+279.245 221.225 lineto
+276.974 219.909 lineto
+274.973 218.755 lineto
+273.295 217.777 lineto
+271.54 216.764 lineto
+269.702 215.701 lineto
+267.969 214.696 lineto
+266.36 213.764 lineto
+264.682 212.795 lineto
+262.927 211.79 lineto
+261.089 210.784 lineto
+259.159 209.763 lineto
+257.127 208.69 lineto
+255.257 207.703 lineto
+253.578 206.816 lineto
+251.823 205.889 lineto
+249.985 204.918 lineto
+248.219 203.988 lineto
+246.541 203.1 lineto
+244.786 202.107 lineto
+242.948 201.001 lineto
+241.018 199.839 lineto
+238.986 198.615 lineto
+236.841 197.327 lineto
+234.57 195.969 lineto
+232.405 194.657 lineto
+230.373 193.433 lineto
+228.228 192.142 lineto
+225.957 190.777 lineto
+223.544 189.317 lineto
+220.97 187.693 lineto
+218.92 186.348 lineto
+217.124 185.15 lineto
+214.853 183.651 lineto
+212.853 182.334 lineto
+211.174 181.216 lineto
+209.42 180.056 lineto
+207.581 178.839 lineto
+205.651 177.562 lineto
+203.619 176.205 lineto
+201.474 174.793 lineto
+199.203 173.282 lineto
+196.79 171.682 lineto
+194.547 170.231 lineto
+192.515 168.94 lineto
+190.37 167.573 lineto
+188.099 166.13 lineto
+186.099 164.863 lineto
+184.421 163.796 lineto
+182.666 162.684 lineto
+180.827 161.516 lineto
+179.095 160.411 lineto
+177.486 159.386 lineto
+175.808 158.321 lineto
+174.053 157.208 lineto
+172.215 156.039 lineto
+170.284 154.811 lineto
+168.252 153.564 lineto
+166.382 152.466 lineto
+164.704 151.491 lineto
+162.949 150.474 lineto
+161.111 149.407 lineto
+159.345 148.387 lineto
+157.667 147.41 lineto
+155.912 146.394 lineto
+154.074 145.328 lineto
+152.143 144.208 lineto
+150.111 143.028 lineto
+147.967 141.785 lineto
+145.695 140.467 lineto
+143.53 139.207 lineto
+141.499 138.039 lineto
+139.354 136.786 lineto
+137.083 135.464 lineto
+134.669 134.066 lineto
+132.095 132.493 lineto
+130.045 131.157 lineto
+128.25 129.992 lineto
+125.979 128.519 lineto
+123.978 127.219 lineto
+122.3 126.132 lineto
+120.545 125.004 lineto
+118.707 123.804 lineto
+116.777 122.556 lineto
+114.745 121.233 lineto
+112.6 119.838 lineto
+110.329 118.364 lineto
+107.916 116.798 lineto
+105.673 115.344 lineto
+103.641 114.025 lineto
+101.496 112.633 lineto
+99.2249 111.159 lineto
+97.2246 109.868 lineto
+95.5461 108.78 lineto
+93.7914 107.638 lineto
+91.9531 106.444 lineto
+90.2202 105.325 lineto
+88.6118 104.278 lineto
+86.9333 103.19 lineto
+85.1786 102.051 lineto
+83.3403 100.859 lineto
+81.41 99.6026 lineto
+79.3781 98.2847 lineto
+77.5079 97.0743 lineto
+75.8295 95.9863 lineto
+74.0747 94.8458 lineto
+72.2364 93.6538 lineto
+70.4707 92.5082 lineto
+68.7923 91.4202 lineto
+67.0376 91.435 lineto
+65.1992 92.6282 lineto
+63.2689 93.8812 lineto
+61.237 95.2002 lineto
+59.0922 96.5925 lineto
+56.8211 98.0668 lineto
+54.6561 99.4697 lineto
+52.6242 100.789 lineto
+50.4793 102.181 lineto
+48.2082 103.655 lineto
+45.7951 105.222 lineto
+43.221 106.886 lineto
+41.1711 108.217 lineto
+39.3755 109.386 lineto
+37.1044 110.86 lineto
+35.1041 112.154 lineto
+33.4256 113.244 lineto
+31.6709 114.383 lineto
+29.8326 115.576 lineto
+27.9023 116.829 lineto
+25.8704 118.148 lineto
+23.7255 119.54 lineto
+21.4544 121.015 lineto
+19.0412 122.581 lineto
+16.7984 124.034 lineto
+14.7665 125.346 lineto
+12.6216 126.745 lineto
+10.3505 128.211 lineto
+8.35021 129.514 lineto
+6.67179 130.603 lineto
+4.91705 131.742 lineto
+3.07872 132.935 lineto
+1.34586 134.066 lineto
+0 134.933 lineto
+stroke
+%%EndObject
+%%EndObject
+grestore
+%%BeginObject XTics
+1 setlinewidth
+[] 0 setdash
+newpath
+91 412 moveto
+651 412 lineto
+stroke
+[] 0 setdash
+0.5 setlinewidth
+newpath
+91 412 moveto
+91 400 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 400 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 400 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 400 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 400 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 400 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 400 lineto
+stroke
+newpath
+91 412 moveto
+91 400 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 400 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 400 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 400 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 400 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 400 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 400 lineto
+stroke
+newpath
+91 66 moveto
+91 78 lineto
+stroke
+newpath
+179.874 66 moveto
+179.874 78 lineto
+stroke
+newpath
+268.749 66 moveto
+268.749 78 lineto
+stroke
+newpath
+357.623 66 moveto
+357.623 78 lineto
+stroke
+newpath
+446.497 66 moveto
+446.497 78 lineto
+stroke
+newpath
+535.372 66 moveto
+535.372 78 lineto
+stroke
+newpath
+624.246 66 moveto
+624.246 78 lineto
+stroke
+newpath
+91 412 moveto
+91 408 lineto
+stroke
+newpath
+117.754 412 moveto
+117.754 408 lineto
+stroke
+newpath
+133.404 412 moveto
+133.404 408 lineto
+stroke
+newpath
+144.508 412 moveto
+144.508 408 lineto
+stroke
+newpath
+153.121 412 moveto
+153.121 408 lineto
+stroke
+newpath
+160.158 412 moveto
+160.158 408 lineto
+stroke
+newpath
+166.108 412 moveto
+166.108 408 lineto
+stroke
+newpath
+171.262 412 moveto
+171.262 408 lineto
+stroke
+newpath
+175.808 412 moveto
+175.808 408 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 408 lineto
+stroke
+newpath
+91 412 moveto
+91 408 lineto
+stroke
+newpath
+117.754 412 moveto
+117.754 408 lineto
+stroke
+newpath
+133.404 412 moveto
+133.404 408 lineto
+stroke
+newpath
+144.508 412 moveto
+144.508 408 lineto
+stroke
+newpath
+153.121 412 moveto
+153.121 408 lineto
+stroke
+newpath
+160.158 412 moveto
+160.158 408 lineto
+stroke
+newpath
+166.108 412 moveto
+166.108 408 lineto
+stroke
+newpath
+171.262 412 moveto
+171.262 408 lineto
+stroke
+newpath
+175.808 412 moveto
+175.808 408 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 408 lineto
+stroke
+newpath
+91 66 moveto
+91 70 lineto
+stroke
+newpath
+117.754 66 moveto
+117.754 70 lineto
+stroke
+newpath
+133.404 66 moveto
+133.404 70 lineto
+stroke
+newpath
+144.508 66 moveto
+144.508 70 lineto
+stroke
+newpath
+153.121 66 moveto
+153.121 70 lineto
+stroke
+newpath
+160.158 66 moveto
+160.158 70 lineto
+stroke
+newpath
+166.108 66 moveto
+166.108 70 lineto
+stroke
+newpath
+171.262 66 moveto
+171.262 70 lineto
+stroke
+newpath
+175.808 66 moveto
+175.808 70 lineto
+stroke
+newpath
+179.874 66 moveto
+179.874 70 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 408 lineto
+stroke
+newpath
+206.628 412 moveto
+206.628 408 lineto
+stroke
+newpath
+222.278 412 moveto
+222.278 408 lineto
+stroke
+newpath
+233.382 412 moveto
+233.382 408 lineto
+stroke
+newpath
+241.995 412 moveto
+241.995 408 lineto
+stroke
+newpath
+249.032 412 moveto
+249.032 408 lineto
+stroke
+newpath
+254.982 412 moveto
+254.982 408 lineto
+stroke
+newpath
+260.136 412 moveto
+260.136 408 lineto
+stroke
+newpath
+264.682 412 moveto
+264.682 408 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 408 lineto
+stroke
+newpath
+179.874 412 moveto
+179.874 408 lineto
+stroke
+newpath
+206.628 412 moveto
+206.628 408 lineto
+stroke
+newpath
+222.278 412 moveto
+222.278 408 lineto
+stroke
+newpath
+233.382 412 moveto
+233.382 408 lineto
+stroke
+newpath
+241.995 412 moveto
+241.995 408 lineto
+stroke
+newpath
+249.032 412 moveto
+249.032 408 lineto
+stroke
+newpath
+254.982 412 moveto
+254.982 408 lineto
+stroke
+newpath
+260.136 412 moveto
+260.136 408 lineto
+stroke
+newpath
+264.682 412 moveto
+264.682 408 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 408 lineto
+stroke
+newpath
+179.874 66 moveto
+179.874 70 lineto
+stroke
+newpath
+206.628 66 moveto
+206.628 70 lineto
+stroke
+newpath
+222.278 66 moveto
+222.278 70 lineto
+stroke
+newpath
+233.382 66 moveto
+233.382 70 lineto
+stroke
+newpath
+241.995 66 moveto
+241.995 70 lineto
+stroke
+newpath
+249.032 66 moveto
+249.032 70 lineto
+stroke
+newpath
+254.982 66 moveto
+254.982 70 lineto
+stroke
+newpath
+260.136 66 moveto
+260.136 70 lineto
+stroke
+newpath
+264.682 66 moveto
+264.682 70 lineto
+stroke
+newpath
+268.749 66 moveto
+268.749 70 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 408 lineto
+stroke
+newpath
+295.503 412 moveto
+295.503 408 lineto
+stroke
+newpath
+311.153 412 moveto
+311.153 408 lineto
+stroke
+newpath
+322.256 412 moveto
+322.256 408 lineto
+stroke
+newpath
+330.869 412 moveto
+330.869 408 lineto
+stroke
+newpath
+337.906 412 moveto
+337.906 408 lineto
+stroke
+newpath
+343.856 412 moveto
+343.856 408 lineto
+stroke
+newpath
+349.01 412 moveto
+349.01 408 lineto
+stroke
+newpath
+353.556 412 moveto
+353.556 408 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 408 lineto
+stroke
+newpath
+268.749 412 moveto
+268.749 408 lineto
+stroke
+newpath
+295.503 412 moveto
+295.503 408 lineto
+stroke
+newpath
+311.153 412 moveto
+311.153 408 lineto
+stroke
+newpath
+322.256 412 moveto
+322.256 408 lineto
+stroke
+newpath
+330.869 412 moveto
+330.869 408 lineto
+stroke
+newpath
+337.906 412 moveto
+337.906 408 lineto
+stroke
+newpath
+343.856 412 moveto
+343.856 408 lineto
+stroke
+newpath
+349.01 412 moveto
+349.01 408 lineto
+stroke
+newpath
+353.556 412 moveto
+353.556 408 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 408 lineto
+stroke
+newpath
+268.749 66 moveto
+268.749 70 lineto
+stroke
+newpath
+295.503 66 moveto
+295.503 70 lineto
+stroke
+newpath
+311.153 66 moveto
+311.153 70 lineto
+stroke
+newpath
+322.256 66 moveto
+322.256 70 lineto
+stroke
+newpath
+330.869 66 moveto
+330.869 70 lineto
+stroke
+newpath
+337.906 66 moveto
+337.906 70 lineto
+stroke
+newpath
+343.856 66 moveto
+343.856 70 lineto
+stroke
+newpath
+349.01 66 moveto
+349.01 70 lineto
+stroke
+newpath
+353.556 66 moveto
+353.556 70 lineto
+stroke
+newpath
+357.623 66 moveto
+357.623 70 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 408 lineto
+stroke
+newpath
+384.377 412 moveto
+384.377 408 lineto
+stroke
+newpath
+400.027 412 moveto
+400.027 408 lineto
+stroke
+newpath
+411.131 412 moveto
+411.131 408 lineto
+stroke
+newpath
+419.744 412 moveto
+419.744 408 lineto
+stroke
+newpath
+426.781 412 moveto
+426.781 408 lineto
+stroke
+newpath
+432.731 412 moveto
+432.731 408 lineto
+stroke
+newpath
+437.885 412 moveto
+437.885 408 lineto
+stroke
+newpath
+442.431 412 moveto
+442.431 408 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 408 lineto
+stroke
+newpath
+357.623 412 moveto
+357.623 408 lineto
+stroke
+newpath
+384.377 412 moveto
+384.377 408 lineto
+stroke
+newpath
+400.027 412 moveto
+400.027 408 lineto
+stroke
+newpath
+411.131 412 moveto
+411.131 408 lineto
+stroke
+newpath
+419.744 412 moveto
+419.744 408 lineto
+stroke
+newpath
+426.781 412 moveto
+426.781 408 lineto
+stroke
+newpath
+432.731 412 moveto
+432.731 408 lineto
+stroke
+newpath
+437.885 412 moveto
+437.885 408 lineto
+stroke
+newpath
+442.431 412 moveto
+442.431 408 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 408 lineto
+stroke
+newpath
+357.623 66 moveto
+357.623 70 lineto
+stroke
+newpath
+384.377 66 moveto
+384.377 70 lineto
+stroke
+newpath
+400.027 66 moveto
+400.027 70 lineto
+stroke
+newpath
+411.131 66 moveto
+411.131 70 lineto
+stroke
+newpath
+419.744 66 moveto
+419.744 70 lineto
+stroke
+newpath
+426.781 66 moveto
+426.781 70 lineto
+stroke
+newpath
+432.731 66 moveto
+432.731 70 lineto
+stroke
+newpath
+437.885 66 moveto
+437.885 70 lineto
+stroke
+newpath
+442.431 66 moveto
+442.431 70 lineto
+stroke
+newpath
+446.497 66 moveto
+446.497 70 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 408 lineto
+stroke
+newpath
+473.251 412 moveto
+473.251 408 lineto
+stroke
+newpath
+488.901 412 moveto
+488.901 408 lineto
+stroke
+newpath
+500.005 412 moveto
+500.005 408 lineto
+stroke
+newpath
+508.618 412 moveto
+508.618 408 lineto
+stroke
+newpath
+515.655 412 moveto
+515.655 408 lineto
+stroke
+newpath
+521.605 412 moveto
+521.605 408 lineto
+stroke
+newpath
+526.759 412 moveto
+526.759 408 lineto
+stroke
+newpath
+531.305 412 moveto
+531.305 408 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 408 lineto
+stroke
+newpath
+446.497 412 moveto
+446.497 408 lineto
+stroke
+newpath
+473.251 412 moveto
+473.251 408 lineto
+stroke
+newpath
+488.901 412 moveto
+488.901 408 lineto
+stroke
+newpath
+500.005 412 moveto
+500.005 408 lineto
+stroke
+newpath
+508.618 412 moveto
+508.618 408 lineto
+stroke
+newpath
+515.655 412 moveto
+515.655 408 lineto
+stroke
+newpath
+521.605 412 moveto
+521.605 408 lineto
+stroke
+newpath
+526.759 412 moveto
+526.759 408 lineto
+stroke
+newpath
+531.305 412 moveto
+531.305 408 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 408 lineto
+stroke
+newpath
+446.497 66 moveto
+446.497 70 lineto
+stroke
+newpath
+473.251 66 moveto
+473.251 70 lineto
+stroke
+newpath
+488.901 66 moveto
+488.901 70 lineto
+stroke
+newpath
+500.005 66 moveto
+500.005 70 lineto
+stroke
+newpath
+508.618 66 moveto
+508.618 70 lineto
+stroke
+newpath
+515.655 66 moveto
+515.655 70 lineto
+stroke
+newpath
+521.605 66 moveto
+521.605 70 lineto
+stroke
+newpath
+526.759 66 moveto
+526.759 70 lineto
+stroke
+newpath
+531.305 66 moveto
+531.305 70 lineto
+stroke
+newpath
+535.372 66 moveto
+535.372 70 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 408 lineto
+stroke
+newpath
+562.126 412 moveto
+562.126 408 lineto
+stroke
+newpath
+577.776 412 moveto
+577.776 408 lineto
+stroke
+newpath
+588.879 412 moveto
+588.879 408 lineto
+stroke
+newpath
+597.492 412 moveto
+597.492 408 lineto
+stroke
+newpath
+604.529 412 moveto
+604.529 408 lineto
+stroke
+newpath
+610.479 412 moveto
+610.479 408 lineto
+stroke
+newpath
+615.633 412 moveto
+615.633 408 lineto
+stroke
+newpath
+620.179 412 moveto
+620.179 408 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 408 lineto
+stroke
+newpath
+535.372 412 moveto
+535.372 408 lineto
+stroke
+newpath
+562.126 412 moveto
+562.126 408 lineto
+stroke
+newpath
+577.776 412 moveto
+577.776 408 lineto
+stroke
+newpath
+588.879 412 moveto
+588.879 408 lineto
+stroke
+newpath
+597.492 412 moveto
+597.492 408 lineto
+stroke
+newpath
+604.529 412 moveto
+604.529 408 lineto
+stroke
+newpath
+610.479 412 moveto
+610.479 408 lineto
+stroke
+newpath
+615.633 412 moveto
+615.633 408 lineto
+stroke
+newpath
+620.179 412 moveto
+620.179 408 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 408 lineto
+stroke
+newpath
+535.372 66 moveto
+535.372 70 lineto
+stroke
+newpath
+562.126 66 moveto
+562.126 70 lineto
+stroke
+newpath
+577.776 66 moveto
+577.776 70 lineto
+stroke
+newpath
+588.879 66 moveto
+588.879 70 lineto
+stroke
+newpath
+597.492 66 moveto
+597.492 70 lineto
+stroke
+newpath
+604.529 66 moveto
+604.529 70 lineto
+stroke
+newpath
+610.479 66 moveto
+610.479 70 lineto
+stroke
+newpath
+615.633 66 moveto
+615.633 70 lineto
+stroke
+newpath
+620.179 66 moveto
+620.179 70 lineto
+stroke
+newpath
+624.246 66 moveto
+624.246 70 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 408 lineto
+stroke
+newpath
+651 412 moveto
+651 408 lineto
+stroke
+newpath
+624.246 412 moveto
+624.246 408 lineto
+stroke
+newpath
+651 412 moveto
+651 408 lineto
+stroke
+newpath
+624.246 66 moveto
+624.246 70 lineto
+stroke
+newpath
+651 66 moveto
+651 70 lineto
+stroke
+%%EndObject
+%%BeginObject YTics
+1 setlinewidth
+[] 0 setdash
+newpath
+91 412 moveto
+91 66 lineto
+stroke
+[] 0 setdash
+0.5 setlinewidth
+newpath
+91 412 moveto
+103 412 lineto
+stroke
+newpath
+91 354.333 moveto
+103 354.333 lineto
+stroke
+newpath
+91 296.667 moveto
+103 296.667 lineto
+stroke
+newpath
+91 239 moveto
+103 239 lineto
+stroke
+newpath
+91 181.333 moveto
+103 181.333 lineto
+stroke
+newpath
+91 123.667 moveto
+103 123.667 lineto
+stroke
+newpath
+91 66 moveto
+103 66 lineto
+stroke
+newpath
+91 412 moveto
+103 412 lineto
+stroke
+newpath
+91 354.333 moveto
+103 354.333 lineto
+stroke
+newpath
+91 296.667 moveto
+103 296.667 lineto
+stroke
+newpath
+91 239 moveto
+103 239 lineto
+stroke
+newpath
+91 181.333 moveto
+103 181.333 lineto
+stroke
+newpath
+91 123.667 moveto
+103 123.667 lineto
+stroke
+newpath
+91 66 moveto
+103 66 lineto
+stroke
+newpath
+651 412 moveto
+639 412 lineto
+stroke
+newpath
+651 354.333 moveto
+639 354.333 lineto
+stroke
+newpath
+651 296.667 moveto
+639 296.667 lineto
+stroke
+newpath
+651 239 moveto
+639 239 lineto
+stroke
+newpath
+651 181.333 moveto
+639 181.333 lineto
+stroke
+newpath
+651 123.667 moveto
+639 123.667 lineto
+stroke
+newpath
+651 66 moveto
+639 66 lineto
+stroke
+newpath
+91 412 moveto
+95 412 lineto
+stroke
+newpath
+91 394.641 moveto
+95 394.641 lineto
+stroke
+newpath
+91 384.486 moveto
+95 384.486 lineto
+stroke
+newpath
+91 377.281 moveto
+95 377.281 lineto
+stroke
+newpath
+91 371.693 moveto
+95 371.693 lineto
+stroke
+newpath
+91 367.127 moveto
+95 367.127 lineto
+stroke
+newpath
+91 363.266 moveto
+95 363.266 lineto
+stroke
+newpath
+91 359.922 moveto
+95 359.922 lineto
+stroke
+newpath
+91 356.972 moveto
+95 356.972 lineto
+stroke
+newpath
+91 354.333 moveto
+95 354.333 lineto
+stroke
+newpath
+91 412 moveto
+95 412 lineto
+stroke
+newpath
+91 394.641 moveto
+95 394.641 lineto
+stroke
+newpath
+91 384.486 moveto
+95 384.486 lineto
+stroke
+newpath
+91 377.281 moveto
+95 377.281 lineto
+stroke
+newpath
+91 371.693 moveto
+95 371.693 lineto
+stroke
+newpath
+91 367.127 moveto
+95 367.127 lineto
+stroke
+newpath
+91 363.266 moveto
+95 363.266 lineto
+stroke
+newpath
+91 359.922 moveto
+95 359.922 lineto
+stroke
+newpath
+91 356.972 moveto
+95 356.972 lineto
+stroke
+newpath
+91 354.333 moveto
+95 354.333 lineto
+stroke
+newpath
+651 412 moveto
+647 412 lineto
+stroke
+newpath
+651 394.641 moveto
+647 394.641 lineto
+stroke
+newpath
+651 384.486 moveto
+647 384.486 lineto
+stroke
+newpath
+651 377.281 moveto
+647 377.281 lineto
+stroke
+newpath
+651 371.693 moveto
+647 371.693 lineto
+stroke
+newpath
+651 367.127 moveto
+647 367.127 lineto
+stroke
+newpath
+651 363.266 moveto
+647 363.266 lineto
+stroke
+newpath
+651 359.922 moveto
+647 359.922 lineto
+stroke
+newpath
+651 356.972 moveto
+647 356.972 lineto
+stroke
+newpath
+651 354.333 moveto
+647 354.333 lineto
+stroke
+newpath
+91 354.333 moveto
+95 354.333 lineto
+stroke
+newpath
+91 336.974 moveto
+95 336.974 lineto
+stroke
+newpath
+91 326.819 moveto
+95 326.819 lineto
+stroke
+newpath
+91 319.615 moveto
+95 319.615 lineto
+stroke
+newpath
+91 314.026 moveto
+95 314.026 lineto
+stroke
+newpath
+91 309.46 moveto
+95 309.46 lineto
+stroke
+newpath
+91 305.599 moveto
+95 305.599 lineto
+stroke
+newpath
+91 302.255 moveto
+95 302.255 lineto
+stroke
+newpath
+91 299.305 moveto
+95 299.305 lineto
+stroke
+newpath
+91 296.667 moveto
+95 296.667 lineto
+stroke
+newpath
+91 354.333 moveto
+95 354.333 lineto
+stroke
+newpath
+91 336.974 moveto
+95 336.974 lineto
+stroke
+newpath
+91 326.819 moveto
+95 326.819 lineto
+stroke
+newpath
+91 319.615 moveto
+95 319.615 lineto
+stroke
+newpath
+91 314.026 moveto
+95 314.026 lineto
+stroke
+newpath
+91 309.46 moveto
+95 309.46 lineto
+stroke
+newpath
+91 305.599 moveto
+95 305.599 lineto
+stroke
+newpath
+91 302.255 moveto
+95 302.255 lineto
+stroke
+newpath
+91 299.305 moveto
+95 299.305 lineto
+stroke
+newpath
+91 296.667 moveto
+95 296.667 lineto
+stroke
+newpath
+651 354.333 moveto
+647 354.333 lineto
+stroke
+newpath
+651 336.974 moveto
+647 336.974 lineto
+stroke
+newpath
+651 326.819 moveto
+647 326.819 lineto
+stroke
+newpath
+651 319.615 moveto
+647 319.615 lineto
+stroke
+newpath
+651 314.026 moveto
+647 314.026 lineto
+stroke
+newpath
+651 309.46 moveto
+647 309.46 lineto
+stroke
+newpath
+651 305.599 moveto
+647 305.599 lineto
+stroke
+newpath
+651 302.255 moveto
+647 302.255 lineto
+stroke
+newpath
+651 299.305 moveto
+647 299.305 lineto
+stroke
+newpath
+651 296.667 moveto
+647 296.667 lineto
+stroke
+newpath
+91 296.667 moveto
+95 296.667 lineto
+stroke
+newpath
+91 279.307 moveto
+95 279.307 lineto
+stroke
+newpath
+91 269.153 moveto
+95 269.153 lineto
+stroke
+newpath
+91 261.948 moveto
+95 261.948 lineto
+stroke
+newpath
+91 256.359 moveto
+95 256.359 lineto
+stroke
+newpath
+91 251.793 moveto
+95 251.793 lineto
+stroke
+newpath
+91 247.933 moveto
+95 247.933 lineto
+stroke
+newpath
+91 244.588 moveto
+95 244.588 lineto
+stroke
+newpath
+91 241.639 moveto
+95 241.639 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 296.667 moveto
+95 296.667 lineto
+stroke
+newpath
+91 279.307 moveto
+95 279.307 lineto
+stroke
+newpath
+91 269.153 moveto
+95 269.153 lineto
+stroke
+newpath
+91 261.948 moveto
+95 261.948 lineto
+stroke
+newpath
+91 256.359 moveto
+95 256.359 lineto
+stroke
+newpath
+91 251.793 moveto
+95 251.793 lineto
+stroke
+newpath
+91 247.933 moveto
+95 247.933 lineto
+stroke
+newpath
+91 244.588 moveto
+95 244.588 lineto
+stroke
+newpath
+91 241.639 moveto
+95 241.639 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+651 296.667 moveto
+647 296.667 lineto
+stroke
+newpath
+651 279.307 moveto
+647 279.307 lineto
+stroke
+newpath
+651 269.153 moveto
+647 269.153 lineto
+stroke
+newpath
+651 261.948 moveto
+647 261.948 lineto
+stroke
+newpath
+651 256.359 moveto
+647 256.359 lineto
+stroke
+newpath
+651 251.793 moveto
+647 251.793 lineto
+stroke
+newpath
+651 247.933 moveto
+647 247.933 lineto
+stroke
+newpath
+651 244.588 moveto
+647 244.588 lineto
+stroke
+newpath
+651 241.639 moveto
+647 241.639 lineto
+stroke
+newpath
+651 239 moveto
+647 239 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 221.641 moveto
+95 221.641 lineto
+stroke
+newpath
+91 211.486 moveto
+95 211.486 lineto
+stroke
+newpath
+91 204.281 moveto
+95 204.281 lineto
+stroke
+newpath
+91 198.693 moveto
+95 198.693 lineto
+stroke
+newpath
+91 194.127 moveto
+95 194.127 lineto
+stroke
+newpath
+91 190.266 moveto
+95 190.266 lineto
+stroke
+newpath
+91 186.922 moveto
+95 186.922 lineto
+stroke
+newpath
+91 183.972 moveto
+95 183.972 lineto
+stroke
+newpath
+91 181.333 moveto
+95 181.333 lineto
+stroke
+newpath
+91 239 moveto
+95 239 lineto
+stroke
+newpath
+91 221.641 moveto
+95 221.641 lineto
+stroke
+newpath
+91 211.486 moveto
+95 211.486 lineto
+stroke
+newpath
+91 204.281 moveto
+95 204.281 lineto
+stroke
+newpath
+91 198.693 moveto
+95 198.693 lineto
+stroke
+newpath
+91 194.127 moveto
+95 194.127 lineto
+stroke
+newpath
+91 190.266 moveto
+95 190.266 lineto
+stroke
+newpath
+91 186.922 moveto
+95 186.922 lineto
+stroke
+newpath
+91 183.972 moveto
+95 183.972 lineto
+stroke
+newpath
+91 181.333 moveto
+95 181.333 lineto
+stroke
+newpath
+651 239 moveto
+647 239 lineto
+stroke
+newpath
+651 221.641 moveto
+647 221.641 lineto
+stroke
+newpath
+651 211.486 moveto
+647 211.486 lineto
+stroke
+newpath
+651 204.281 moveto
+647 204.281 lineto
+stroke
+newpath
+651 198.693 moveto
+647 198.693 lineto
+stroke
+newpath
+651 194.127 moveto
+647 194.127 lineto
+stroke
+newpath
+651 190.266 moveto
+647 190.266 lineto
+stroke
+newpath
+651 186.922 moveto
+647 186.922 lineto
+stroke
+newpath
+651 183.972 moveto
+647 183.972 lineto
+stroke
+newpath
+651 181.333 moveto
+647 181.333 lineto
+stroke
+newpath
+91 181.333 moveto
+95 181.333 lineto
+stroke
+newpath
+91 163.974 moveto
+95 163.974 lineto
+stroke
+newpath
+91 153.819 moveto
+95 153.819 lineto
+stroke
+newpath
+91 146.615 moveto
+95 146.615 lineto
+stroke
+newpath
+91 141.026 moveto
+95 141.026 lineto
+stroke
+newpath
+91 136.46 moveto
+95 136.46 lineto
+stroke
+newpath
+91 132.599 moveto
+95 132.599 lineto
+stroke
+newpath
+91 129.255 moveto
+95 129.255 lineto
+stroke
+newpath
+91 126.305 moveto
+95 126.305 lineto
+stroke
+newpath
+91 123.667 moveto
+95 123.667 lineto
+stroke
+newpath
+91 181.333 moveto
+95 181.333 lineto
+stroke
+newpath
+91 163.974 moveto
+95 163.974 lineto
+stroke
+newpath
+91 153.819 moveto
+95 153.819 lineto
+stroke
+newpath
+91 146.615 moveto
+95 146.615 lineto
+stroke
+newpath
+91 141.026 moveto
+95 141.026 lineto
+stroke
+newpath
+91 136.46 moveto
+95 136.46 lineto
+stroke
+newpath
+91 132.599 moveto
+95 132.599 lineto
+stroke
+newpath
+91 129.255 moveto
+95 129.255 lineto
+stroke
+newpath
+91 126.305 moveto
+95 126.305 lineto
+stroke
+newpath
+91 123.667 moveto
+95 123.667 lineto
+stroke
+newpath
+651 181.333 moveto
+647 181.333 lineto
+stroke
+newpath
+651 163.974 moveto
+647 163.974 lineto
+stroke
+newpath
+651 153.819 moveto
+647 153.819 lineto
+stroke
+newpath
+651 146.615 moveto
+647 146.615 lineto
+stroke
+newpath
+651 141.026 moveto
+647 141.026 lineto
+stroke
+newpath
+651 136.46 moveto
+647 136.46 lineto
+stroke
+newpath
+651 132.599 moveto
+647 132.599 lineto
+stroke
+newpath
+651 129.255 moveto
+647 129.255 lineto
+stroke
+newpath
+651 126.305 moveto
+647 126.305 lineto
+stroke
+newpath
+651 123.667 moveto
+647 123.667 lineto
+stroke
+newpath
+91 123.667 moveto
+95 123.667 lineto
+stroke
+newpath
+91 106.307 moveto
+95 106.307 lineto
+stroke
+newpath
+91 96.1527 moveto
+95 96.1527 lineto
+stroke
+newpath
+91 88.9479 moveto
+95 88.9479 lineto
+stroke
+newpath
+91 83.3594 moveto
+95 83.3594 lineto
+stroke
+newpath
+91 78.7933 moveto
+95 78.7933 lineto
+stroke
+newpath
+91 74.9327 moveto
+95 74.9327 lineto
+stroke
+newpath
+91 71.5885 moveto
+95 71.5885 lineto
+stroke
+newpath
+91 68.6387 moveto
+95 68.6387 lineto
+stroke
+newpath
+91 66 moveto
+95 66 lineto
+stroke
+newpath
+91 123.667 moveto
+95 123.667 lineto
+stroke
+newpath
+91 106.307 moveto
+95 106.307 lineto
+stroke
+newpath
+91 96.1527 moveto
+95 96.1527 lineto
+stroke
+newpath
+91 88.9479 moveto
+95 88.9479 lineto
+stroke
+newpath
+91 83.3594 moveto
+95 83.3594 lineto
+stroke
+newpath
+91 78.7933 moveto
+95 78.7933 lineto
+stroke
+newpath
+91 74.9327 moveto
+95 74.9327 lineto
+stroke
+newpath
+91 71.5885 moveto
+95 71.5885 lineto
+stroke
+newpath
+91 68.6387 moveto
+95 68.6387 lineto
+stroke
+newpath
+91 66 moveto
+95 66 lineto
+stroke
+newpath
+651 123.667 moveto
+647 123.667 lineto
+stroke
+newpath
+651 106.307 moveto
+647 106.307 lineto
+stroke
+newpath
+651 96.1527 moveto
+647 96.1527 lineto
+stroke
+newpath
+651 88.9479 moveto
+647 88.9479 lineto
+stroke
+newpath
+651 83.3594 moveto
+647 83.3594 lineto
+stroke
+newpath
+651 78.7933 moveto
+647 78.7933 lineto
+stroke
+newpath
+651 74.9327 moveto
+647 74.9327 lineto
+stroke
+newpath
+651 71.5885 moveto
+647 71.5885 lineto
+stroke
+newpath
+651 68.6387 moveto
+647 68.6387 lineto
+stroke
+newpath
+651 66 moveto
+647 66 lineto
+stroke
+%%EndObject
+%%BeginObject XNumbers
+79 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-5) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+167.874 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-4) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+256.749 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-3) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+345.623 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-2) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+434.497 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-1) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+524.872 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(0) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+613.746 432 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(1) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject YNumbers
+55 417 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-8) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 359.333 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-7) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 301.667 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-6) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 244 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-5) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 186.333 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-4) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 128.667 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-3) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+55 71 moveto
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+(10) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+2 -10.6667 rmoveto
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+(-2) dup
+1 -1 scale
+currentpoint
+currentgray 1.0 setgray
+4 -1 roll
+ true charpath
+flattenpath
+pathbbox
+2 copy moveto
+3 index exch lineto
+1 index 4 2 roll
+lineto lineto
+closepath fill
+setgray
+moveto show
+1 -1 scale
+/Times-Roman-Ext findfont [16.000000 0 0 16.000000 0 0] makefont setfont
+%%EndObject
+%%BeginObject Legend
+/Times-Roman-Ext findfont [18.000000 0 0 18.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+366 243 moveto
+366 86 lineto
+629 86 lineto
+629 243 lineto
+366 243 lineto
+closepath
+currentgray 1.0 setgray
+fill
+setgray
+[] 0 setdash
+1 setlinewidth
+newpath
+629 243 moveto
+629 86 lineto
+366 86 lineto
+366 243 lineto
+629 243 lineto
+closepath
+stroke
+1.27869 setlinewidth
+[] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+379 113 moveto
+0
+(Solution, 5 cm \(Ing\)) stringwidth pop add
+pop
+418 113 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+424 118 moveto
+1 -1 scale
+(Solution, 5 cm \(Ing\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.27869 setlinewidth
+[2] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+379 149 moveto
+0
+(Solution, 10 cm \(Ing\)) stringwidth pop add
+pop
+418 149 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+424 154 moveto
+1 -1 scale
+(Solution, 10 cm \(Ing\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.27869 setlinewidth
+[6 2] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+379 185 moveto
+0
+(Solution, 30 cm \(Ing\)) stringwidth pop add
+pop
+418 185 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+424 190 moveto
+1 -1 scale
+(Solution, 30 cm \(Ing\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+1.27869 setlinewidth
+[12 4] 0 setdash
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+newpath
+379 221 moveto
+0
+(Solution, 50 cm \(Ing\)) stringwidth pop add
+pop
+418 221 lineto
+stroke
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+424 226 moveto
+1 -1 scale
+(Solution, 50 cm \(Ing\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [23.000000 0 0 23.000000 0 0] makefont setfont
+%%EndObject
+%%EndObject
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+0 572 moveto
+1 -1 scale
+(TempleGraph 2.7, Origin: pjgriff@sass1281 - Mon Aug 14 14:47:48 1995\12 \(data file was /bx2/application/manipulate/spectrum/solution-hp.mif.data\)) show
+1 -1 scale
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+/Times-Roman-Ext findfont [10.000000 0 0 10.000000 0 0] makefont setfont
+showpage
