@@ -143,7 +143,7 @@ c      ldir2 = '/app/manipulate-2/'
 c      ldir3 = '/app/NJOY-2012/correlation/'
       ldir3 = '..\NJOY-2012\correlation\'
       if ( icon(7) .eq. 1) then 
-         ldir3 = '../NJOY-2016/correlation/'
+         ldir3 = '../NJOY2016/correlation/'
       endif
       lblank3 = lnblnk(ldir3)
 c      ldir4 = '/app/covfil/output/'

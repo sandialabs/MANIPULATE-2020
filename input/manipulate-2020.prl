@@ -90,7 +90,7 @@ if( $#ARGV > 2 || $#ARGV < 0 ) {
 # define directory paths
 #
 
-      $base        = $root.$sep."Manipulate-2020".$sep;
+      $base        = $root.$sep."MANIPULATE-2020".$sep;
       $bin_dir     = $base."bin";
       $input_dir   = $spcbase."input";
       $output_dir  = $spcbase."output";
@@ -116,7 +116,7 @@ if( $#ARGV > 2 || $#ARGV < 0 ) {
 #     print out preamble 
 #
       print "\n \n \n \n \n \n \n ";
-      print "  manipulate: SNL version 3.0  ", "\n";
+      print "  manipulate-2020: SNL version 3.0  ", "\n";
       print "  script            = ", $0, "\n";
       print "  Op. Sys           = $opsys \n";
       print "  System type       = $type \n";

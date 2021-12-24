@@ -70,11 +70,11 @@ c     redirection for NJOY97
            optical = ''
            istyle = 0
            leopt = lnblnk(optical_old)
-           idir = optical_old(1:leopt)//'../NJOY-2016/groupr/'
+           idir = optical_old(1:leopt)//'../NJOY2016/groupr/'
            if ( icon(7) .eq. 1) then
-               njoy2016_dir = '/mnt/e/sync_Linux/NJOY-2016/' 
+               njoy2016_dir = '/mnt/e/sync_sandialabs/NJOY2016/' 
                le2016 = lnblnk(njoy2016_dir)
-               idir = njoy2016_dir(1:le2016)//'../NJOY-2016/groupr/'
+               idir = njoy2016_dir(1:le2016)//'../NJOY2016/groupr/'
            endif
       endif
       if ( icon(9) .lt. 1) then 

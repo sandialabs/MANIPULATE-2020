@@ -19,7 +19,7 @@
        dimension corx(1000)
                iselect_material = 1
               isum = 3
-              mcnploc = '/mnt/e/sync_Linux/SNL-LSL/self-shield'
+              mcnploc = '/mnt/e/sync_sandialabs/SNL-LSL/self-shield'
 c              mcnploc = '/esata/codes/app/lsl-2/self-shield'
               lnloc = lnblnk(mcnploc)
               iendx = lnblnk(file_name)

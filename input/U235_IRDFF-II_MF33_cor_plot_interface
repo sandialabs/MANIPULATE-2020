@@ -1,9 +1,0 @@
-SigmaPlot Covariance Interface: U235(nth) thermal fission from IRDFF-II - with std. dev. fixed
-14 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- 5 0 0
- 1 1.0   '../output/U235_640nrg_IRDFF-II_MF33_cor_plot_interface'
- 2 'U235_640nrg_IRDFF-II_MF33_fixed2'        0 1.0
- 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
------------
-
-

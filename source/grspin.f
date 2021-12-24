@@ -59,7 +59,7 @@ c         idir_src = '/app/manipulate-2/spectrum/'
      &             1x, '                 infile  = ', a,/)
          endif
          new_file_name =  infile(1:iblank)
-         if (new_file_name(3:16) .ne. "\sync_Linux"      ) then 
+         if (new_file_name(3:16) .ne. "\sync_sandialabs"      ) then 
             new_file_name = optical(1:leopt) // idir(1:iblank2) 
      &         // infile(1:iblank)
          endif

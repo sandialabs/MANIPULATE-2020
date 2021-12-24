@@ -1,8 +1,0 @@
-NJOY-2016 Process Conversion for IRDFF-II Library for U235(nth) thermal fission spectrum - and list
- 3 0 1 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- 'U235_640nrg_IRDFF-II_MF33.groupr' 261  '../spectrum/U235_640nrg_IRDFF-II_MF33_spectrum_list' 1.0
- 4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-   1 1.0 'spectrum/dummy.spc'  
- '../spectrum/U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12 -1
- 'dummy'
- 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 

@@ -74,7 +74,7 @@ c
       leopt = lnblnk(optical)
       idir = '/NJOY-2012/pka/'
       if ( icon(7) .eq. 1) then 
-           idir = '/NJOY-2016/pka/'
+           idir = '/NJOY2016/pka/'
       endif
 c
 c     redirection for NJOY99

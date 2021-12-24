@@ -7,4 +7,4 @@ NJOY Process Conversion for NJOY response: As-75 total kerma and displacement ke
 ------------------
 
  Note: requires that the NJOY-2016 calculation, As-75_SA_in_GaAs_ENDFB_VIII_0_770grp_DK_NJOY2016_xsec_survey, 
- has been run and the groupr files are present on this computer and in the NJOY-2016/groupr diectory
+ has been run and the groupr files are present on this computer and in the NJOY2016/groupr diectory

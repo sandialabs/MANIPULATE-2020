@@ -92,8 +92,8 @@ c              = 0       normal
 c              = 1       response, inhibit renormalization in filein
 c
 c         icon(7)    NJOY interface location
-c              = 0       sync_Projects-Linux/NJOY-2016 default
-c              = 1       sync_Linux/NJOY-2016 selection
+c              = 0       sync_Projects-Linux/NJOY2016 default
+c              = 1       sync_sandialabs/NJOY2016 selection
 c
 c         icon(9)    print inhibit
 c             = 0        default print
@@ -1990,11 +1990,11 @@ c
             write (6,8733)
 c           fill default names for disk retrieves
 c
-            jdir = '\sync_Linux\Manipulate-2020\response\'
+            jdir = '\sync_sandialabs\MANIPULATE-2020\response\'
             jblank2 = lnblnk(jdir)
-            kdir = '\sync_Linux\Manipulate-2020\spectrum\'
+            kdir = '\sync_sandialabs\MANIPULATE-2020\spectrum\'
             kblank2 = lnblnk(kdir)
-            ldir = '\sync_Linux\Manipulate-2020\'
+            ldir = '\sync_sandialabs\MANIPULATE-2020\'
             lblank2 = lnblnk(ldir)
 cdebug            write (*,9012) xoptical(1:leopt)//jdir(1:jblank2)
 9012        format (1x, 'opening directory location: ', a41)

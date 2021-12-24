@@ -1179,7 +1179,7 @@ c     1     //job(1:ijob)//'-cor.data'
          indx = lnblnk(fmt1)
 c         file_name = epath(1:ipath) // '/tecplot/data/'
 c     1     // fmt1(1:indx)//'-tecplot.data'
-         file_name ='/sync_Linux/Manipulate-2020/tecplot/data/'
+         file_name ='/sync_sandialabs/MANIPULATE-2020/tecplot/data/'
      1     //fmt1(1:indx)//'-tecplot.data'
          if ( icon(9) < 0) then 
            write (6,5623)

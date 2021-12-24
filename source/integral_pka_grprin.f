@@ -74,7 +74,7 @@ c
       leopt = lnblnk(optical)
       idir = '/NJOY-2012/pka/'
       if ( icon(7) .eq. 1) then 
-           idir = '/NJOY-2016/pka/'
+           idir = '/NJOY2016/pka/'
       endif
 c
 c     redirection for NJOY99
@@ -85,7 +85,7 @@ c     redirection for NJOY99
            leopt = lnblnk(optical)
            idir = '../njoy99l/output/groupr/'
       endif
-c     redirection for NJOY-2012/NJOY-2016
+c     redirection for NJOY-2012/NJOY2016
       if ( icon(16) .eq. 3) then 
            optical_old = optical
            optical = ''
@@ -93,7 +93,7 @@ c     redirection for NJOY-2012/NJOY-2016
            leopt = lnblnk(optical_old)
            idir = optical_old(1:leopt)//'../NJOY-2012/pka/'
            if ( icon(7) .eq. 1) then 
-            idir = optical_old(1:leopt)//'../NJOY-2016/pka/'
+            idir = optical_old(1:leopt)//'../NJOY2016/pka/'
            endif
       endif
       if ( icon(16) .eq. 2) then 
