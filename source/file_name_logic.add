@@ -1,0 +1,9 @@
+            iflast = lnblnk(file_name)
+            kdir = 'spectrum/'
+            kblank2 = lnblnk(kdir)
+c            write (6,4598) ilead, itrail, length, nchar, 
+c     &           file_name(1:iflast)
+ 4598       format (1x, 'Option 6 filein call: ', 4i5,/,
+     &              1x, '                     =',a,'=')
+            new_file_name = xoptical(1:leopt)//kdir(1:kblank2)//
+     1       file_name(1:iflast)

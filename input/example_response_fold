@@ -1,0 +1,38 @@
+Manipulate-2020 fold of source and cross section/response
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(sf)'  'Co59g'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Co59g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'Co59g'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Co59g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(sf)'  'Ag109g'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Ag109g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'Ag109g'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Ag109g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(sf)'  'S32p'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'S32p_IRDFF-II_640grp.103' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'S32p'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'S32p_IRDFF-II_640grp.103' 0 1
+ 'generic-void-bare'
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+------------------
+
+ Note: This case builds upon files created in previous example cases for the
+       responses and spectrum characterizations. 
+       It also uses self-shielding functions that come from the ../SNL-LSL/self-shield 
+       subdirectory.

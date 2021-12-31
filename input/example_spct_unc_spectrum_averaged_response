@@ -1,0 +1,64 @@
+Example of spectrum contribution to uncertainty in spectrum-averaed cross section
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(s.f.)'  'Co59g'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Co59g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'Co59g_IRDFF-II_640grp.102' 0 1 
+ 2 'Cf252_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(s.f.)'  'Ag109g'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Ag109g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'Ag109g_IRDFF-II_640grp.102' 0 1 
+ 2 'Cf252_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'Cf252(s.f.)'  'S32p'
+ 'Cf252_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'S32p_IRDFF-II_640grp.103' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'S32p_IRDFF-II_640grp.103' 0 1 
+ 2 'Cf252_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'Co59g'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Co59g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'Co59g_IRDFF-II_640grp.102' 0 1 
+ 2 'U235_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'Ag109g'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'Ag109g_IRDFF-II_640grp.102' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'Ag109g_IRDFF-II_640grp.102' 0 1 
+ 2 'U235_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 6 0 0 0 0 0 1 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'U235(nth)'  'S32p'
+ 'U235_640nrg_IRDFF-II_MF33_spectrum_list.261' 12  1
+ 'S32p_IRDFF-II_640grp.103' 0 1
+ 'generic-void-bare'
+-8 0 0 0 0 0 1 0 2 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 4 0 0
+-1 'S32p_IRDFF-II_640grp.103' 0 1 
+ 2 'U235_640nrg_IRDFF-II_MF33_fixed2' 1
+ 'null#-void-bare'
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+-----------
+

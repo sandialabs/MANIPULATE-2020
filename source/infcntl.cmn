@@ -1,0 +1,11 @@
+C 
+C.. Common Blocks .. 
+      common /infcntl/ imode,icon
+C     For imode to icon: Maybe Read, Not Written
+C 
+C... Variables in Common Block /infcntl/ ... 
+      integer, dimension(40) :: imode
+      integer, dimension(40) :: icon
+C 
+C.. Save Declarations .. 
+      save

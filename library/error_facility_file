@@ -1,0 +1,24 @@
+LSL-derived spectrum-avg values; facility file conversions
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'WSMR_6in_LSL'  'Teflon'
+ 'WSMR_LSL_IRDFFv4.adj_trial_frac' 0  -1
+ 'teflon_dosimeter.kerma-rad' 0 1
+ 'generic-void-bare'
+ 6 0 0 0 0 0 0 0 2 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 'WSMR_6in_LSL'  'Teflon'
+ 'WSMR_LSL_IRDFFv4.adj_trial_frac' 0  -1
+ 'teflon_dosimeter.ionizing-kerma-rad' 0 1
+ 'generic-void-bare'
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+----------------
+
+Paradigm is to:
+	take best spectrum-averaged cross section from case 1 (also in 2)
+		rationale,what details of xsec and best fine group adjusted spectrum
+	take cross section uncertainty from case 2
+	take spectrum uncertainty from case 3
+
+
+
+
+
