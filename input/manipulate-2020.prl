@@ -3,372 +3,286 @@
 # usage: manipulate-2020.prl [-d] {job}
 # manipulate program execution
 #
+use Cwd qw(cwd);
+use File::Copy;
+use File::Basename qw(dirname);
 
-if( $#ARGV > 2 || $#ARGV < 0 ) { 
-       print "Error: MANIPULATE-2012 called with invalid number of arguments\n";
-       print "Usage: manipulate-2020 {job} \n";
-       die "MANIPULATE-2020 script aborted\n";
+#check number of input arguments
+if( $#ARGV+1 < 1 || $#ARGV+1 > 2 ) {
+  print "Error: manipulate-2020 called with invalid number of arguments\n";
+  print "Usage: perl manipulate-2020.prl [-d] {job} \n";
+  print "Try again \n";
+  die "manipulate-2020 script aborted\n";
 }
 
-      use Env;
-      $system = $ENV{ 'SYSTEMTYPE' };
-#      require "ctime.pl";
+#Get operating system:
+if ("$^O" eq "msys" or "$^O" eq "MSWin32") {
+  $system = "win";
+}
+else {
+  $system = "unix";
+}
+$ENV{ 'os' } = $system;
 
-      $type = "unknown";
-      $deb = "";
+#Initialize some variables:
+$type = "unknown";
 
-#
-#     Set some environmental variables depending upon the
-#     type of system
-#
-      if ( $system eq "unix") {
-#         require "getcwd.pl";
-         use Cwd qw(getcwd);
-         $pwd        = getcwd();
-         $user       = `whoami`;
-         $opsys      = "UNIX";
-         $type       = `uname -pris`;
-         $machine    = `uname -n`;
-         $rm         = "rm -f";
-         $sep        = "/";
-         $cpx        = "cp -f -p";        
-         $mv         = "mv";
-         $executable = "xmanipulate-2020";
+#Set some environmental variables depending upon the type of system
+if ($system eq "unix") {
+  $pwd        = cwd();
+  $user       = `whoami`;
+  $opsys      = "UNIX";
+  $type       = `uname -pris`;
+  $machine    = `uname -n`;
+  $rm         = "rm -f";
+  $sep        = "/";
+  $cpx        = "cp -f -p";
+  $mv         = "mv";
+  $executable = "./manipulate";
 
-         chomp($pwd);
-         chomp($user);
-         chomp($opsys);
-         chomp($machine);
-         chomp($type);
+  chomp($pwd);
+  chomp($user);
+  chomp($opsys);
+  chomp($machine);
+  chomp($type);
+}
+elsif ( $system eq "win") {
+  $pwd        = Win32::GetCwd();
+  $user       = Win32::LoginName();
+  @os         = qw(Wins, Win95, WinNT);
+  $opsys      = "WIN32";
+  $type       = "@os[$id] $major\.$minor $string (Build $build)";
+  $machine    = Win32::NodeName;
+  $rm         = "del /F";
+  $sep        = "\\";
+  $cpx        = "copy";
+  $mv         = "move";
+  $executable = "manipulate.exe";
+}
+else {
+  print "Error in system variable = $system \n";
+  die "MANIPULATE-2020 script aborted\n";
+}
 
-      }  elsif ( $system eq "dos") {
-         $pwd        = Win32::GetCwd();
-         $user       = Win32::LoginName();
-         @os         = qw(Wins, Win95, WinNT);
-         $opsys      = "WIN32";
-         $type       = "@os[$id] $major\.$minor $string (Build $build)";
-         $machine    = Win32::NodeName;
-#        $date = &ctime(time);
-         $date = "today";
-         chomp($date);
-         chomp($date);
+#Set date, required number of arguments and job name
+$date = localtime();
+chomp($date);
+$ar   = 0;
+$job  = $ARGV[$ar];
+$ENV{ 'job' } = $job;
 
-         $rm         = "del /F";
-#         $rm         = "rm -f";
-         $sep        = "\\";
-         $cpx        = "copy";     
-         $mv         = "move";
-         $executable = "manipulate-2020.exe";
+#Set location variables:
+$base = $pwd.$sep."..".$sep;
+$ENV{ 'opt' } = $base;
+$bin_dir     = $base."bin".$sep.$system.$sep;
+$input_dir   = $base."input".$sep;
+$output_dir  = $base."output".$sep;
+$punch_dir   = $base."output".$sep."punch".$sep;
 
-      }  else {
+#form work_dir from snl-work and username if unix, else use snl-work
+if ($system eq "unix") {
+  $work_dir = $base."snl-work-".substr($user,0,3).$sep;
+} else {
+  $work_dir = $base."snl-work".$sep;
+}
 
-         print "Error in system variable = $system \n";
-         die "MANIPULATE-2020 script aborted\n";
+#print out preamble
+print "\n \n \n \n \n \n \n ";
+print "  manipulate-2020: SNL version 3.0  ", "\n";
+print "  script            = ", $0, "\n";
+print "  Op. Sys           = $opsys \n";
+print "  System type       = $type \n";
+print "  User              = $user \n";
+print "  Machine           = $machine \n";
+print "  Working directory = $work_dir \n";
+print "  current date      = ", $date, "\n";
+print "  job name          = ", $job,  "\n \n \n";
 
-      }
-#
-#     Set date, required number of arguments and job name
-#
-#     $date = &ctime(time);
-      $date = "today";
-      chomp($date);
-      $ar   = 0;
-      $nar  = 1;
-      $job  = $ARGV[$ar];
+#with user working dir, need to test for existence
+if (-d $work_dir) {
+  chdir $work_dir;
+}
+else {
+  if (mkdir $work_dir) {
+    chdir $work_dir;
+  }
+  else {
+    print "Error - ${work_dir} could not be created, using snl-work\n";
+    $work_dir = $base.$sep."snl-work";
+    chdir $work_dir;
+  }
+}
 
-#
-#     set some environmental variables depending upon
-#     which location we are running from. This may need
-#        
-      $ENV{MANIPULATE_JOB} = $job;
-      $ENV{ 'GENPATH' } = $pwd.$sep."..".$sep;
-      $ENV{ 'opt' } = $pwd.$sep."..".$sep;
-      $genpath = $ENV{'GENPATH'};
-      $root = $genpath."..";
-      $spcbase = $genpath;
-#
-# define directory paths
-#
+#Delete any old executable and bring current executable
+#into working directory
+if( -e "$executable" ) {
+  unlink($executable);
+}
+copy($bin_dir.$executable, $work_dir.$executable);
 
-      $base        = $root.$sep."MANIPULATE-2020".$sep;
-      $bin_dir     = $base."bin";
-      $input_dir   = $spcbase."input";
-      $output_dir  = $spcbase."output";
-      $punch_dir   = $spcbase."output".$sep."punch";
+#write user_name to file
+if( -e "username" ) {
+  unlink("username");
+}
+$filename = "username";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$user \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
 
-#
-#     form work_dir from snl-work and username if unix, else use snl-work
-#
-      if ( $system eq "unix") {
-           $work_dir = $base."snl-work-".substr($user,0,3);
-      } else {
-        $work_dir = $base."snl-work";
-      }
-#
-#     Set and environmental variable to the user work
-#       directory
-#
+#write run date.  call file date.tmp to prevent collisions with the date command
+if( -e "date.tmp" ) {
+  unlink("date.tmp");
+}
+$filename = "date.tmp";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$date \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
 
-       $ENV{ 'GENPATH_WORK' } = $work_dir;      
+#write operating system
+if( -e "opsys" ) {
+  unlink("opsys");
+}
+$filename = "opsys";
+open(envout,">$filename") || die "can't open file $filename: $!\n";
+$record = "$opsys \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write working directory
+if( -e "getcwd" ) {
+  unlink("getcwd");
+}
+$filename = "getcwd";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$work_dir \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write machine name
+if( -e "machine" ) {
+  unlink("machine");
+}
+$filename = "machine";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$machine \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+chmod (0777, "machine", "username", "opsys", "date.tmp", "getcwd", "rebin_energy" );
+
+#cleanup old files if present
+if( -e "manipulate.inp" ) {
+  unlink("manipulate.inp");
+}
+if( -e "manipulate.out" ) {
+  unlink("manipulate.out");
+}
+if( -e "manipulate.ext" ) {
+  unlink("manipulate.ext");
+}
+if( -e "rebin_energy" ) {
+  unlink("rebin_energy");
+}
+if( -e "gen.pun" ) {
+  unlink("gen.pun");
+}
+if( -e "manipulate.err" ) {
+  unlink("manipulate.err");
+}
+if( -e "run.log" ) {
+  unlink("run.log");
+}
+
+#clean up plot files
+while ( <*.pt>  ) {
+  unlink("$_");
+}
+while ( <*.plt> ) {
+  unlink("$_");
+}
+while ( <*.pun> ) {
+  unlink("$_");
+}
+while ( <*.pun2> ) {
+  unlink("$_");
+}
+
+#copy input file to manipulate input
+copy($input_dir.$job, "manipulate.inp");
+copy("manipulate.inp", "manipulate.copy");
+
+#Execute code and pipe terminal output to file.
+system("$executable > run.log ");
+
+if( $? ne 0 ) {
+  #abort on error exit code
+  while ( <*> ) {
+    chmod 0777, $_;
+  }
+  $status = "failed";
+}
+
+#save output files
+copy("manipulate.out", $output_dir.$job.".out");
+chmod 0777, $output_dir.$job.".out";
+copy("manipulate.ext", $output_dir.$job.".ext");
+chmod 0777, $output_dir.$job.".ext";
+
+#save SNLRML interface files
+copy("pun2", $punch_dir.$job.".pun2");
+chmod 0777, $punch_dir.$job.".pun2";
 
 
-#
-#     print out preamble 
-#
-      print "\n \n \n \n \n \n \n ";
-      print "  manipulate-2020: SNL version 3.0  ", "\n";
-      print "  script            = ", $0, "\n";
-      print "  Op. Sys           = $opsys \n";
-      print "  System type       = $type \n";
-      print "  User              = $user \n";
-      print "  Machine           = $machine \n";
-      print "  Working directory = $work_dir \n";
-      print "  current date      = ", $date, "\n";
-      print "  job name          = ", $job,  "\n \n \n";
-#
-#     check the number of arguments
-#
- 
-      $numarg = $#ARGV + 1;
-      if  ($numarg != $nar ) {
-          print "\n\n illegal number of arguments, ";
-          print "arguments = $numarg $nar \n";
-          print "   usage: $0 [-d] {job} \n";
-          die "   try again $!\n";
-      }
-#
-# with user working dir, need to test for existence
-#
-      if (-d $work_dir) {
+#Save rebin interface file - if it exists
+if( -e "rebin_energy" ) {
+  copy("rebin_energy", $punch_dir.$job.".rebin");
+  chmod 0777, $punch_dir.$job.".rebin";
+}
 
-          chdir ($work_dir);
+#save spctplot files
+while ( <*-tprof.pt> ) {
+  copy("$_", "${base}plot");
+  print "${base}plot"; "\n";
+  chmod 0777, $_;
+}
 
-      } else {
+#save plot files
+while ( <*neu.pt> ) {
+  copy("$_", "${base}plot");
+  chmod 0777, $_;
+}
 
-        if (mkdir ($work_dir)) {
-            chdir ($work_dir);
-        } else {
-          print "Error - ${work_dir} could not be created, using snl-work\n";
-          $work_dir = $base.$sep."snl-work";
-          chdir ($work_dir);
-        }
+chmod (0777, "manipulate.out", "manipulate.err", "run.log", "manipulate.inp", "rebin_energy");
+chmod (0777, "manipulate.ext");
+if( -e "gen.pun" ) {
+  chmod 0777, "gen.pun";
+}
+if( -e "pun2" ) {
+  chmod 0777, "pun2";
+}
 
-      }
+unlink ( "machine", "username", "opsys", "date.tmp", "getcwd");
 
-#
-#     accommodate systems without system calls for the following info
-#
-#     delete any old executable and bring current executable 
-#     into working directory
-#
-      if( -e "$executable" ) {
-        system("$rm $executable");
-      } 
-#      $line1 = "$cpx $bin_dir${sep}$executable $work_dir";
-#      print "executable transfer $line1 ";
-      system("$cpx $bin_dir${sep}$executable $work_dir");
-#      exit 9;  
+#If a failure occured exit with error code, otherwise exit like nornmal:
+if ($status eq "failed")  {
+  exit 9;
+}
 
-#
-#     write user_name
-#
-      if( -e "username" ) {
-        system("$rm username");
-      }
-      $filename = "username";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$user \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-
-#
-#     write run date.  call file date.tmp to prevent collisions with
-#     the date command
-#
-      if( -e "date.tmp" ) {
-         system("$rm date.tmp");
-      }
-      $filename = "date.tmp";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$date \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write operating system
-#
-      if( -e "opsys" ) {
-        system("$rm opsys");
-      }
-      $filename = "opsys";
-      open(envout,">$filename") || die "can't open file $filename: $!\n";
-      $record = "$opsys \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#      exit;
-#
-#     write working directory
-#
-      if( -e "getcwd" ) {
-        system("$rm getcwd");
-      }
-      $filename = "getcwd";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$work_dir \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write machine name
-#
-      if( -e "machine" ) {
-        system("$rm machine");
-      }
-      $filename = "machine";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$machine \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-
-      chmod (0777, "machine", "username", "opsys", "date.tmp", "getcwd", "rebin_energy" );
-#
-#     cleanup files
-#
-      if( -e "manipulate.inp" ) {
-        system("$rm manipulate.inp");
-      }
-      if( -e "manipulate.out" ) {
-        system("$rm manipulate.out");
-      }
-      if( -e "manipulate.ext" ) {
-        system("$rm manipulate.ext");
-      }
-      if( -e "rebin_energy" ) {
-        system("$rm rebin_energy");
-      }
-      if( -e "gen.pun" ) {
-        system("$rm gen.pun");
-      }
-      if( -e "manipulate.err" ) {
-        system("$rm manipulate.err");
-      }
-      if( -e "run.log" ) {
-        system("$rm run.log");
-      }
-#
-#  clean up plot files
-#
-      while ( <*.pt>  ) {
-        system("$rm $_");
-      }
-      while ( <*.plt> ) {
-        system("$rm $_");
-      }
-      while ( <*.pun> ) {
-        system("$rm $_");
-      }
-      while ( <*.pun2> ) {
-        system("$rm $_");
-      }
-#
-#    copy input file to manipulate input
-#
-      $command = "$cpx $input_dir${sep}${job} manipulate.inp \n";
-#      print "Input copy command = $command \n";
-      system("$cpx $input_dir${sep}${job} manipulate.inp");
-#      exit 9; 
-      system("$cpx manipulate.inp manipulate.copy");
-#
-#
-#    process input module and add cross sections if needed
-#
-#      system("..${sep}bin${sep}xmanipulate > run.log "); 
-
-      if( $deb eq "" && $system eq "unix") {
-         system("./$executable > run.log ");  
-      } 
-      elsif ( $deb eq "" && $system eq "dos") {
-         system("$executable > run.log ");   
-      }
-      elsif ( $deb eq "deb" ) {
-         system("dbx -c \"when in errexit {where;}; when sig SIGILL {where;}; when sig SIGFPE {where;}; when sig SIGABRT {where;}; when sig SIGBUS {where;}; when sig SIGSEGV {where;}; run; quit\" $executable");
-      }
-      elsif ( $deb eq "par" ) {
-  
-#        system("$MPI_ROOT/bin/mpirun -np 2 xmanipulate > run.log");
-
-      }
-
-      if( $? ne 0 || $deb ne "" ) {
-#
-#   abort on error exit code
-#
-        while ( <*> ) {
-          chmod 0777, $_;
-        }
-        $status = "failed";
-#        exit 9;
-      }
-
-#
-#     save output files
-#
-     system("$cpx manipulate.out $output_dir${sep}${job}.out");  
-     chmod 0777, "$output_dir${sep}${job}.out"; 
-     system("$cpx manipulate.ext $output_dir${sep}${job}.ext");  
-     chmod 0777, "$output_dir${sep}${job}.ext"; 
-#
-#     save SNLRML interface files
-#
-     system("$cpx pun2 $punch_dir${sep}${job}.pun2");  
-     chmod 0777, "$punch_dir${sep}${job}.pun2"; 
-#
-#    Save rebin interface file - if it exists
-#
-      if( -e "rebin_energy" ) {
-         system("$cpx rebin_energy $punch_dir${sep}${job}.rebin");  
-         chmod 0777, "$punch_dir${sep}${job}.pun2";         
-      }
-#
-# save spctplot files
-#
-      while ( <*-tprof.pt> ) {
-         system("$cpx $_ ${spcbase}plot");
-         chmod 0777, $_;
-      }
-#
-# save plot files
-#
-      while ( <*neu.pt> ) {
-        system("$cpx $_ ${spcbase}plot");
-        chmod 0777, $_;
-      }
-#  
-      chmod (0777, "manipulate.out", "manipulate.err", "run.log", "manipulate.inp", "rebin_energy");
-      chmod (0777, "manipulate.ext");
-      if( -e "gen.pun" ) {
-        chmod 0777, "gen.pun"; 
-      }
-      if( -e "pun2" ) {
-        chmod 0777, "pun2"; 
-      }
-
-      unlink ( "machine", "username", "opsys", "date.tmp", "getcwd");
-#
-      if ( $status eq "failed")  {
-          exit 9;
-      }
-      exit 0;
+exit 0;
