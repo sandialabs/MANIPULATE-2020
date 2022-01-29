@@ -2,11 +2,7 @@
       include "location.cmn"
       common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
      1                lab_len(15), icurve(15), lab_file(15)
-      character*250 file_name,lab_file
-      character*20 lab
-      character*100 file_corr, file_id
-      common /sself/ file_corr
-      common /misc/ lab(20), imaterial
+      character*250 file_name,lab_file,file_id
       common /datain/ nenergy, energy(1001), array(1000,15),
      1                emid(1001)
       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
@@ -33,7 +29,7 @@ c     1        /, 15x, ' file = ', a100)
           corx(jk) = 1.0
         enddo
       else
-        open (unit=29, file=file_id, status='old', err=9099)
+        open (unit=29, file=trim(file_id), status='old', err=9099)
         read (29, 2871) header
  2871   format (a100)
         read (29,*) (corx(ikl), ikl=1,640)
@@ -49,7 +45,7 @@ c       do not use any attenution above 20 MeV
 c
 c     save self-shielding correction function
 c
-      lab_file(isum) = file_name
+      lab_file(isum) = trim(file_name)
       lab_lead(isum) = ilead_1
       lab_trail(isum) = itrail_1
       lab_nchar(isum) = nchar_1
@@ -69,8 +65,15 @@ c
       return
  9099 continue
       jstatus = 1
-      write (nt6, 6723) jstatus, file_id
- 6723 format (1x, 'Error in correct file open ', a90)
+
+      WRITE(*,*)
+      WRITE(*,*)"begin debug:"
+      WRITE(*,*)trim(file_id)
+      WRITE(*,*)"end debug"
+
+
+      write (nt6, 6723) jstatus, trim(file_id)
+ 6723 format (1x, 'Error in correct file open ', a)
       stop 'Open'
 
       end subroutine correct

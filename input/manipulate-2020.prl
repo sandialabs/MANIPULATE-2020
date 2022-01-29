@@ -119,6 +119,7 @@ if( -e "$executable" ) {
   unlink($executable);
 }
 copy($bin_dir.$executable, $work_dir.$executable);
+chmod (0777, "$executable");
 
 #write user_name to file
 if( -e "username" ) {

@@ -21,9 +21,9 @@ done
 #Set bin directory based on operating system
 SRC_DIR=$(pwd)
 if [ "$OSTYPE" == "msys" ]; then
-  BIN_DIR="${SRC_DIR}/../BIN/win"
+  BIN_DIR="${SRC_DIR}/../bin/win"
 else
-  BIN_DIR="${SRC_DIR}/../BIN/unix"
+  BIN_DIR="${SRC_DIR}/../bin/unix"
 fi
 
 #If desired wipe build directory

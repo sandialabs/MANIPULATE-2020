@@ -3,8 +3,6 @@
       common /io/ nt5, nt6, nfile, nplot, npun
       common /datain/ nenergy, energy(1001), array(1000,15),
      1        emid(1001)
-      common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1 lab_len(15), icurve(15), lab_file(15)
       dimension cov_part(1001,1001), coveng_part(1001),
      1   covrsp1_part(1000), covrsp2_part(1000), cor_part(1001,1001),
      2   stddev1_part(1000), stddev2_part(1000)
@@ -13,7 +11,6 @@
      2          eng(1000), cross_section(1000)
       integer icovfmt_part, icode_part, icoveng_part
       character*250 fmt_part
-      character*80 lab_file
       dimension alf(80),ilf(80),
      1 ytem(41),item(41)
       character*250 name, ovr, over_ride

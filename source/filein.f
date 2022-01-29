@@ -1,6 +1,6 @@
       subroutine filein (imode, file_name, ierr, iflag)
       include "location.cmn"
-      character*20 lab
+      character*22 lab
       common /misc/ lab(20), imaterial, noption, moption
       character*80 title, dummy
       character*250 file_name

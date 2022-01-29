@@ -76,14 +76,12 @@ cje
        common /guide/ icon(40)
        common /io/ nt5, nt6, nfile, nplot, npun
        common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1 lab_len(15), icurve(15), lab_file(15)
+     1                 lab_len(15), icurve(15), lab_file(15)
        character*80 lab_file
-       character*20 lab
       character*250 ovr
       character*145 job, ename
       character*106 xoptical
       character*80 name
-       common /misc/ lab(20), imaterial, noption, moption
       common /statsum/ arr_mean(1000), arr_sq(1000),
      1  arr_std(1000),
      1  arr_var(1000)

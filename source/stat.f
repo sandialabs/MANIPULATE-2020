@@ -26,17 +26,7 @@ c      character assignments
 
        common /io/ nt5, nt6, nfile, nplot, npun
 
-       common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-
-     1 lab_len(15), icurve(15), lab_file(15)
-
-       character*80 lab_file
-
-       character*20 lab
-
       character*106 xoptical
-
-       common /misc/ lab(20), imaterial, noption, moption
 
       common /statsum/ arr_mean(1000), arr_sq(1000), arr_std(1000)
 
