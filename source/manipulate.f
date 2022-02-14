@@ -1390,14 +1390,15 @@ c
             lab_len(isum) = length
             nenergy_hld(isum) = nenergy
             dif1 = abs( (emid(1) - emid_hld(1,1)) /emid(1))
-            dif2 = abs( (emid(1) - emid_hld(nenergy_hld(1),1))
-     1                  /emid(1))
-            if ( dif1 .lt. 1.e-3) then
+            dif2 = abs( (emid(1) - emid_hld(nenergy_hld(1),1)) /emid(1))
+
+            WRITE(*,*)dif1,dif2
+            if (dif1 .lt. 1.e-3) then
                do ip=1,nenergy
                   emid_hld(ip,isum) = emid(ip)
                   array_hld(ip,isum) = array(ip,iselect_material)
                enddo
-            elseif ( dif2 .lt. 1.e-3) then
+            elseif (dif2 .lt. 1.e-3) then
                do ip=1, nenergy
                   irev = nenergy - ip + 1
                   emid_hld(ip,isum) = emid(irev)

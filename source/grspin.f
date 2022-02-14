@@ -36,11 +36,11 @@ c
  4523     format (1x, 'name components: optical = ', a,/,
      &            1x, '                 idir    = ', a,/,
      &            1x, '                 infile  = ', a,/)
-      end if
-      if (index(new_file_name,"sync_sandialabs") == 0) then
-        new_file_name = trim(optical) // trim(idir) // trim(infile)
-      end if
-      write (6,9012) trim(new_file_name)
+        end if
+        if (index(new_file_name,"sync_sandialabs") == 0) then
+          new_file_name = trim(optical) // trim(idir) // trim(infile)
+        end if
+        write (6,9012) trim(new_file_name)
 9012    format (1x, 'opening file: ', a)
       end if
 c
@@ -55,7 +55,7 @@ c
 c
 c read in the data from the input tape.
 c
- 101  continue
+!101  continue
       do i=1,1000
         read (7,*, end=9013) emid(i), array(i,1)
         if (icon(9) < -1) then
@@ -69,21 +69,23 @@ c
       stop 'grspin-long'
  9013 continue
       close (unit=7)
+
+
       if (nenergy == 0 .and. ientry == 0) then
-c         error may be due to needing file in source directory
-c         rather than response directory
-          ientry = ientry + 1
-          write (6,7845) nenergy, new_file_name
- 7845     format (1x, 'GRSPIN file read error ', i5, 3x, a)
-c          close (unit=7)
-c          iblank2 = len_trim(idir_src)
-c          new_file_name = optical(1:leopt)//idir_src(1:iblank2)
-c     1       //infile(1:iblank)
-c          write (*,9012) optical(1:leopt)//idir_src(1:iblank2)
-c     1       //infile(1:iblank)
-c9112      format (1x, 'opening alternate file: ', a57)
-c          open(unit=7,file=new_file_name,status='unknown')
-c          go to 101
+c       error may be due to needing file in source directory
+c       rather than response directory
+        ientry = ientry + 1
+        write (6,7845) nenergy, new_file_name
+ 7845   format (1x, 'GRSPIN file read error ', i5, 3x, a)
+c        close (unit=7)
+c        iblank2 = len_trim(idir_src)
+c        new_file_name = optical(1:leopt)//idir_src(1:iblank2)
+c     1     //infile(1:iblank)
+c        write (*,9012) optical(1:leopt)//idir_src(1:iblank2)
+c     1     //infile(1:iblank)
+c9112    format (1x, 'opening alternate file: ', a57)
+c        open(unit=7,file=new_file_name,status='unknown')
+c        go to 101
       end if
 c
 c Look at the energy order - we expect a low to high order
@@ -91,7 +93,7 @@ c     set iflip = -1 if we need to reverse the order
 c
       iflip = 1
       if (emid(1) > emid(2)) then
-           iflip = -1
+        iflip = -1
       end if
 c
 c if a reversed energy grid due to one part of
@@ -279,7 +281,7 @@ c
      &       'structure ', 2i5, g14.7)
          end if
          if (icon(9) < 0) then
-            write (6,2891) name, optical(1:mblanks), trim(jdir)
+            write (6,2891) name, trim(optical), trim(jdir)
  2891       format (1x, 'File = ', a)
          end if
          if (icon(5) == 0) then

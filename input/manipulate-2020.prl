@@ -32,7 +32,7 @@ if ($system eq "unix") {
   $pwd        = cwd();
   $user       = `whoami`;
   $opsys      = "UNIX";
-  $type       = `uname -pris`;
+  $type       = `uname -rs`;
   $machine    = `uname -n`;
   $rm         = "rm -f";
   $sep        = "/";

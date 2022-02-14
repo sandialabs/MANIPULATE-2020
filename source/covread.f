@@ -1,60 +1,51 @@
-      subroutine covread(icovfmt, fmt, icoveng, coveng,
-     1           covrsp1, stddev1, covrsp2, stddev2,
-     1           cov, cor, icode)
+      subroutine covread(icovfmt, fmt, icoveng, coveng, covrsp1,
+     &                   stddev1, covrsp2, stddev2, cov, cor, icode)
       include "location.cmn"
-       common /io/ nt5, nt6, nfile, nplot, npun
-       common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-       common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1 lab_len(15), icurve(15), lab_file(15)
-       character*80 lab_file
-      dimension alf(80),ilf(80),
-     1 ytem(41),item(41)
-      character*250 name, ovr, over_ride
-       common /guide/ icon(40)
+      common /io/ nt5, nt6, nfile, nplot, npun
+      common /datain/ nenergy, energy(1001), array(1000,15), emid(1001)
+      common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
+     1                lab_len(15), icurve(15), lab_file(15)
+      character*250 lab_file
+      dimension alf(80), ilf(80), ytem(41), item(41)
+      character*250 name, ovr, fmt, fmt3, file_corr
+      common /guide/ icon(40)
       common /acov1/ icov(40), iself, ovr
-      character*250 fmt, fmt3
-      character*80 dummy
-       character*100 file_corr
-       common /sself/ file_corr
+      common /sself/ file_corr
       common /mone/ pdf(1000)
+      character*80 dummy
       dimension engpdf(1001), outpdf(1001)
       dimension cov(1001,1001), coveng(1001), covrsp1(1000),
-     1   covrsp2(1000), cor(1001,1001)
+     1          covrsp2(1000), cor(1001,1001)
       real cov_cov
       dimension covr(1001,1001), covreng(1001), corr(1001,1001),
-     1    covrrsp1(1000), covrrsp2(1000),
-     1    stdrdev1(1000),
-     1    stdrdev2(1000), cov_cov(1001,1001)
-      dimension idummy(1001,1001)
+     1          covrrsp1(1000), covrrsp2(1000), stdrdev1(1000),
+     1          stdrdev2(1000), cov_cov(1001,1001)
       dimension xstdrdev1(1000)
       dimension xcov_cov(1001,1001)
       dimension xhv(38226)
       dimension stddev1(1000), stddev2(1000)
       dimension engsnd(1001), emidsnd(1000)
       real, dimension(1001) :: eigen_save
-      character*145 ldir2, ldir3, ldir4, job, ldir5
+      character*145 ldir3, ldir4, job, ldir5
       character*106 xoptical
-      character*15 ename
       character*250 file_name, new_file_name
       common /statinfo/ efactor, number_of_files, xoptical
       character*250 outfile
       common /whatever/ outfile
       dimension xarray(1000), yarray(1000),itran(1000)
       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
+     1                 array_hld(1000,15), emid_hld(1001,15)
       equivalence (alf(1),ilf(1)),(item(1),ytem(1))
       integer*4 icov_1, icov_2, icov_3, icov_4, ilocate
       integer*4 irenorm_flag
       equivalence (icov_1, lcov_1), (icov_2, lcov_2),
-     1     (icov_3, lcov_3),   (icov_4, lcov_4)
-c      logical ok
-c     character*4 inull
+     1            (icov_3, lcov_3), (icov_4, lcov_4)
       character*4 lcov_1, lcov_2, lcov_3, lcov_4
       character*80 label
       logical pos_def
-      real, allocatable    :: input_replace(:,:)
+      real, allocatable :: input_replace(:,:)
+      external :: eigen_out, cov_norm, prune, filein, correct,
+     &            filein_response
 c
 c     Control Flags
 c
@@ -110,119 +101,84 @@ c                = 3       use 89 NuGET neutron energy grid
 c                = 4       use 48 NuGET gamma energy grid
 c                = 5       use 175 Vitamin-J neutron energy grid
 c
-c
-c
       if (icon(9) < 0) then
-          write (6,6712) icode, icovfmt
- 6712     format (1x, 'COVREAD entered ', 2i5)
+        write (6,6712) icode, icovfmt
+ 6712   format (1x, 'COVREAD entered ', 2i5)
       endif
       iscale = 0
-      ename = 'opt'
-      lename = lnblnk(ename)
-      call getenv(ename(1:lename), optical)
-c      if (optical .eq. '') then
-c           optical=''
-c           write (*,9013) optical
-c 9013      format (1x, 'blank optical default filled', 1x, a6)
-c      endif
-      mblank2 = lnblnk(optical)
-      ename = 'job'
-      lename = lnblnk(ename)
-      call getenv(ename(1:lename), job)
-      jblank3= lnblnk(job)
-c      jdir = '/app/manipulate-2/response/'
+      call getenv('opt', optical)
+      call getenv('job', job)
       jdir = 'response/'
-      jblank2 = lnblnk(jdir)
-c      kdir = '/app/manipulate-2/spectrum/'
       kdir = 'spectrum/'
-      kblank2 = lnblnk(kdir)
-c      ldir2 = '/app/manipulate-2/'
-      ldir2 = ''
-      lblank2 = lnblnk(ldir2)
-c      ldir3 = '/app/NJOY-2012/correlation/'
-      ldir3 = '..\NJOY-2012\correlation\'
-      if ( icon(7) .eq. 1) then
-         ldir3 = '../NJOY2016/correlation/'
+      ldir3 = '../NJOY-2012/correlation/'
+      if (icon(7) .eq. 1) then
+        ldir3 = '../NJOY2016/correlation/'
       endif
-      lblank3 = lnblnk(ldir3)
-c      ldir4 = '/app/covfil/output/'
-      ldir4 = '../covfil/output/'
-      lblank4 = lnblnk(ldir4)
-c      ldir5 = '/app/lsl/library/'
-      ldir5 = '../lsl/library/'
-      lblank5 = lnblnk(ldir5)
-      lfmt = lnblnk(fmt)
+      ldir4 = '../snl-lsl/OUTPUT/'
+      ldir5 = '../snl-lsl/LIBRARY/'
 c
 c     assume known manipulate response function with no uncertainty
 c     assume SAND-II 640/770 group structure
 c
       nfile = 34
-      name = optical(1:mblank2)//jdir(1:jblank2)//'sand641.nrg'
-      ilmt = 641
-      if (icode .eq. 1) then
-         name = optical(1:mblank2)//jdir(1:jblank2)//'sand641.nrg'
-         ilmt = 641
-      elseif ( icode .eq. 2) then
-         name = optical(1:mblank2)//jdir(1:jblank2)//'sand771.nrg'
-         ilmt = 771
-      elseif ( icode .eq. 3) then
-         name = optical(1:mblank2)//jdir(1:jblank2)//'nuget90.nrg'
-         ilmt = 90
-      elseif ( icode .eq. 4) then
-         name = optical(1:mblank2)//jdir(1:jblank2)//'nuget49.nrg'
-         ilmt = 49
-      elseif ( icode .eq. 5) then
-         name = optical(1:mblank2)//jdir(1:jblank2)//'vit176.nrg'
-         ilmt = 176
+      if (icode .eq. 2) then
+        name = trim(optical)//trim(jdir)//'sand771.nrg'
+        ilmt = 771
+      elseif (icode .eq. 3) then
+        name = trim(optical)//trim(jdir)//'nuget90.nrg'
+        ilmt = 90
+      elseif (icode .eq. 4) then
+        name = trim(optical)//trim(jdir)//'nuget49.nrg'
+        ilmt = 49
+      elseif (icode .eq. 5) then
+        name = trim(optical)//trim(jdir)//'vit176.nrg'
+        ilmt = 176
+      else
+        name = trim(optical)//trim(jdir)//'sand641.nrg'
+        ilmt = 641
       endif
-      lend = lnblnk(name)
-      open(unit=nfile, form='formatted',
-     1      file=name(1:lend)
-     2      , status='old', iostat=ilook, err=1909)
+      open(unit=nfile, form='formatted', file=trim(name),
+     2     status='old', iostat=ilook, err=1909)
       read(nfile, 781) title
  781  format (a1)
       read (nfile,*) iengsnd
-      if ( icon(12) .ne. 1) then
-c        read high to low in units of MeV
-         read (nfile,*) (engsnd(jk), jk=ilmt,1,-1)
+      if (icon(12) .ne. 1) then
+c       read high to low in units of MeV
+        read (nfile,*) (engsnd(jk), jk=ilmt,1,-1)
       else
-c        read low to high energy in units of MeV
-         read (nfile,*) (engsnd(jk), jk=1,ilmt)
+c       read low to high energy in units of MeV
+        read (nfile,*) (engsnd(jk), jk=1,ilmt)
       endif
       close (unit=nfile)
-      if ( icon(9) < 0) then
+      if (icon(9) < 0) then
         write (6,8519) (engsnd(jk), jk=1,ilmt)
  8519   format (1x, 'engsnd energies ', 5g14.7)
       endif
-      do ie=1,640
-         emidsnd(ie) = 0.5*(engsnd(ie) + engsnd(ie+1))
+      do ie=1,ilmt-1
+        emidsnd(ie) = 0.5*(engsnd(ie) + engsnd(ie+1))
       enddo
-      if ( icon(9) < 0) then
-          write (6,568) icovfmt
- 568      format (1x, 'COVREAD flags: ', 5i6)
+      if (icon(9) < 0) then
+        write (6,568) icovfmt
+ 568    format (1x, 'COVREAD flags: ', 5i6)
       endif
-      if ( icovfmt .eq. 0) then
+      if (icovfmt .eq. 0) then
           iself = 0
-          ifmt = lnblnk(fmt)
-          name = optical(1:mblank2)//ldir2(1:lblank2)//fmt(1:ifmt)
-          lend = lnblnk(name)
-          write (nt6,8726) name(1:lend)
+          name = trim(optical)//trim(fmt)
+          write (nt6,8726) trim(name)
  8726     format (1x, 'covread open file = ', a90)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+          open(unit=nfile, form='formatted', file=trim(name),
      2         status='old', iostat=ilook, err=1909)
 c
 c         assume low to high energy in MeV
-c
           read(nfile,*) (covreng(jk), covrrsp1(jk), jk=1,640)
 c
 c         check energy grid
-          if ( covreng(1) .ne. 0.10250e-09 .or.
-     1         covreng(2) .ne. 0.10750E-09 .or.
-     2         covreng(640) .ne. 0.19950E-02 ) then
-                write (nt6,9023) covreng(1), covreng(2), covreng(640)
- 9023           format (1x, 'Energy grid error in covread ', 3g14.7)
-                stop 'CORREAD eng grid'
+          if (covreng(1) .ne. 0.10250e-09 .or.
+     1        covreng(2) .ne. 0.10750E-09 .or.
+     2        covreng(640) .ne. 0.19950E-02 ) then
+            write (nt6,9023) covreng(1), covreng(2), covreng(640)
+ 9023       format (1x, 'Energy grid error in covread ', 3g14.7)
+            stop 'CORREAD eng grid'
           endif
 c
 c         move data to output arrays
@@ -241,43 +197,27 @@ c
           enddo
 c
 c         fill-in default covariance array
-c
-          do jk1=1,icoveng
-             do jk2 = 1,icoveng
-                 corr(jk1,jk2) = 0.0
-             enddo
-          enddo
+          corr(:,:) = 0.0
           do jk1 = 1,icoveng
-             corr(jk1,jk1) = 1.0
+            corr(jk1,jk1) = 1.0
           enddo
 c
 c         fill-in default std. dev. array
-c
-          do jk=1,770
-             stddev1(jk) = 0.0
-             stddev2(jk) = 0.0
-          enddo
+          stddev1(:) = 0.0
+          stddev2(:) = 0.0
 c
 c         create covariance array
-c
-          do jk1=1,icoveng
-             do jk2 = 1,icoveng
-                 covr(jk1,jk2) = 0.0
-             enddo
-          enddo
-c
+          covr(:,:) = 0.0
+
       elseif ( icovfmt .eq. 1) then
 c
 c        read COVFIL output file
 c
 c        check for covariance data
          nfile = 38
-         name = optical(1:mblank2)//ldir4(1:lblank4)//
-     1          fmt(1:lfmt)//'.out'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
-     2         status='old', iostat=ilook, err=1909)
+         name = trim(optical)//trim(ldir4)//trim(fmt)//'.out'
+         open(unit=nfile, form='formatted', file=trim(name),
+     2        status='old', iostat=ilook, err=1909)
          read (nfile, 1923) dummy
          read (nfile, 1923) dummy
          read (nfile, 1923) dummy
@@ -415,37 +355,30 @@ c                      stop 'CORR ERROR 1'
             enddo
          enddo
          close (unit=nfile)
-      elseif ( icovfmt .eq. 2) then
+      elseif (icovfmt .eq. 2) then
 c
 c        read in correlation coefficients from lsl format and convert
 c        to covariance format.
 c
-c         nin = 641
-c         mpl1 = nin
 c        check for covariance data
          nfile = 38
          iself = 0
-         name = optical(1:mblank2)//ldir3(1:lblank3)//
-     1          fmt(1:lfmt)//'.lsl'
-         lend = lnblnk(name)
-         if ( icon(9) < -1) then
-            write (6,3651) mblank2, lblank3, lfmt,
-     1          optical(1:mblank2), ldir3(1:lblank3),
-     1          fmt(1:lfmt)
+         name = trim(optical)//trim(ldir3)//trim(fmt)//'.lsl'
+         if (icon(9) < -1) then
+            write (6,3651) len_trim(optical), len_trim(ldir3),
+     &                     len_trim(fmt), trim(optical), trim(ldir3),
+     &                     trim(fmt)
  3651       format (1x, 'icovfmt=2 check ', 3i5,/, (5x, a))
          endif
-c
-c         over_ride = "G:\Projects\Manipulate-2010\snl-work\..\" //
+
+c         name = "G:\Projects\Manipulate-2010\snl-work\..\" //
 c     &          "..\NJOY-2012\correlation\" //
 c     &          "ni58_IRDF2002_final_Irdf2002p.dat_103_cov_tpl.lsl"
-c         name = over_ride
-         lend = lnblnk(name)
 c
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+          open(unit=nfile, form='formatted', file=trim(name),
      2         status='old', iostat=ilook, err=1909)
          if ( icon(9) <= -1 ) then
-            write (6,5449) lend, name(1:lend)
+            write (6,5449) len_trim(name), trim(name)
  5449       format (1x, 'LSL file: ', i5, 1x, a   )
          endif
          read (nfile,5) alf
@@ -851,8 +784,6 @@ c           write out a copy of a proper lsl-format covariance matrix
      &                  jk2 = jk1, icovreng)
  6990          format((1x,8(1pe12.5,1x)))
 16990          format((1x,5(1pe12.5,1x)))
- 7901          format (2x, g14.7, 2x, g14.7, 2x, g14.7, 2x,
-     &              g14.7, 2x, g14.7, 2x, g14.7, 2x, g14.7)
 17901          format (2x, g14.7, 2x, g14.7, 2x, g14.7, 2x,
      &              g14.7, 2x, g14.7)
             enddo
@@ -906,11 +837,8 @@ c
 c        read manipulate snlcov  file
 c
          nfile = 38
-         name = optical(1:mblank2)//jdir(1:jblank2)//
-     1          'covar/'//fmt(1:lfmt)//'.snlcov'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+         name = trim(optical)//'covar/'//trim(fmt)//'.snlcov'
+          open(unit=nfile, form='formatted', file=trim(name),
      2         status='unknown', iostat=ilook, err=1909)
 c        read snlcov type file
          read (nfile,8011) icovreng
@@ -944,23 +872,18 @@ c
          read (nfile,8012) ((corr(jk1,jk2), jk1=1,icovreng),
      1         jk2=1,icovreng)
          close (unit=nfile)
- 8934        format (1x, 'No covariance data in COVREAD ')
+!8934        format (1x, 'No covariance data in COVREAD ')
       elseif ( icovfmt .eq. 5) then
 c
 c        read in correlation coefficients from lsl format and convert
 c        to covariance format.
 c          ----- spectrum input format ---
 c
-c         nin = 641
-c         mpl1 = nin
 c        check for covariance data
          nfile = 38
          iself = 0
-         name = optical(1:mblank2)//ldir3(1:lblank3)//
-     1          fmt(1:lfmt)//'.lsl'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+         name = trim(optical)//trim(ldir3)//trim(fmt)//'.lsl'
+          open(unit=nfile, form='formatted', file=trim(name),
      2         status='old', iostat=ilook, err=1909)
          read (nfile,5) alf
          read (nfile,5) alf
@@ -1063,11 +986,8 @@ c
 c        check for covariance data
          nfile = 38
          iself = 0
-         name = optical(1:mblank2)//ldir3(1:lblank3)//
-     1          fmt(1:lfmt)//'.endf'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+         name = trim(optical)//trim(ldir3)//trim(fmt)//'.endf'
+          open(unit=nfile, form='formatted', file=trim(name),
      2         status='old', iostat=ilook, err=1909)
          read (nfile,5) alf
          read (nfile,*) icovreng1
@@ -1225,7 +1145,6 @@ c
          end do
  8990    format((1x,8(1pe10.3,1x)))
  7454    format((1x,1p8e10.3))
- 7990    format((1x,15(i4,1x)))
          close (unit=78)
       elseif ( icovfmt .eq. 7) then
 
@@ -1242,18 +1161,17 @@ c
          iselect_material = -1
          fraction = 1.0
          leopt = lnblnk(xoptical)
-         jblank2 = lnblnk(jdir)
-         file_name = fmt(1:lfmt)//'.ref-list'
+         file_name = trim(fmt)//'.ref-list'
          ireverse= iselect_material
          if ( iselect_material.le.0 ) iselect_material = 1
          call prune (file_name, ilead, itrail, length, nchar)
          ierr = 0
          iflast = lnblnk(file_name)
-         new_file_name = xoptical(1:leopt)//jdir(1:jblank2)//
+         new_file_name = xoptical(1:leopt)//trim(jdir)//
      1           file_name(1:iflast)
          if ( icov(1) .eq. 4) then
 c             spectrum NOT response here
-              new_file_name = xoptical(1:leopt)//kdir(1:kblank2)//
+              new_file_name = xoptical(1:leopt)//trim(kdir)//
      1            file_name(1:iflast)
          else
               stop 'ERR 3, icov invalid'
@@ -1280,11 +1198,8 @@ c        read-in PDF data
 c
          nfile = 38
          iself = 0
-         name = optical(1:mblank2)//ldir3(1:lblank3)//
-     1          fmt(1:lfmt)//'.pdf'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
+         name = trim(optical)//trim(ldir3)//trim(fmt)//'.pdf'
+          open(unit=nfile, form='formatted',file=trim(name),
      2         status='old', iostat=ilook, err=1909)
          read (nfile,1923) dummy
          read (nfile,*) ipdf
@@ -1375,12 +1290,9 @@ c        read fcov output file
 c
 c        check for covariance data
          nfile = 38
-         name = optical(1:mblank2)//ldir5(1:lblank5)//
-     1          fmt(1:lfmt)//'.lib'
-         lend = lnblnk(name)
-          open(unit=nfile, form='formatted',
-     1         file=name(1:lend),
-     2         status='old', iostat=ilook, err=1909)
+         name = trim(optical)//trim(ldir5)//trim(fmt)//'.lib'
+         open(unit=nfile, form='formatted', file=trim(name),
+     2        status='old', iostat=ilook, err=1909)
          read (nfile, 1923) dummy
          read (nfile, 1923) dummy
          read (nfile, 1923) dummy
@@ -1396,7 +1308,6 @@ c        check for covariance data
          icovreng = icovreng1 - 1
 c        energy grid
 c        data stored low to high
- 4139    format (5g14.7)
          read (nfile,*) (covreng(jk),jk=1,icovreng1)
 c         do jk1=1,icovreng1
 c           covreng(jk1) = covreng(jk1)*1.e6
@@ -1428,7 +1339,6 @@ c        cross section (b) - dummy entries
          enddo
 c        relative standard deviation
          read (nfile,*) (stdrdev1(jk), jk=1,icovreng)
- 3379    format (5g14.7)
          do jk=1,icovreng
             stdrdev1(jk) = stdrdev2(jk)
          enddo
@@ -1664,8 +1574,8 @@ c
 c             inhibit normalization - because this is a response
 c
                write (6, 3489) xsum, icon(6)
- 3489          format (1x, 'Renormalization in covread inhibited due to',
-     &              ' icon(6) setting ', g14.7, 2x, i5)
+ 3489          format (1x, 'Renormalization in covread inhibited due ',
+     &                 'to icon(6) setting ', g14.7, 2x, i5)
                xsum = 1.0
 c
              endif
@@ -1694,17 +1604,16 @@ c
                 fraction = 1.0
                  file_name = fmt3
                 leopt = lnblnk(xoptical)
-                jblank2 = lnblnk(jdir)
                ireverse= iselect_material
                  if ( iselect_material.le.0 ) iselect_material = 1
                call prune (file_name, ilead, itrail, length, nchar)
                 ierr = 0
                 iflast = lnblnk(file_name)
-                new_file_name = xoptical(1:leopt)//jdir(1:jblank2)//
+                new_file_name = xoptical(1:leopt)//trim(jdir)//
      1           file_name(1:iflast)
                 if ( icov(1) .eq. 4) then
 c                  spectrum over-ride NOT response here
-                   new_file_name = xoptical(1:leopt)//kdir(1:kblank2)//
+                   new_file_name = xoptical(1:leopt)//trim(kdir)//
      1              file_name(1:iflast)
                 endif
                 if ( icov(1) .eq. 4) then
@@ -1828,13 +1737,12 @@ c               do covrsp1a
                 fraction = 1.0
                  file_name = fmt3
                 leopt = lnblnk(xoptical)
-                jblank2 = lnblnk(jdir)
                ireverse= iselect_material
                  if ( iselect_material.le.0 ) iselect_material = 1
                call prune (file_name, ilead, itrail, length, nchar)
                 ierr = 0
                 iflast = lnblnk(file_name)
-                new_file_name = xoptical(1:leopt)//jdir(1:jblank2)//
+                new_file_name = xoptical(1:leopt)//trim(jdir)//
      1           file_name(1:iflast)
                 if ( icon(9) < 0) then
                    ilocate = 1
@@ -1920,13 +1828,12 @@ c               do response covrsp2
                 fraction = 1.0
                  file_name = fmt3
                 leopt = lnblnk(xoptical)
-                jblank2 = lnblnk(jdir)
                ireverse= iselect_material
                  if ( iselect_material.le.0 ) iselect_material = 1
                call prune (file_name, ilead, itrail, length, nchar)
                 ierr = 0
                 iflast = lnblnk(file_name)
-                new_file_name = xoptical(1:leopt)//jdir(1:jblank2)//
+                new_file_name = xoptical(1:leopt)//trim(jdir)//
      1           file_name(1:iflast)
                 if ( icon(9) < 0) then
                    ilocate = 2
@@ -2162,25 +2069,20 @@ c
          endif
          if ( icov(1) .ne. 3) then
             nfile = 38
-            ifmt = lnblnk(fmt)
-            jblank2 = lnblnk(jdir)
-c            name = optical(1:mblank2)//jdir(1:jblank2)//
-c     1             'covar/'//job(1:jblank3)//'.snlcov'
-c            name = optical(1:mblank2)//jdir(1:jblank2)//
-c     1             'covar/'//fmt(1:ifmt)//'.snlcov'
-            name = optical(1:mblank2)//
-     1             'covar/'//fmt(1:ifmt)//'.snlcov'
-            lend = lnblnk(name)
+c            name = trim(optical)//trim(jdir)//
+c     1             'covar/'//trim(job)//'.snlcov'
+c            name = trim(optical)//trim(jdir)//
+c     1             'covar/'//trim(fmt)//'.snlcov'
+            name = trim(optical)//'covar/'//trim(fmt)//'.snlcov'
             if ( icon(9) < 0) then
-              write (6,4189) name(1:lend), optical(1:mblank2),
-     &          jdir(1:jblank2), fmt(1:ifmt)
+              write (6,4189) trim(name), trim(optical),
+     &          trim(jdir), trim(fmt)
  4189         format (1x, 'snlcov file write: name = ', a,/,
      &                1x, '                optical = ', a,/,
      &                1x, '                   jdir = ', a,/,
      &                1x, '                    fmt = ', a,/)
             endif
-             open(unit=nfile, form='formatted',
-     1            file=name(1:lend),
+             open(unit=nfile, form='formatted', file=trim(name),
      2            status='unknown', iostat=ilook, err=1909)
 c           write snlcov type file
             write (nfile,8011) icoveng
@@ -2226,7 +2128,7 @@ c
       else
            write (nt6, 7881) icode
 7881      format (1x, 'ICODE format not defined = ', i5)
- 7801      format (1x, 'COVREAD format not defined = ', i5)
+!7801      format (1x, 'COVREAD format not defined = ', i5)
            stop 'COVREAD-1'
       endif
       if ( icon(9) .le. 0) then
@@ -2237,11 +2139,13 @@ c
           write (6,6711)
  6711     format (1x, 'EXIT COVREAD ')
       endif
+
       return
+
 1909  continue
-      length = len(fmt)
-      write (nt6,910) ilook, name(1:lend)
+      write (nt6,910) ilook, trim(name)
 910   format (1x, '*** covread error ', i5,
-     1    ' opening file ', a)
+     1        ' opening file ', a)
       stop 'covar read error'
-      end
+
+      end subroutine covread
