@@ -363,11 +363,10 @@ c
 c        check for covariance data
          nfile = 38
          iself = 0
-         name = trim(optical)//trim(ldir3)//trim(fmt)//'.lsl'
+         name = trim(optical)//"response/lsl/"//trim(fmt)//'.lsl'
          if (icon(9) < -1) then
-            write (6,3651) len_trim(optical), len_trim(ldir3),
-     &                     len_trim(fmt), trim(optical), trim(ldir3),
-     &                     trim(fmt)
+            write (6,3651) len_trim(optical), len_trim(fmt),
+     &                     trim(optical), trim(fmt)
  3651       format (1x, 'icovfmt=2 check ', 3i5,/, (5x, a))
          endif
 
@@ -722,10 +721,10 @@ c
             ineg = ineg + 1
            endif
          enddo
-         if ( icon(9) < 2) then
+         !if ( icon(9) < 2) then
             write (6,102) ipass, ineg, ( eigen_save(jk), jk=1,
      $               icovreng )
-         endif
+         !endif
  102     format (/,1x, 'Eigenvalue passes = ', i5, ' with ', i5,
      &                 ' final negative entries ',/,
      &             1x, "Final Eigenvalues: ", 5g14.7,/,
@@ -873,6 +872,7 @@ c
      1         jk2=1,icovreng)
          close (unit=nfile)
 !8934        format (1x, 'No covariance data in COVREAD ')
+
       elseif ( icovfmt .eq. 5) then
 c
 c        read in correlation coefficients from lsl format and convert
