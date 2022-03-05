@@ -162,7 +162,7 @@ c      ************************************************
 c
        external stat
        integer iresp_call
-       character*80 title
+       character*180 title
        character*80  label,  mcnploc
        character*250 file_name, file_name2
        character*3 number_file
@@ -215,7 +215,7 @@ c      character*55 outfile
        data labtdam /'total kerma', 'kinematic limit',
      1           'displacement damage' /
        data icurve /1,13,4,2,3,5,6,7,8,9,10,11,12,14,15/
- 1     format (a80)
+ 1     format (a180)
  5434  continue
 c       stop 'ok'
        imat2 = 1
@@ -278,7 +278,7 @@ cje
  1023  continue
        write (nt6,2301) title
 2301   format (1h1, /,/,5x, 'MANIPULATE Version 2020',/, 5x, 
-     1         'title: ', a80,/,/)
+     1         'title: ', a,/,/)
        read (nt5,102,end=999) (icon(jk),jk=1,40)
        if ( icon(14) .eq. 1) then 
 c            read (nt5,345,end=304) title

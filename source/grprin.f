@@ -77,7 +77,7 @@ c     redirection for NJOY97
                idir = njoy2016_dir(1:le2016)//'../NJOY2016/groupr/'
            endif
       endif
-      if ( icon(9) .lt. 1) then 
+      if ( icon(9) .lt. 0) then 
          iposition = 1
          write (6,5823) iposition
  5823    format (1x, '*** GRPRIN check ', i5)
@@ -100,15 +100,22 @@ c     1   //infile(1:iblank)
      &            "ASTM_b10_ASTM_1018_107_xsec_tpl"
       iend1 = lnblnk(temp_file1)
       iend2 = lnblnk(temp_file2)
+c      write (*,9012) optical(1:leopt)//idir(1:iblank2)
+c     1   //infile(1:iblank), temp_file1(1:iend1),
+c     1   temp_file2(1:iend2),
+c     &   optical(1:leopt), idir(1:iblank2), 
+c     &   infile(1:iblank)
+c9012  format (1x, 'opening file: =', a,'=',/,
+c     &        1x, '  temp_file1: =', a,'=',/,
+c     &        1x, '  temp_file2: =', a,'=',/,
+c     &        1x, '     optical: =', a,'=',/,
+c     &        1x, '        idir: =', a,'=',/,
+c     &        1x, '      infile: =', a,'=',/)
       write (*,9012) optical(1:leopt)//idir(1:iblank2)
-     1   //infile(1:iblank), temp_file1(1:iend1),
-     1   temp_file2(1:iend2),
-     &   optical(1:leopt), idir(1:iblank2), 
+     1   //infile(1:iblank),
+     &   idir(1:iblank2), 
      &   infile(1:iblank)
 9012  format (1x, 'opening file: =', a,'=',/,
-     &        1x, '  temp_file1: =', a,'=',/,
-     &        1x, '  temp_file2: =', a,'=',/,
-     &        1x, '     optical: =', a,'=',/,
      &        1x, '        idir: =', a,'=',/,
      &        1x, '      infile: =', a,'=',/)
 c      write (6,7846)
