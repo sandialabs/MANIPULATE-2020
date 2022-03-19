@@ -1,0 +1,1 @@
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/../bin/unix/manipulate

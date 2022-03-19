@@ -73,11 +73,9 @@ c       special re-direction for pka groupr files
 
       temp_file = trim(optical)//trim(idir)//trim(infile)
       write (*,9012) trim(optical)//trim(idir) //trim(infile),
-     1               trim(temp_file),trim(optical),trim(idir),
+     1               trim(idir),
      1               trim(infile)
 9012  format (1x, 'opening file: =', a,'=',/,
-     &        1x, '  temp_file: =', a,'=',/,
-     &        1x, '     optical: =', a,'=',/,
      &        1x, '        idir: =', a,'=',/,
      &        1x, '      infile: =', a,'=',/)
       open(unit=7,file=trim(temp_file),status='unknown')

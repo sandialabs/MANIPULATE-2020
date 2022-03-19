@@ -1,0 +1,23 @@
+NJOY Process Conversion, example_cross_section_covariance_verification: Cross section covariance verification
+14 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 5 0 0
+ 1 1.0   '../output/example_Ag109g_IRDFF-II_cor_plot_interface.lsl'
+ 2 'Ag109_ng_IRDFF-II_cor'        0 1.0
+14 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 5 0 0
+ 1 1.0   '../output/example_Co59g_IRDFF-II_cor_plot_interface.lsl'
+ 2 'Co59_ng_IRDFF-II_cor'        0 1.0
+14 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 5 0 0
+ 1 1.0   '../output/example_S32p_IRDFF-II_cor_plot_interface.lsl'
+ 2 'S32_np_IRDFF-II_cor'        0 1.0
+ 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+-----------
+
+
+ Note: requires that the NJOY-2016 calculation has processed the covariance files,
+       Ag109_ng_IRDFF-II.cor, Co59_ng_IRDFF-II_cor, and S32_np_IRDFF-II_cor, 
+       have been run and the lsl-format covariance files are present on this 
+       computer and in the NJOY2016/correlation
+
+

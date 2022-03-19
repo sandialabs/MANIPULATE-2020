@@ -453,7 +453,7 @@ c
     5    format(80a1)
          read (nfile,*) icovreng1
          icovreng = icovreng - 1
-         if ( icon(9) <= 0 ) then
+         if ( icon(9) < 0 ) then
             write (6,5639) icovreng1
  5639       format (1x, 'ICOVRENG1: ', i9,/,
      &             (1x, '        ', 6g14.7)   )
@@ -526,7 +526,7 @@ c
 c        If LSL-format spectrum - these are number fractions
 c        ensure they are normalized to unity
 c
-         if ( icon(9) <= 0) then
+         if ( icon(9) < 0) then
             write (6,5619) icov(1), icovreng, nenergy
  5619       format (1x, 'COVREAD icov(1) check: ', 5i6)
          endif
@@ -1498,7 +1498,7 @@ c
  1457       format (1x, 'Illegal icov field ', i5)
             stop 'ICOV-3'
        endif
-       if ( icon(9) <= 0) then
+       if ( icon(9) < 0) then
             write (6,7869) icode, icoveng, icovreng, nenergy
  7869       format (1x, 'COVREAD before default fill ', 5i10)
        endif
@@ -2229,11 +2229,11 @@ c
  7801      format (1x, 'COVREAD format not defined = ', i5)
            stop 'COVREAD-1'
       endif
-      if ( icon(9) .le. 0) then
+      if ( icon(9) .lt. 0) then
          write (6,6614) (covrsp1(jr), jr=1,icoveng)
  6614    format (1x, 'covread exit: ', 5g14.7)
       endif
-      if (icon(9) <= 0) then
+      if (icon(9) < 0) then
           write (6,6711)
  6711     format (1x, 'EXIT COVREAD ')
       endif

@@ -1,0 +1,7 @@
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/manipulate.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/edit_cache.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/rebuild_cache.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/list_install_components.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/install.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/install/local.dir
+/mnt/e/sync_sandialabs/MANIPULATE-2020/source/build/CMakeFiles/install/strip.dir
