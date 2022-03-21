@@ -1,0 +1,5 @@
+      character*106 optical
+      character*145 idir, jdir, kdir
+      character*1   slash
+      character*250 mcnploc
+      common /location/ optical, idir, jdir, kdir, slash, mcnploc
