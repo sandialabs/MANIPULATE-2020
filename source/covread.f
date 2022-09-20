@@ -363,17 +363,13 @@ c
 c        check for covariance data
          nfile = 38
          iself = 0
-         name = trim(optical)//"response/lsl/"//trim(fmt)//'.lsl'
+         name = trim(optical)//trim(ldir3)//trim(fmt)//'.lsl'
          if (icon(9) < -1) then
             write (6,3651) len_trim(optical), len_trim(fmt),
      &                     trim(optical), trim(fmt)
  3651       format (1x, 'icovfmt=2 check ', 3i5,/, (5x, a))
          endif
 
-c         name = "G:\Projects\Manipulate-2010\snl-work\..\" //
-c     &          "..\NJOY-2012\correlation\" //
-c     &          "ni58_IRDF2002_final_Irdf2002p.dat_103_cov_tpl.lsl"
-c
           open(unit=nfile, form='formatted', file=trim(name),
      2         status='old', iostat=ilook, err=1909)
          if ( icon(9) <= -1 ) then
