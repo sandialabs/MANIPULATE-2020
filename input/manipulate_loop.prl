@@ -3,186 +3,128 @@
 # usage: loop.prl {template} {master} {action}
 # loop program execution
 #
-#
-# check number of input arguments
-#
-if( $#ARGV > 2 || $#ARGV < 2 ) { 
-       print "Error: manipulate_loop called with invalid number of arguments, $#ARGV \n";
-       print "Usage: manipulate_loop.prl {template} {master} {action} \n";
-       die "manipulate_loop script aborted\n";
+use Cwd qw(cwd);
+use File::Copy;
+use File::Basename qw(dirname);
+
+#check number of input arguments
+if( $#ARGV > 2 || $#ARGV < 2 ) {
+  print "Error: manipulate_loop called with invalid number of arguments, $#ARGV \n";
+  print "Usage: manipulate_loop.prl {template} {master} {action} \n";
+  print "Try again \n";
+  die "manipulate_loop script aborted\n";
 }
-      use Env;
-      $system = $ENV{ 'SYSTEMTYPE' };
-      require "ctime.pl";
 
-      if ( $system eq "unix") {
-         require "getcwd.pl";
+#Get operating system:
+if ("$^O" eq "msys" or "$^O" eq "MSWin32") {
+  $system = "win";
+}
+else {
+  $system = "unix";
+}
+$ENV{ 'os' } = $system;
 
-         $pwd        = getcwd();
-         $user       = `whoami`;
-         $opsys      = "UNIX";
-         $type       = `uname -pris`;
-         $machine    = `uname -n`;
-         $rm         = "rm -f";
-         $sep        = "/";
-         $cpx        = "cp -f -p";        
-         $mv         = "mv";
-#         $executable = "Manipulate-2020.exe";
+#Set some environmental variables depending upon the type of system
+if ($system eq "unix") {
+  $pwd        = cwd();
+  $user       = `whoami`;
+  $opsys      = "UNIX";
+  $type       = `uname -pris`;
+  $machine    = `uname -n`;
+  $rm         = "rm -f";
+  $sep        = "/";
+  $cpx        = "cp -f -p";
+  $mv         = "mv";
+  $executable = "./manipulate";
+  $lsx        = "ls -al"
 
-         chomp($pwd);
-         chomp($user);
-         chomp($machine);
-         chomp($type);
+  chomp($pwd);
+  chomp($user);
+  chomp($opsys);
+  chomp($machine);
+  chomp($type);
+}
+elsif ( $system eq "win") {
+  $pwd        = Win32::GetCwd();
+  $user       = Win32::LoginName();
+  @os         = qw(Wins, Win95, WinNT);
+  $opsys      = "WIN32";
+  $type       = "@os[$id] $major\.$minor $string (Build $build)";
+  $machine    = Win32::NodeName;
+  $rm         = "del /F";
+  $sep        = "\\";
+  $cpx        = "copy";
+  $mv         = "move";
+  $executable = "manipulate.exe";
+  $lsx        = "dir"
+}
+else {
+  print "Error in system variable = $system \n";
+  die "MANIPULATE-2020 script aborted\n";
+}
 
-      }  elsif ( $system eq "dos") {
+#Get location/paths
+$base = $pwd.$sep."..".$sep;
+$root     = $base."..".$sep;
+$bin_dir     = $base."bin".$sep;
+$input_dir   = $root."input".$sep;
+$output_dir  = $root."output".$sep;
+$xsec    = $root."xsec";
+$mst_dir = $base."library".$sep."master".$sep;
+$tpl_dir = $base."library".$sep."template".$sep;
+$act_dir = $base."library".$sep."action".$sep;
 
-         $pwd        = Win32::GetCwd();
-         $user       = Win32::LoginName();
-         @os         = qw(Wins, Win95, WinNT);
-         $opsys      = "WIN32";
-         $type       = "@os[$id] $major\.$minor $string (Build $build)";
-         $machine    = Win32::NodeName;
-         $date       = &ctime(time);
-         chomp($date);
+#form work_dir from snl-work and username if unix, else use snl-work
+if ($system eq "unix") {
+  $work_dir = $base."snl-work-".substr($user,0,3);
+} else {
+  $work_dir = $base."snl-work";
+}
 
-         $rm         = "del /F";
-#         $rm         = "rm -f";
-         $sep        = "\\";
-         $cpx        = "copy";     
-         $mv         = "move";
-#         $executable = "manipulate-2020.exe";
+#Get date and time
+$date = localtime();
+chomp($date);
 
-      }  else {
+#Process arguments
+$ar = 0;
+$nar = 3;
+$template = $ARGV[$ar];
+++$ar;
+$master = $ARGV[$ar];
+++$ar;
+$action = $ARGV[$ar];
 
-         print "Error in system variable = $system \n";
-         die "manipulate_loop script aborted\n";
-      }
+#Print preamble
+print "\n";
+print "\n\n\n\n";
+print "                              \n";
+print "  manipulate_loop: SNL version 2.0 ", "\n";
+print "  script            = ", $0, "\n";
+print "  Op. Sys           = $opsys \n";
+print "  System type       = $type \n";
+print "  User              = $user \n";
+print "  Machine           = $machine \n";
+print "  Working directory = $work_dir \n";
+print "  Current date      = $date \n";
+print "  Xsec directory    = $xsec \n \n";
+print "  Template filename = ", $template,  "\n";
+print "  Master filename   = ", $master,  "\n";
+print "  Action filename   = ", $action,  "\n \n \n";
 
-#      if ( $system eq "unix") {
-#         $dir     = getcwd();
-#         $rundate = &ctime(time);
-#         chop($rundate);
-#         chop($rundate);
-#      }  elsif ( $system eq "dos") {
-#         $dir = Win32::GetCwd();
-#         $rundate = &ctime(time);
-#         $executable = "ls";
-#      }  else {
-#         print "Error in system variable = $system \n";
-#         exit 9;
-#      }
-
-#      $root = $ENV{ 'LOOPROOT' };
-#      $xsec = $ENV{ 'XSECROOT' };
-#      $type = "unknown";
-#      $deb = "";
-#      print "root = $root \n";
-
-#     Note: this definition of root is obsolete, and used only for 
-#     xsec
-#      $root = "..".$sep."..".$sep;
-      $root     = "f:".$sep."sync_Projects-Git".$sep;
-#      $base        = "..".$sep;
-      $base     = "f:".$sep."sync_Projects-Git".$sep."Manipulate-2020".$sep;
-      $xscbase     = "f:".$sep."sync_Projects-Git".$sep."xsec".$sep;
-#      $spcbase = "..".$sep;
-      $spcbase     = "f:".$sep."sync_Projects-Git".$sep;
-      $bin_dir     = $base."bin";
-      $input_dir   = $spcbase."input";
-      $output_dir  = $spcbase."output";
-      $punch_dir   = $spcbase."output".$sep."punch";
-      $library_dir = $base."library";
-      $correlation_dir = $base."correlation";
-      $src_dir = $base."source";
-      $xsec    = $root."xsec";
-
-#
-#     form work_dir from snl-work and username if unix, else use snl-work
-#
-      if ( $system eq "unix") {
-           $work_dir = $base."snl-work-".substr($user,0,3);
-      } else {
-        $work_dir = $base."snl-work";
-      }
-
-      $date = &ctime(time);
-      $ar = 0;
-      $nar = 3;
-      $template = $ARGV[$ar];
-      ++$ar;
-      $master = $ARGV[$ar];
-      ++$ar;
-      $action = $ARGV[$ar];
-      $eol = "\n";
-
-#
-#   export job and type for use in the Manipulate-2020 executable
-#
-    $ENV{MANIPULATE_JOB} = $job;
-
-#      if ( $system eq "unix") {
-#         $base = "${root}/";
-#      }  elsif ( $system eq "dos") {
-#         $base = "${root}${sep}"; 
-#      }
-# form work_dir from snl-work and username if unix, else use snl-work
-#      if ( $system eq "unix") {
-#           $work_dir = $base."snl-work-".substr($user,0,3);
-#      } else {
-#        $work_dir = $base."snl-work-cdp";
-#      }
-#      print "root = $root \n";
-#      print "base = $base \n";
-      $mst_dir = $base."library".${sep}."master".${sep}; 
-      $tpl_dir = $base."library".${sep}."template".${sep}; 
-      $act_dir = $base."library".${sep}."action".${sep}; 
-      $output_dir = $base."output";
-      print "\n";
-      print "\n\n\n\n";
-      print "                              \n";
-      print "  manipulate_loop: SNL version 2.0 ", "\n";
-      print "  script            = ", $0, "\n";
-
-      print "  Op. Sys           = $opsys \n";
-      print "  System type       = $type \n";
-#      print "  Run type          = $run_type \n";
-      print "  User              = $user \n";
-      print "  Machine           = $machine \n";
-      print "  Working directory = $work_dir \n";
-      print "  Current date      = $date \n";
-#      print "  Job name          = $job \n ";
-      print "  Xsec directory    = $xsec \n \n";
-      print "  Template filename = ", $template,  "\n";
-      print "  Master filename   = ", $master,  "\n";
-      print "  Action filename   = ", $action,  "\n \n \n";
-#
-      $numarg = $#ARGV + 1;
-      if  ($numarg != $nar ) {
-          print "\n\n   illegal number of arguments, arguments = $numarg  \n";
-          print "   usage: $0 {template} {master} {action} \n";
-          die "   try again $!\n";
-      }
-#      exit -9;
-      $bin_dir = $base."bin";
-#
-#
 # with user working dir, need to test for existence
-#
-      if (-d $work_dir) {
-
-          chdir ($work_dir);
-
-      } else {
-
-        if ( mkdir ($work_dir,0777) ) {
-            chdir ($work_dir);
-        } else {
-          print "Error - ${work_dir} could not be created, using snl-work\n";
-          $work_dir = $base.$sep."snl-work";
-          chdir ($work_dir);
-        }
-
-      }
+if (-d $work_dir) {
+  chdir ($work_dir);
+}
+else {
+  if (mkdir ($work_dir,0777) ) {
+    chdir ($work_dir);
+  }
+  else {
+    print "Error - ${work_dir} could not be created, using snl-work\n";
+    $work_dir = $base.$sep."snl-work";
+    chdir ($work_dir);
+  }
+}
 #
 #   accommodate systems without system calls for the following info
 #
@@ -190,371 +132,343 @@ if( $#ARGV > 2 || $#ARGV < 2 ) {
 #
 #      if( -e "$executable" ) {
 #        system("$rm $executable");
-#      }    
-#      system("$cpx $bin_dir${sep}$executable $executable");  
+#      }
+#      system("$cpx $bin_dir$executable $executable");
 #
-#     write user_name
-#
-      if( -e "username" ) {
-        system("$rm username");
-      }
-      $filename = "username";
-      open(envout,">$filename") || die "Cannot open file $filename: $!\n";
-      $record = "$user \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write run date.  call file date.tmp to prevent collisions with
-#     the date command
-#
-      if( -e "date.tmp" ) {
-         system("$rm date.tmp");
-      }
-      $filename = "date.tmp";
-      open(envout,">$filename") || die "Cannot open file $filename: $!\n";
-      $record = "$date \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write operating system
-#
-      if( -e "opsys" ) {
-        system("$rm opsys");
-      }
-      $filename = "opsys";
-      open(envout,">$filename") || die "Cannot open file $filename: $!\n";
-      $record = "$opsys \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write working directory
-#
-      if( -e "getcwd" ) {
-        system("$rm getcwd");
-      }
-      $filename = "getcwd";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$work_dir \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
-#
-#     write machine name
-#
-      if( -e "machine" ) {
-        system("$rm machine");
-      }
-      $filename = "machine";
-      open(envout,">$filename") || die "can;t open file $filename: $!\n";
-      $record = "$machine \n";
-      $LEN = length($record);
-      $wr1 = syswrite(envout,$record,$LEN,0);
-            die "System write error: $!\n"
-                  unless defined $wr1;
-      close (envout);
 
-      chmod (0777, "machine", "username", "opsys", "date.tmp", "getcwd" );
-#
-#     cleanup files
-#
-      if( -e "dummy" ) {
-        system("$rm dummy");
-      }
-#
-#  clean up working files
-#
-      while ( <*.pt>  ) {
-        system("$rm $_");
-      }
-      while ( <template*>  ) {
-        system("$rm $_");
-      }
-      while ( <loop*>  ) {
-        system("$rm $_");
-      }
-      while ( <corig>  ) {
-        system("$rm $_");
-      }
-      while ( <master.out>  ) {
-        system("$rm $_");
-      }
-     $master_open = "master.out";
-     open(MST_OUT, ">$master_open") 
-           || die "\n\n Can't open $master_open file: $!\n";
+#write user_name to file
+if( -e "username" ) {
+  unlink("username");
+}
+$filename = "username";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$user \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write run date.  call file date.tmp to prevent collisions with the date command
+if( -e "date.tmp" ) {
+  unlink("date.tmp");
+}
+$filename = "date.tmp";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$date \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write operating system
+if( -e "opsys" ) {
+  unlink("opsys");
+}
+$filename = "opsys";
+open(envout,">$filename") || die "can't open file $filename: $!\n";
+$record = "$opsys \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write working directory
+if( -e "getcwd" ) {
+  unlink("getcwd");
+}
+$filename = "getcwd";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$work_dir \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+#write machine name
+if( -e "machine" ) {
+  unlink("machine");
+}
+$filename = "machine";
+open(envout,">$filename") || die "can;t open file $filename: $!\n";
+$record = "$machine \n";
+$LEN = length($record);
+$wr1 = syswrite(envout,$record,$LEN,0);
+      die "System write error: $!\n"
+            unless defined $wr1;
+close (envout);
+
+chmod (0777, "machine", "username", "opsys", "date.tmp", "getcwd" );
+
+#cleanup files
+if( -e "dummy" ) {
+  unlink("dummy");
+}
+
+#clean up working files
+while ( <*.pt>  ) {
+  unlink("$_");
+}
+while ( <template*>  ) {
+  unlink("$_");
+}
+while ( <loop*>  ) {
+  unlink("$_");
+}
+while ( <corig>  ) {
+ unlink("$_");
+}
+while ( <master.out>  ) {
+  unlink("$_");
+}
+
+$master_open = "master.out";
+open(MST_OUT, ">$master_open")
+      || die "\n\n Can't open $master_open file: $!\n";
 #
 #    copy input file to loop input
 #
-#      system("$cpx $input_dir${sep}${job}.inp loop.inp");
+#      system("$cpx $input_dir${job}.inp loop.inp");
 #
 #    Read variables from master list
 #
-     $file_open = "$mst_dir"."$master.mst";
-     $irecord = -1;
-     if (-r $file_open) {
-           open(FIXIN, "<$file_open") 
-                 || die "\n\n Can't open $file_open file: $!\\nn";
-           while ($tail_record=<FIXIN>) {
-                    $tail_out = $tail_record;
-#                    print "Record = $irecord $tail_record ";
-                    ($parm1, $parm2, $parm3, $parm4, $parm5, $parm6, $parm7, $parm8, $parm9, $parm10, $dummy) = 
-                    split(' ', $tail_out, 11 );
-#                   # cards are treated as comments
-                    if ( $parm1 ne "#") {
-                      ++$irecord;
-                      $aparm1[$irecord]=$parm1;
-                      $aparm2[$irecord]=$parm2;
-                      $aparm3[$irecord]=$parm3;
-                      $aparm4[$irecord]=$parm4;
-                      $aparm5[$irecord]=$parm5;
-                      $aparm6[$irecord]=$parm6;
-                      $aparm7[$irecord]=$parm7;
-                      $aparm8[$irecord]=$parm8;
-                      $aparm9[$irecord]=$parm9;
-                    }
-           }
-           close (FIXIN);
-#           print "End of master list \n";
-     } else {
-#          $command = "pwd";
-#          system($command);
-#          $command = "cwd";
-#          system($command);
-          $command = "ls -la";
-          system($command);
-          die ( "\n\n master_list file $file_open does not exist !! \n\n");
-      }
-#    Determine the number of parameters in the problem
-#    TBD
-     print "master is $aparm1[0] with first match = $aparm1[1] \n";
-     if ( $aparm1[0] eq "" )  {
-        $nparm = 0;
-     } elsif ($aparm2[0] eq "") {
-        $nparm = 1;
-     } elsif ($aparm3[0] eq "") {
-        $nparm = 2;
-     } elsif ($aparm4[0] eq "") {
-        $nparm = 3;
-     } elsif ($aparm5[0] eq "") {
-        $nparm = 4;
-     } elsif ($aparm6[0] eq "") {
-        $nparm = 5;
-     } elsif ($aparm7[0] eq "") {
-        $nparm = 6;
-     } elsif ($aparm8[0] eq "") {
-        $nparm = 7;
-     } elsif ($aparm9[0] eq "") {
-        $nparm = 8;
-     } elsif ($aparm10[0] eq "") {
-        $nparm = 9;
-     } else {
-        $nparm = 9;
-        print "Number of variables exceeds maximum, set to 9 \n";
-     }
-#
-#     print "examine nparm = $nparm \n";
-#    Loop over master list and substitute into template file
-#    loop is TBD, start with first real record
-     for ($inst = 1; $inst<$irecord+1; $inst++) {
-#        print "Before edit $nparm parm1 = $parm1 \n";
-#       Load template
-        print "Select template $inst  $aparm7[$inst] \n ";
-        if ( $aparm7[$inst] eq "brd" )  {
-           $command="$cpx $tpl_dir$template.tpl template.orig";
-           system ($command);
-           $command="$cpx $tpl_dir$template.tpl corig";
-           system ($command);
-#           print "brd template selection made \n ";
-        } elsif ($aparm7[$inst] eq "nbrd" ) {
-           $command="$cpx $tpl_dir$template.tpl template.orig";
-           system ($command);
-           $command="$cpx $tpl_dir$template.tpl corig";
-           system ($command);
-#           print "nbrd template selection made \n ";
-        } else {
-           $command="$cpx $tpl_dir$template.tpl template.orig";
-           print "copy template command: $command \n";
-           system ($command);
-           $command="$cpx $tpl_dir$template.tpl corig";
-           system ($command);
-           print "default template selection made \n ";
-        }
-#
-#        print "copy command = $command \n";
+$file_open = $mst_dir.$master.".mst";
+$irecord = -1;
+if (-r $file_open) {
+  open(FIXIN, "<$file_open")
+        || die "\n\n Can't open $file_open file: $!\\nn";
+  while ($tail_record=<FIXIN>) {
+    $tail_out = $tail_record;
+    ($parm1, $parm2, $parm3, $parm4, $parm5, $parm6, $parm7, $parm8, $parm9, $parm10, $dummy) =
+    split(' ', $tail_out, 11 );
+    #cards are treated as comments
+    if ( $parm1 ne "#") {
+      ++$irecord;
+      $aparm1[$irecord]=$parm1;
+      $aparm2[$irecord]=$parm2;
+      $aparm3[$irecord]=$parm3;
+      $aparm4[$irecord]=$parm4;
+      $aparm5[$irecord]=$parm5;
+      $aparm6[$irecord]=$parm6;
+      $aparm7[$irecord]=$parm7;
+      $aparm8[$irecord]=$parm8;
+      $aparm9[$irecord]=$parm9;
+    }
+  }
+  close (FIXIN);
+}
+else {
+  system("$lsx");
+  die ( "\n\n master_list file $file_open does not exist !! \n\n");
+}
+#Determine the number of parameters in the problem
+#TBD
+print "master is $aparm1[0] with first match = $aparm1[1] \n";
+if ( $aparm1[0] eq "" )  {
+  $nparm = 0;
+} elsif ($aparm2[0] eq "") {
+  $nparm = 1;
+} elsif ($aparm3[0] eq "") {
+  $nparm = 2;
+} elsif ($aparm4[0] eq "") {
+  $nparm = 3;
+} elsif ($aparm5[0] eq "") {
+  $nparm = 4;
+} elsif ($aparm6[0] eq "") {
+  $nparm = 5;
+} elsif ($aparm7[0] eq "") {
+  $nparm = 6;
+} elsif ($aparm8[0] eq "") {
+  $nparm = 7;
+} elsif ($aparm9[0] eq "") {
+  $nparm = 8;
+} elsif ($aparm10[0] eq "") {
+  $nparm = 9;
+} else {
+  $nparm = 9;
+  print "Number of variables exceeds maximum, set to 9 \n";
+}
+#Loop over master list and substitute into template file
+#loop is TBD, start with first real record
+for ($inst = 1; $inst<$irecord+1; $inst++) {
+#Load template
+print "Select template $inst  $aparm7[$inst] \n ";
+if ( $aparm7[$inst] eq "brd" )  {
+  $command="$cpx $tpl_dir$template.tpl template.orig";
+  system ($command);
+  $command="$cpx $tpl_dir$template.tpl corig";
+  system ($command);
+  print "brd template selection made \n ";
+} elsif ($aparm7[$inst] eq "nbrd" ) {
+  $command="$cpx $tpl_dir$template.tpl template.orig";
+  system ($command);
+  $command="$cpx $tpl_dir$template.tpl corig";
+  system ($command);
+  print "nbrd template selection made \n ";
+} else {
+   $command="$cpx $tpl_dir$template.tpl template.orig";
+   print "copy template command: $command \n";
+   system ($command);
+   $command="$cpx $tpl_dir$template.tpl corig";
+   system ($command);
+   print "default template selection made \n ";
+}
 
-#        exit 9;
-        for ($i = 0; $i<$nparm+1; $i++) {
-#           print "loop $i \n";
-           open (EDIT, ">parm") 
-                  || die "can't open file parm: $!\n";
-           if ($i == 0) {
-#            special substitution for cross section library location
-#            ERROR: need a sed delimitor that does not interfere with
-#             directory specification
-             $orig  = "xsec_lib";
-             $final = "$xsec";
-           } elsif ($i == 1 ) {
-             $orig  = "$aparm1[0]";
-             $final = "$aparm1[$inst]";
-           } elsif ($i == 2 ) {
-             $orig  = "$aparm2[0]";
-             $final = "$aparm2[$inst]";
-           } elsif ($i == 3 ) {
-             $orig  = "$aparm3[0]";
-             $final = "$aparm3[$inst]";
-           } elsif ($i == 4 ) {
-             $orig  = "$aparm4[0]";
-             $final = "$aparm4[$inst]";
-           } elsif ($i == 5 ) {
-             $orig  = "$aparm5[0]";
-             $final = "$aparm5[$inst]";
-           } elsif ($i == 6 ) {
-             $orig  = "$aparm6[0]";
-             $final = "$aparm6[$inst]";
-           } elsif ($i == 7 ) {
-             $orig  = "$aparm7[0]";
-             $final = "$aparm7[$inst]";
-           } elsif ($i == 8 ) {
-             $orig  = "$aparm8[0]";
-             $final = "$aparm8[$inst]";
-           } elsif ($i == 9 ) {
-             $orig  = "$aparm9[0]";
-             $final = "$aparm9[$inst]";
-           }
-           $record1 = "s#:$orig:#$final#g\n";
-#          print "orig = $orig \n";
-#          print "final = $final \n";
-#          print "subr command = $record1 \n";
-           $len = length($record1);
-           $sr = syswrite(EDIT, $record1,$len,0);
-                die "\n\n system write error from $record1: $!\n\n"
-                   unless defined $sr;   
-           close (EDIT);
-           $command = "sed -f parm corig > conv_sub ";
-#           print "sed command = $command \n";
-           system ("$command");
-#           exit 4;
-           system ("$cpx conv_sub corig");
-        }
+for ($i = 0; $i<$nparm+1; $i++) {
+  open (EDIT, ">parm")
+          || die "can't open file parm: $!\n";
+  if ($i == 0) {
+#   special substitution for cross section library location
+#   ERROR: need a sed delimitor that does not interfere with
+#   directory specification
+    $orig  = "xsec_lib";
+    $final = "$xsec";
+  }
+  elsif ($i == 1 ) {
+    $orig  = "$aparm1[0]";
+    $final = "$aparm1[$inst]";
+  }
+  elsif ($i == 2 ) {
+    $orig  = "$aparm2[0]";
+    $final = "$aparm2[$inst]";
+  }
+  elsif ($i == 3 ) {
+    $orig  = "$aparm3[0]";
+    $final = "$aparm3[$inst]";
+  }
+  elsif ($i == 4 ) {
+    $orig  = "$aparm4[0]";
+    $final = "$aparm4[$inst]";
+  }
+  elsif ($i == 5 ) {
+    $orig  = "$aparm5[0]";
+    $final = "$aparm5[$inst]";
+  }
+  elsif ($i == 6 ) {
+    $orig  = "$aparm6[0]";
+    $final = "$aparm6[$inst]";
+  }
+  elsif ($i == 7 ) {
+    $orig  = "$aparm7[0]";
+    $final = "$aparm7[$inst]";
+  }
+  elsif ($i == 8 ) {
+    $orig  = "$aparm8[0]";
+    $final = "$aparm8[$inst]";
+  }
+  elsif ($i == 9 ) {
+    $orig  = "$aparm9[0]";
+    $final = "$aparm9[$inst]";
+  }
+  $record1 = "s#:$orig:#$final#g\n";
+  $len = length($record1);
+  $sr = syswrite(EDIT, $record1,$len,0);
+        die "\n\n system write error from $record1: $!\n\n"
+           unless defined $sr;
+  close (EDIT);
+
+
+
+
+
+  $command = "sed -f parm corig > conv_sub ";
+   system ("$command");
+   system ("$cpx conv_sub corig");
+}
         $file_name = "loop_${inst}_result";
         system ("$cpx corig $file_name");
-#        print "check filename copy $file_name \n";
         $file_name = "template";
         system ("$cpx corig $file_name");
-#        print "check template filename copy $file_name \n";
-#        exit 1;
 #
         while ( <grep_in>  ) {
           system("$rm $_");
         }
+
 #       Run the action file for each master-instaniation of the template file
-#
         ${pass_cov} = $aparm7[$inst];
         ${pass_reaction} = $aparm6[$inst];
         print "Action for $inst $aparm3[$inst] $aparm4[$inst] $aparm5[$inst] $aparm6[$inst] \n";
         $command = "perl $act_dir".$action.".prl ${file_name} ${pass_cov} ${pass_reaction}" ;
-#        $command = "perl $act_dir".$action.".prl ${file_name} ";
         print "Action command = $command \n";
         print "filename = ${file_name} \n";
         print "pass_cov = ${pass_cov} \n";
         print "pass_reaction = ${pass_reaction} \n";
-#        $command = "type $file_name";
         system($command);
-#        print "Action completed \n";
-#        print "Force exit \n";
-#        exit 1;
-#    
+
 #       Enter master log records
         $name = "$aparm1[$inst] $aparm2[$inst] $aparm3[$inst] $aparm4[$inst] $aparm5[$inst] $aparm6[$inst] $aparm7[$inst] $aparm8[$inst] $aparm9[$inst]";
         $master_record = "Action taken on $inst $name \n";
         $len = length($master_record);
         $sr = syswrite(MST_OUT, $master_record,$len,0);
              die "\n\n system write error from $master_record: $!\n\n"
-                   unless defined $sr;  
-#
+                   unless defined $sr;
+
 #       Enter the grep'd extracts from the template operation
-#        $command = "$cpx grep_dummy grep_in";
-#        system ($command);
         $file_grep = "grep_in";
         if (-r $file_grep) {
-           open(GREPIN, "<$file_grep") 
+           open(GREPIN, "<$file_grep")
                  || die "\n\n Can't open $grep_in file: $!\\nn";
            while ($grep_record=<GREPIN>) {
              $len = length($grep_record);
              $sr = syswrite(MST_OUT, $grep_record,$len,0);
                   die "\n\n system write error from $grep_record: $!\n\n"
-                        unless defined $sr;  
+                        unless defined $sr;
            }
            close (GREPIN);
-#           print "End of master list \n";
         } else {
            print "No grep_in file contents for $inst \n";
 #          die ( "\n\n master_list file $grep_in does not exist !! \n\n");
         }
-# 
-#
-#        exit 2;
-#
 #       End the master list loop
      }
      close (MST_OUT);
-#
+
       if( $? ne 0 || $deb ne "" ) {
-#
+
 #   abort on error exit code
-#
         while ( <*> ) {
           chmod 0777, $_;
         }
         $status = "failed";
-#        exit 9;
-      }
-#      exit 4;
-#
-#     save output files
-#
-      $command = "$cpx master.out $output_dir${sep}LOOP_${template}-${master}-${action}.out";
-#      print "master copy command = $command \n";
-      system("$command"); 
-#
-# save other files
-#
-      while ( <*-tprof.pt> ) {
-         system("$cpx $_ ${spcbase}plot");
-         chmod 0777, $_;
-      }
-#
-# remove other files
-#
-      while ( <conv*> ) {
-         system("$rm $_");
-      }
-      while ( <loop*> ) {
-         system("$rm $_");
-      }
-#
-# save plot files
-#
-      while ( <*.n_rsp> ) {
-        system("$cpx $_ ${spcbase}plot");
-        chmod 0777, $_;
-      }
 
-#  file cleanup 
-      unlink ( "machine", "username", "opsys", "date.tmp", "getcwd");
-      unlink ( "parm");
-#
-      if ( $status eq "failed")  {
-          exit 9;
-      }
-      exit 0;
+#     save output files
+      $command = "$cpx master.out $output_dirLOOP_${template}-${master}-${action}.out";
+      system("$command");
+
+
+
+
+
+
+#save other files
+while ( <*-tprof.pt> ) {
+  copy("$_", "${root}plot");
+  chmod 0777, $_;
+}
+
+#remove other files
+while ( <conv*> ) {
+  unlink(("$_");
+}
+while ( <loop*> ) {
+  unlink("$_");
+}
+
+#save plot files
+while ( <*.n_rsp> ) {
+  copy("$_", "${root}plot");
+  chmod 0777, $_;
+}
+
+#file cleanup
+unlink ("machine", "username", "opsys", "date.tmp", "getcwd");
+unlink ("parm");
+
+#If a failure occured exit with error code, otherwise exit like nornmal:
+if ($status eq "failed")  {
+  exit 9;
+}
+exit 0;

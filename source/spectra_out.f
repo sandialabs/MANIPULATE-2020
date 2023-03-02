@@ -1,9 +1,7 @@
        subroutine spectra_out
-       character*80 title
-       character*250 file_name
        common /datain/ nenergy, energy(1001), array(1000,15)
      1         , emid(1001)
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15), 
+       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
      1          array_hld(1000,15)
      1         , emid_hld(1001,15)
        character*80 comment
@@ -11,10 +9,7 @@
        common /labx/ icomment, comment(20)
        common /guide/ icon(40)
        common /io/ nt5, nt6, nfile, nplot
-       character*20 lab
-       common /misc/ lab(3)
-       character*1 char
-c
+
        if ( icon(9) .lt. 0) then
          write (nt6, 6672)
  6672    format (1x, '*** spectra-out entered ***')
@@ -63,7 +58,7 @@ c         E*dn/dE
 c
 c        output spectra
 c
-          if ( icon(9) .lt. 1) then 
+          if ( icon(9) .lt. 1) then
             write (nt6,8723) (jk, comment(jk),jk=1,icomment)
  8723       format (1x, 'comment ', i2, ': ', a80)
             avg = 0.0
@@ -73,7 +68,7 @@ c
             write (nt6, 6623) avg
  6623       format (1x, 'average energy = ', g14.7)
             if ( icon(9) .lt. -2) then
-               write (nt6, 6628) xnumber_integral, ynumber_integral, 
+               write (nt6, 6628) xnumber_integral, ynumber_integral,
      &           energy_integral
  6628          format (1x, 'Integral re-normalization factors ',
      &           4g14.7)
@@ -82,22 +77,22 @@ c
  8724       format (/,/,/,/)
             bd1 = 'lower'
             bd2 = 'upper'
-            if ( energy(1) .gt. energy(2)) then 
+            if ( energy(1) .gt. energy(2)) then
                bd1 = 'upper'
                bd2 = 'lower'
             endif
             write (nt6, 9011) bd1, bd2
  9011        format (5x, a5, 10x, a5, 12x,
-     1           'mid', 11x, 'number', 
-     1            11x, 'energy', 7x, 'differential', 
+     1           'mid', 11x, 'number',
+     1            11x, 'energy', 7x, 'differential',
      2            5x, 'differential',5x, 'integral', 9x, 'E*dn/dE',/,
-     2            5x, 'energy', 9x, 'energy', 10x, 'energy', 
+     2            5x, 'energy', 9x, 'energy', 10x, 'energy',
      3            9x, 'fraction',
-     3            9x, 'fraction', 9x, 'number', 10x, 'energy', 
+     3            9x, 'fraction', 9x, 'number', 10x, 'energy',
      4           10x, 'number', /,
      4            6x, 'mev', 12x, 'mev', 13x, 'mev',/ )
              do jk=1,nenergy
-                 write (nt6, 9012) energy(jk), energy(jk+1), emid(jk), 
+                 write (nt6, 9012) energy(jk), energy(jk+1), emid(jk),
      1           (array(jk,im), im=1,6)
  9012            format (1x, 9(g14.7, 2x))
              enddo

@@ -1,14 +1,15 @@
        subroutine filein_response (imode, file_name, ierr, iflag)
-       character*20 lab  
+       include "location.cmn"
+       character*22 lab
        common /misc/ lab(20), imaterial, noption, moption
        character*80 title, dummy
        character*250 file_name
        common /datain/ nenergy, energy(1001), array(1000,15)
      1         , emid(1001)
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15), 
+       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
      1          array_hld(1000,15)
      1         , emid_hld(1001,15)
-       dimension energy_old(1001), array_old(1000,15), 
+       dimension energy_old(1001), array_old(1000,15),
      &           diff(1001),
      1           diffeng(1002)
        character*80 comment
@@ -17,11 +18,9 @@
        common /io/ nt5, nt6, nfile, nplot
        character*1 char
        character*80 id
-      character*145 idir, jdir, kdir, ldir
-      character*6 optical
+      character*145 ldir
       character*15 ename
       character*80 name
-      common /location / optical, idir, jdir, kdir
       character*250 outfile
       common /whatever/ outfile
 c
@@ -29,7 +28,7 @@ c      ****************************************************
 c
 c      fill default names for disk retrieves
 c
-      if ( icon(9) .lt. 0) then 
+      if ( icon(9) .lt. 0) then
 
          write (6,7823) nenergy, imode, ierr, iflag, file_name
  7823    format (1x, '*** Enter FILEIN_response ', 4i5,/,
@@ -39,7 +38,7 @@ c
       ename = 'opt'
       lename = lnblnk(ename)
       call getenv(ename(1:lename), optical)
-      if (optical .eq. '') then 
+      if (optical .eq. '') then
            optical=''
            write (*,9013) optical
  9013      format (1x, 'blank optical default filled', 1x, a6)
@@ -64,40 +63,40 @@ c
        emid(1001) = 0.0
        energy(1001) = 0.0
        nenergy = 0
-       if ( imode .eq. 0 .or. imode .eq. 12) then 
+       if ( imode .eq. 0 .or. imode .eq. 12) then
 c
 c         njoy matxs format - sandii energy structure
 c         if imode = 12, convert from differential number to number fraction
 c
 cje
-cje override this type of input and use the grprin 
+cje override this type of input and use the grprin
 cje routine to readin the groupr format.
 cje
 cje       open(unit=nfile, form='unformatted',
 cje  1         file='rsp_neu:'//file_name//'_njoy.damage_sandii_mtx'
 cje  2         , status='old', iostat=ilook, err=909)
 cje       call matxsin(nfile,nt6)
-          if ( iflag .gt. 1) then 
+          if ( iflag .gt. 1) then
                call grprin(file_name,iflag)
-          elseif (abs(iflag) .eq. 1) then 
+          elseif (abs(iflag) .eq. 1) then
                call grspin(file_name, iflag)
           endif
 c         check data validity
 c
-          if ( nenergy .ne. 620 .and. nenergy .ne. 640 .and. 
+          if ( nenergy .ne. 620 .and. nenergy .ne. 640 .and.
      &         nenergy .ne. 770 .and. nenergy .ne. 89   .and.
-     &         nenergy .ne.  48 .and. nenergy .ne. 175 .and. 
-     &         nenergy .ne. 725) then 
+     &         nenergy .ne.  48 .and. nenergy .ne. 175 .and.
+     &         nenergy .ne. 725) then
               write (nt6,2034) nenergy
 2034          format (1x, '*** warning *** number of energy',
      1        ' points = ', i5, /,
      2        1x, 15x, 'should be /770 structure for this option')
-          endif      
+          endif
 c
 c          convert energy grid from ev to mev
 c
-          if ( energy(1) .gt. 10.e+6 .or. 
-     1         energy(nenergy+1) .gt. 10.e+6) then 
+          if ( energy(1) .gt. 10.e+6 .or.
+     1         energy(nenergy+1) .gt. 10.e+6) then
             do ie = 1,nenergy+1
                 energy(ie) = energy(ie)*1.e-6
             enddo
@@ -106,16 +105,16 @@ c
              emid(ie) = 0.5*(energy(ie) + energy(ie+1))
           enddo
 c         convert from diff. number to number fraction
-          if ( imode .eq. 12) then 
+          if ( imode .eq. 12) then
              sum = 0.0
              do jk=1,nenergy
                 diff(jk) = array(jk,1)
                 zap  = array(jk,1)*(energy(jk) - energy(jk+1) )
                 array(jk,1) = abs(zap)
-                sum = sum + array(jk,1) 
+                sum = sum + array(jk,1)
              enddo
              if ( sum .le. 0.0) sum = 1.0
-             if ( abs( sum - 1.00) .gt. 1.e-3) then 
+             if ( abs( sum - 1.00) .gt. 1.e-3) then
                  write (6,9253) sum
  9253            format (1x, 'renormalized response number for',
      &           ' imode=12 ',
@@ -140,37 +139,37 @@ c
 c       exclude this output for known response function forms
 c           mod 3/8/2008 by PJG to inhibit this for folding with
 c           response function
-c       filein_response is version of filein with this option 
+c       filein_response is version of filein with this option
 c          supressed
 c
-c         if ( icon(1) .eq. 5 .or. icon(1) .eq. -7 .or. 
-c     1        icon(1) .eq. 7) then 
+c         if ( icon(1) .eq. 5 .or. icon(1) .eq. -7 .or.
+c     1        icon(1) .eq. 7) then
 c         else
-c             if ( icon(9) .lt. 1) then 
+c             if ( icon(9) .lt. 1) then
 c                call spectra_out
 c             endif
 c         endif
 c
 c      OK from here on
 c
-       elseif ( imode .eq. 10) then 
+       elseif ( imode .eq. 10) then
 c
 c         response format - sandii energy structure
-c         arranged in energy low to high energy, 
+c         arranged in energy low to high energy,
 c         read opposite inverted
 c
-          if ( icon(13) .eq. 0) then 
+          if ( icon(13) .eq. 0) then
              if ( icon(5) .eq. 0) then
                 open(unit=nfile, form='formatted',
      1          file=optical//jdir(1:jblank2)//'sand641.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 641
-             elseif ( icon(5) .eq. 1) then 
+             elseif ( icon(5) .eq. 1) then
                 open(unit=nfile, form='formatted',
      1          file=optical//jdir(1:jblank2)//'sand771.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 771
-             elseif ( icon(5) .eq. 5) then 
+             elseif ( icon(5) .eq. 5) then
                 open(unit=nfile, form='formatted',
      1          file=optical//jdir(1:jblank2)//'vit176.nrg'
      2          , status='old', iostat=ilook, err=909)
@@ -184,7 +183,7 @@ c
           endif
           read(nfile, 781) title
           read (nfile,*) ienergy
-          if ( icon(12) .ne. 1) then 
+          if ( icon(12) .ne. 1) then
              read (nfile,*) (energy(jk), jk=ilmt,1,-1)
           else
              read (nfile,*) (energy(jk), jk=1,ilmt)
@@ -200,15 +199,15 @@ c
 c
 c         check data validity
 c
-          if ( nenergy .ne. ilmt-1 ) then 
+          if ( nenergy .ne. ilmt-1 ) then
               write (nt6,5034) nenergy
 5034          format (1x, '*** warning *** number of energy',
      1        ' points = ', i5, /,
      2        1x, 15x, 'should be 640 structure for this option')
-          endif      
+          endif
           read (nfile, *) (array(jk,1), jk=nenergy,1,-1)
 c
-c         define energy grid midpoints 
+c         define energy grid midpoints
 c
           do ie=1,nenergy
              emid(ie) = 0.5*(energy(ie) + energy(ie+1))
@@ -222,10 +221,10 @@ c
                  array(ie,imat) = array(ie,imat)*renorm
              enddo
           enddo
-       elseif ( imode .eq. -10) then 
+       elseif ( imode .eq. -10) then
 c
 c         response format - sandii energy structure
-c         arranged in energy high to low energy, 
+c         arranged in energy high to low energy,
 c         read opposite inverted
 c
           if ( icon(13) .eq. 0) then
@@ -234,12 +233,12 @@ c
      1          file=optical//jdir(1:jblank2)//'sand641.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 641
-             elseif ( icon(5) .eq. 1) then 
+             elseif ( icon(5) .eq. 1) then
                 open(unit=nfile, form='formatted',
      1          file=optical//jdir(1:jblank2)//'sand771.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 771
-             elseif ( icon(5) .eq. 5) then 
+             elseif ( icon(5) .eq. 5) then
                 open(unit=nfile, form='formatted',
      1          file=optical//jdir(1:jblank2)//'vit176.nrg'
      2          , status='old', iostat=ilook, err=909)
@@ -253,7 +252,7 @@ c
           endif
           read(nfile, 781) title
           read (nfile,*) ienergy
-          if ( icon(12) .ne. 1) then 
+          if ( icon(12) .ne. 1) then
              read (nfile,*) (energy(jk), jk=1,ilmt)
           else
              read (nfile,*) (energy(jk), jk=ilmt,1,-1)
@@ -268,12 +267,12 @@ c
 c
 c         check data validity
 c
-          if ( nenergy .ne. ilmt-1 ) then 
+          if ( nenergy .ne. ilmt-1 ) then
               write (nt6,5034) nenergy
-          endif      
+          endif
           read (nfile, *) (array(jk,1), jk=1,nenergy)
 c
-c         define energy grid midpoints 
+c         define energy grid midpoints
 c
           do ie=1,nenergy
              emid(ie) = 0.5*(energy(ie) + energy(ie+1))
@@ -287,10 +286,10 @@ c
                  array(ie,imat) = array(ie,imat)*renorm
              enddo
           enddo
-       elseif ( imode .eq. 11) then 
+       elseif ( imode .eq. 11) then
 c
 c         response format - arbitrary energy structure
-c         arranged in energy low to high energy, 
+c         arranged in energy low to high energy,
 c         read opposite inverted
 c
           open(unit=nfile, form='formatted',
@@ -310,15 +309,15 @@ c
 c
 c         check data validity
 c
-          if ( nenergy .ne. menergy ) then 
+          if ( nenergy .ne. menergy ) then
               write (nt6,6034) nenergy, menergy
 6034          format (1x, '*** warning *** number of energy',
      1        ' points = ', i5, /,
      2        1x, 15x, 'should be same structure for this option')
-          endif      
+          endif
           read (nfile, *) (array(jk,1), jk=1,nenergy)
 c
-c         define energy grid midpoints 
+c         define energy grid midpoints
 c
           do ie=1,nenergy
              emid(ie) = 0.5*(energy(ie) + energy(ie+1))
@@ -332,7 +331,7 @@ c
                  array(ie,imat) = array(ie,imat)*renorm
              enddo
           enddo
-       elseif ( imode .eq. 5) then 
+       elseif ( imode .eq. 5) then
 c
 c         njoy matxs format - sandii energy structure
 c
@@ -344,12 +343,12 @@ cje       call matxsin(nfile,nt6)
 c
 c         check data validity
 c
-          if ( nenergy .ne. 620 .and. nenergy .ne. 640 .and. 
-     &         nenergy .ne. 770  .and. nenergy .ne. 89 .and. 
-     &         nenergy .ne.  48 .and. nenergy .ne. 176 .and. 
-     &          nenergy .ne. 725) then 
+          if ( nenergy .ne. 620 .and. nenergy .ne. 640 .and.
+     &         nenergy .ne. 770  .and. nenergy .ne. 89 .and.
+     &         nenergy .ne.  48 .and. nenergy .ne. 176 .and.
+     &          nenergy .ne. 725) then
               write (nt6,2034) nenergy
-          endif      
+          endif
 c
 c          convert energy grid from ev to mev
 c
@@ -361,7 +360,7 @@ c
           enddo
 c
 c         convert damage data from ev to kev and
-c         kinematic kerma limit from ev-b to (mev-mb) and 
+c         kinematic kerma limit from ev-b to (mev-mb) and
 c         divide recoil energy by total cross section
 c
           do ie = 1,nenergy
@@ -370,7 +369,7 @@ c
           enddo
           do ie = 1,nenergy
               value = array(ie,1)
-              if ( value .le. 0.0) then 
+              if ( value .le. 0.0) then
                   write (nt6, 8723) ie, value
  8723             format (1x, '*** warning *** total cross sec',
      1            'tion zero ',
@@ -379,13 +378,13 @@ c
               endif
               array(ie,3) = array(ie,3)/value
           enddo
-       elseif ( imode .eq. 4 ) then 
+       elseif ( imode .eq. 4 ) then
           open(unit=nfile, form='formatted',
      1         file=file_name
      2         , status='old', iostat= ilook, err=909)
            read(nfile,*) nenergy, (emid(jk), array(jk,1),
      1        jk=1,nenergy)
-       elseif ( imode .eq. -4 ) then 
+       elseif ( imode .eq. -4 ) then
           open(unit=nfile, form='formatted',
      1         file=file_name
      2         , status='old', iostat= ilook, err=909)
@@ -393,11 +392,11 @@ c
      1        jk=nenergy,1,-1)
        elseif ( imode .eq. 2 .or. imode .eq. 1) then
           name = file_name
-          if (name(1:6) .ne. '/nuget') then 
+          if (name(1:6) .ne. '/nuget') then
              write (nt6, 4512) optical(1:mblank2),
      1           ldir(1:lblank2), file_name
  4512            format (
-     &           1x, 'filein_response name components = ', a90,/, 
+     &           1x, 'filein_response name components = ', a90,/,
      1           1x, '                                  ', a90,/,
      2           1x, '                                   ', a90,/)
              name = optical(1:mblank2)//ldir(1:lblank2)//file_name
@@ -419,7 +418,7 @@ c
           do jkl=1,nenergy+1
               emaxg = max(emaxg,energy(jkl))
           enddo
-          if ( emaxg .gt. 10.e+6) then 
+          if ( emaxg .gt. 10.e+6) then
                do jkl=1,nenergy+1
                        energy(jkl) = energy(jkl)*1.e-6
                enddo
@@ -429,7 +428,7 @@ c
           comment(1) = file_name
 c          write (6,8419) (energy(jkl), array(jkl,1), jkl=1,nenergy+1)
  8419     format (1x, '** debug echo energy/flux   ', g14.7, 4x, g14.7)
-          if ( iflag .ne. 3 .and. outfile(1:8) .ne. 
+          if ( iflag .ne. 3 .and. outfile(1:8) .ne.
      1         'spectrum' ) write (nt6, 8261) iflag
           call spectra_format
         elseif ( imode .eq. 22 ) then
@@ -454,11 +453,11 @@ c          write (nt6,8726) name(1:lend)
           read(nfile,*) nenergy_old
           read(nfile,1012) char
           read(nfile,1012) char
-          read(nfile,*) (energy_old(jk), array_old(jk,1), 
+          read(nfile,*) (energy_old(jk), array_old(jk,1),
      1                  jk=1,nenergy_old+1)
           icomment = 1
           comment(1) = file_name
-c 
+c
 c         convert data
 c
           if ( icon(5) .eq. 0) then
@@ -466,27 +465,27 @@ c
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'sand641.nrg'
      2         , status='old', iostat=ilook, err=909)
-          elseif ( icon(5) .eq. 1) then 
+          elseif ( icon(5) .eq. 1) then
               nenergy = 770
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'sand771.nrg'
      2         , status='old', iostat=ilook, err=909)
-          elseif ( icon(5) .eq. 2) then 
+          elseif ( icon(5) .eq. 2) then
               nenergy = 89
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'nuget90.nrg'
      2         , status='old', iostat=ilook, err=909)
-          elseif ( icon(5) .eq. 3) then 
+          elseif ( icon(5) .eq. 3) then
               nenergy = 48
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'nuget49.nrg'
      2         , status='old', iostat=ilook, err=909)
-          elseif ( icon(5) .eq. 5) then 
+          elseif ( icon(5) .eq. 5) then
               nenergy = 175
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'vit176.nrg'
      2         , status='old', iostat=ilook, err=909)
-          elseif ( icon(5) .eq. 6) then 
+          elseif ( icon(5) .eq. 6) then
               nenergy = 725
               open(unit=nfile, form='formatted',
      1         file=optical(1:mblank2)//jdir(1:jblank2)//'IAEA725.nrg'
@@ -500,16 +499,16 @@ c
           read (nfile,*) ienergy
           if ( icon(5) .eq. 0) then
              ilmt = 641
-          elseif (icon(5) .eq. 1) then 
+          elseif (icon(5) .eq. 1) then
              ilmt = 771
-          elseif (icon(5) .eq. 2) then 
+          elseif (icon(5) .eq. 2) then
              ilmt = 90
-          elseif (icon(5) .eq. 5) then 
+          elseif (icon(5) .eq. 5) then
              ilmt = 176
           endif
           if (icon(5) .eq. 2 .or. icon(5) .eq. 5) then
              read (nfile,*) (energy(jk), jk=ilmt,1,-1)
-          elseif ( icon(12) .ne. 1) then 
+          elseif ( icon(12) .ne. 1) then
              read (nfile,*) (energy(jk), jk=ilmt,1,-1)
           else
              read (nfile,*) (energy(jk), jk=1,ilmt)
@@ -532,7 +531,7 @@ c                write (nt6,8792) x, y
           enddo
            if ( iflag .ne. 3) write (nt6, 8261) iflag
           call spectra_format
-      elseif ( imode .eq. 9) then 
+      elseif ( imode .eq. 9) then
 c
 c          user defined input format xxx.flux file
 c
@@ -541,13 +540,13 @@ c
      2     , status='old', iostat= ilook, err=909)
            read(nfile,*) icomment, nenergy, id
            read(nfile,8901) (comment(jk),jk=1,icomment)
- 8901      format (a80)      
+ 8901      format (a80)
            read(nfile,*) (energy(jk), array(jk,1),
      1        jk=1,nenergy)
            energy(nenergy+1) = energy(nenergy)*1.01
            if ( iflag .ne. 3) write (nt6, 8261) iflag
            call spectra_format
-       elseif ( imode .eq. 6) then 
+       elseif ( imode .eq. 6) then
 c
 c         njoy matxs format - arbitrary energy structure
 c
@@ -572,43 +571,43 @@ c
                  array(ie,imat) = array(ie,imat)*1.e-3
              enddo
           enddo
-       elseif (imode .eq. 23) then 
+       elseif (imode .eq. 23) then
 c
 c         njoy matxs format - sandii energy structure
 c         if imode = 23, convert from differential number to number fraction
 c          built upon imode=12 option
 c
 cje
-cje override this type of input and use the grprin 
+cje override this type of input and use the grprin
 cje routine to readin the groupr format.
 cje
 cje       open(unit=nfile, form='unformatted',
 cje  1         file='rsp_neu:'//file_name//'_njoy.damage_sandii_mtx'
 cje  2         , status='old', iostat=ilook, err=909)
 cje       call matxsin(nfile,nt6)
-          if ( iflag .gt. 1) then 
+          if ( iflag .gt. 1) then
                call grprin(file_name,iflag)
-          elseif (abs(iflag) .eq. 1) then 
+          elseif (abs(iflag) .eq. 1) then
                call grspin(file_name, iflag)
           endif
 c         check data validity
 c
-          if ( nenergy .ne. 620 .and. nenergy .ne. 640  .and. 
-     &        nenergy .ne. 770 .and. nenergy .ne. 89   .and. 
-     &        nenergy .ne. 48 .and. nenergy .ne. 176 .and. 
-     &        nenergy .ne. 725 ) then 
+          if ( nenergy .ne. 620 .and. nenergy .ne. 640  .and.
+     &        nenergy .ne. 770 .and. nenergy .ne. 89   .and.
+     &        nenergy .ne. 48 .and. nenergy .ne. 176 .and.
+     &        nenergy .ne. 725 ) then
              write (nt6,2734) nenergy
 2734         format (1x, '*** warning *** number of energy',
      1       ' points = ', i5, /,
      2       1x, 15x, 'should be 620/640/770/89/48/175/725 ',
      3       'structure for this',
      3       ' option')
-          endif      
+          endif
 c
 c          convert energy grid from ev to mev
 c
-          if ( energy(1) .gt. 10.e+6 .or. 
-     1         energy(nenergy+1) .gt. 10.e+6) then 
+          if ( energy(1) .gt. 10.e+6 .or.
+     1         energy(nenergy+1) .gt. 10.e+6) then
             do ie = 1,nenergy+1
                 energy(ie) = energy(ie)*1.e-6
             enddo
@@ -616,7 +615,7 @@ c
           do ie=1,nenergy
              emid(ie) = 0.5*(energy(ie) + energy(ie+1))
           enddo
-c         convert from diff. number to number fraction and check normalization 
+c         convert from diff. number to number fraction and check normalization
              sum = 0.0
              diffeng(nenergy+1) = energy(nenergy+1)
              do jk=1,nenergy
@@ -624,10 +623,10 @@ c         convert from diff. number to number fraction and check normalization
                 diff(jk) = array(jk,1)
                 zap  = array(jk,1)*(energy(jk) - energy(jk+1) )*1.e+6
                 array(jk,1) = abs(zap)
-                sum = sum + array(jk,1) 
+                sum = sum + array(jk,1)
              enddo
              if ( sum .le. 0.0) sum = 1.0
-             if ( abs( sum - 1.00) .gt. 1.e-3) then 
+             if ( abs( sum - 1.00) .gt. 1.e-3) then
                  write (6,9753) sum
  9753            format (1x, 'normalized spectrum number fraction ',
      1           'is ', 1pg14.7, ' not 1.0 ')
@@ -637,7 +636,7 @@ c         convert from diff. number to number fraction and check normalization
              enddo
 c
 c         refill differential number data to interface with spectra_format
-c         
+c
 c
           do jk=1,nenergy
                energy(jk) = diffeng(jk)
@@ -645,13 +644,13 @@ c
           enddo
           energy(nenergy+1) = diffeng(nenergy+1)
 c
-c         provide spectrum definition tabulation 
+c         provide spectrum definition tabulation
 c
          call spectra_format
 c
-       elseif ( imode .eq. 24) then 
+       elseif ( imode .eq. 24) then
 c
-c        NJOY-2012 MF=5 spectrum format 
+c        NJOY-2012 MF=5 spectrum format
 c
          open(unit=nfile, form='formatted',
      1         file=file_name
@@ -673,7 +672,7 @@ c
          read (nfile, 89) dummy
          read (nfile, 89) dummy
          read (nfile, 89) dummy
-         if ( dummy(71:75) .ne. " 5 18") then 
+         if ( dummy(71:75) .ne. " 5 18") then
             write (6,3651) dummy(71:75)
  3651       format (1x, 'ERROR in filein for imode=24 option: ',
      &        2x, ' label = ', a5)
@@ -696,10 +695,10 @@ c         check number fraction normalization
 c
          sum = 0.0
          do jk=1,nenergy
-            sum = sum + array(jk,1) 
+            sum = sum + array(jk,1)
          enddo
          if ( sum .le. 0.0) sum = 1.0
-         if ( abs( sum - 1.00) .gt. 1.e-3) then 
+         if ( abs( sum - 1.00) .gt. 1.e-3) then
              write (6,2253) sum
  2253        format (1x, 'renormalized filein imode=0 spectrum',
      &       ' number fraction ',
@@ -707,11 +706,11 @@ c
          endif
          do jk=1,nenergy
            array(jk,1) = array(jk,1)/sum
-         enddo 
-         if ( icon(1) .eq. 5 .or. icon(1) .eq. -7 .or. 
-     1       icon(1) .eq. 7) then 
+         enddo
+         if ( icon(1) .eq. 5 .or. icon(1) .eq. -7 .or.
+     1       icon(1) .eq. 7) then
          else
-            if ( icon(9) .lt. 1) then 
+            if ( icon(9) .lt. 1) then
                call spectra_out
             endif
          endif
@@ -724,7 +723,7 @@ c
        endif
        close (unit=nfile,err=2910)
 2910   continue
-       if ( icon(9) .lt. 0) then 
+       if ( icon(9) .lt. 0) then
          write (6,9823) nenergy
  9823    format (1x, '*** Exit FILEIN_response ', i5)
          write (6,5512) (energy(jk), jk=1,nenergy+1)
