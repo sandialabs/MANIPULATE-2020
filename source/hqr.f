@@ -89,7 +89,8 @@ C                AND COMPUTE MATRIX NORM ..........
       DO 50 I = 1, N
 C
          DO 40 J = K, N
-   40    NORM = NORM + ABS(H(I,J))
+           NORM = NORM + ABS(H(I,J))
+   40    continue
 C
          K = I
          IF (I .GE. LOW .AND. I .LE. IGH) GO TO 50
@@ -127,7 +128,8 @@ C     .......... FORM EXCEPTIONAL SHIFT ..........
       T = T + X
 C
       DO 120 I = LOW, EN
-  120 H(I,I) = H(I,I) - X
+        H(I,I) = H(I,I) - X
+  120 continue
 C
       S = ABS(H(EN,NA)) + ABS(H(NA,ENM2))
       X = 0.75E0 * S

@@ -1,14 +1,14 @@
       subroutine cov_combine
       include "location.cmn"
       common /io/ nt5, nt6, nfile, nplot, npun
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1        emid(1001)
-      dimension cov_part(1001,1001), coveng_part(1001),
-     1   covrsp1_part(1000), covrsp2_part(1000), cor_part(1001,1001),
-     2   stddev1_part(1000), stddev2_part(1000)
-      dimension cov_sum(1001, 1001), cor_sum(1001, 1001),
-     1          rsp_sum(1000), std_sum(1000), unc_sum(1000),
-     2          eng(1000), cross_section(1000)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      dimension cov_part(1501,1501), coveng_part(1501),
+     1   covrsp1_part(1500), covrsp2_part(1500), cor_part(1501,1501),
+     2   stddev1_part(1500), stddev2_part(1500)
+      dimension cov_sum(1501, 1501), cor_sum(1501, 1501),
+     1          rsp_sum(1500), std_sum(1500), unc_sum(1500),
+     2          eng(1500), cross_section(1500)
       integer icovfmt_part, icode_part, icoveng_part
       character*250 fmt_part
       dimension alf(80),ilf(80),
@@ -20,22 +20,22 @@
       character*80 dummy
       character*100 file_corr
       common /sself/ file_corr
-      common /mone/ pdf(1000)
-      dimension engpdf(1001), outpdf(1001)
-      dimension cov(1001,1001), coveng(1001), covrsp1(1000),
-     1   covrsp2(1000), cor(1001,1001)
+      common /mone/ pdf(1500)
+      dimension engpdf(1501), outpdf(1501)
+      dimension cov(1501,1501), coveng(1501), covrsp1(1500),
+     1   covrsp2(1500), cor(1501,1501)
       real icov_cov
-      dimension covr(1001,1001), covreng(1001), corr(1001,1001),
-     1    covrrsp1(1000), covrrsp2(1000),
-     1    stdrdev1(1000),
-     1    stdrdev2(1000), icov_cov(1001,1001)
-      dimension idummy(1001,1001)
-      dimension xstdrdev1(1000)
-      dimension xcov_cov(1001,1001)
+      dimension covr(1501,1501), covreng(1501), corr(1501,1501),
+     1    covrrsp1(1500), covrrsp2(1500),
+     1    stdrdev1(1500),
+     1    stdrdev2(1500), icov_cov(1501,1501)
+      dimension idummy(1501,1501)
+      dimension xstdrdev1(1500)
+      dimension xcov_cov(1501,1501)
       dimension xhv(38226)
-      dimension stddev1(1000), stddev2(1000)
-      dimension engsnd(1001), emidsnd(1000)
-      real, dimension(1001) :: eigen_save
+      dimension stddev1(1500), stddev2(1500)
+      dimension engsnd(1501), emidsnd(1500)
+      real, dimension(1501) :: eigen_save
       character*145 ldir2, ldir3, ldir4, job, ldir5
       character*106 xoptical
       character*15 ename
@@ -43,10 +43,9 @@
       common /statinfo/ efactor, number_of_files, xoptical
       character*250 outfile
       common /whatever/ outfile
-      dimension xarray(1000), yarray(1000),itran(1000)
-      common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
+      dimension xarray(1500), yarray(1500),itran(1500)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
       equivalence (alf(1),ilf(1)),(item(1),ytem(1))
       integer*4 icov_1, icov_2, icov_3, icov_4, ilocate
       equivalence (icov_1, lcov_1), (icov_2, lcov_2),
@@ -285,7 +284,7 @@ c
       write (6,6734)
  6734 format (/,/,1x,
      1   'Eigenvalues for combined covariance matrix: ')
-      allocate( input_replace(1001, 1001),
+      allocate( input_replace(1501, 1501),
      $      STAT=iStat)
       if (iStat/=0) then
         write (6,25001) iStat

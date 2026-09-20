@@ -1,34 +1,34 @@
-      subroutine grspin(infile,irxn)
-c***********************************************************************
-c* this routine reads the energy grid, and cross sections from a 
-c* tabular type output tape.  
-c***********************************************************************
-c***********************************************************************
-c234567890
-      implicit real (a-h,o-z)
-      implicit integer (i-n)
-c      character infile*(*)
-      character*(*) infile
-      character*145 idir, jdir, kdir, ldir, idir_src
-      character*106 optical
-      character*15 ename
-      character*250 new_file_name, name
-      common /location / optical, idir, jdir, kdir
-      common /guide/ icon(40)
-      dimension elocal(1001), alocal(1001), dlocal(1001)
-      character*250 outfile
-      common /whatever/ outfile
-c
-c common blocks.
-c
-      common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-c
-c get the name of the input tape.
+      subroutine grspin(infile,irxn)
+c***********************************************************************
+c* this routine reads the energy grid, and cross sections from a 
+c* tabular type output tape.  
+c***********************************************************************
+c***********************************************************************
+c234567890
+      implicit real (a-h,o-z)
+      implicit integer (i-n)
+c      character infile*(*)
+      character*(*) infile
+      character*145 idir, jdir, kdir, ldir, idir_src
+      character*106 optical
+      character*15 ename
+      character*250 new_file_name, name
+      common /location / optical, idir, jdir, kdir
+      common /guide/ icon(40)
+      dimension elocal(1001), alocal(1001), dlocal(1001)
+      character*250 outfile
+      common /whatever/ outfile
 c
-      iblank = lnblnk(infile)
-      new_file_name = infile(1:iblank)
-      if ( icon(9) .lt. 0) then 
+c common blocks.
+c
+      common /datain/ nenergy, energy(1001), array(1000,15)
+     1         , emid(1001)
+c
+c get the name of the input tape.
+c
+      iblank = lnblnk(infile)
+      new_file_name = infile(1:iblank)
+      if ( icon(9) .lt. 0) then 
          write (6,7823) irxn, nenergy, icon(12)
  7823    format (1x, '*** Enter GRSPIN ', 3i5)
          iend = lnblnk(new_file_name)

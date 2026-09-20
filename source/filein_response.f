@@ -4,14 +4,13 @@
        common /misc/ lab(20), imaterial, noption, moption
        character*80 title, dummy
        character*250 file_name
-       common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
-       dimension energy_old(1001), array_old(1000,15),
-     &           diff(1001),
-     1           diffeng(1002)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
+       dimension energy_old(1501), array_old(1500,16),
+     &           diff(1501),
+     1           diffeng(1502)
        character*80 comment
        common /labx/ icomment, comment(20)
        common /guide/ icon(40)
@@ -53,15 +52,15 @@ c
 cdebug      write (*,9012) optical//jdir(1:jblank2)
 9012  format (1x, 'opening directory location: ', a41)
 c
-       do jk=1,1000
+       do jk=1,1500
           do kl = 1,10
              array(jk,kl) = 0.0
           enddo
           emid(jk) = 0.0
           energy(jk) = 0.0
        enddo
-       emid(1001) = 0.0
-       energy(1001) = 0.0
+       emid(1501) = 0.0
+       energy(1501) = 0.0
        nenergy = 0
        if ( imode .eq. 0 .or. imode .eq. 12) then
 c
@@ -86,11 +85,12 @@ c
           if ( nenergy .ne. 620 .and. nenergy .ne. 640 .and.
      &         nenergy .ne. 770 .and. nenergy .ne. 89   .and.
      &         nenergy .ne.  48 .and. nenergy .ne. 175 .and.
-     &         nenergy .ne. 725) then
+     &         nenergy .ne. 725 .and. nenergy .ne. 1102 ) then
               write (nt6,2034) nenergy
 2034          format (1x, '*** warning *** number of energy',
      1        ' points = ', i5, /,
-     2        1x, 15x, 'should be /770 structure for this option')
+     2        1x, 15x, 
+     3        'should be /770 or other structure for this option')
           endif
 c
 c          convert energy grid from ev to mev

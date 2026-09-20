@@ -46,7 +46,9 @@ C***END PROLOGUE  SCOPY
       REAL SX(*), SY(*)
 C***FIRST EXECUTABLE STATEMENT  SCOPY
       IF (N .LE. 0) RETURN
-      IF (INCX .EQ. INCY) IF (INCX-1) 5,20,60
+      IF (INCX .EQ. INCY) then 
+         IF (INCX-1) 5,20,60
+      endif
 C
 C     Code for unequal or nonpositive increments.
 C

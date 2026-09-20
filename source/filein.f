@@ -4,12 +4,12 @@
       common /misc/ lab(20), imaterial, noption, moption
       character*80 title, dummy
       character*250 file_name
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1                emid(1001)
-      common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1         array_hld(1000,15), emid_hld(1001,15)
-      dimension energy_old(1001), array_old(1000,15),
-     &          diff(1001), diffeng(1002)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
+      dimension energy_old(1501), array_old(1500,16),
+     &          diff(1501), diffeng(1502)
       character*80 comment
       common /labx/ icomment, comment(20)
       common /guide/ icon(40)
@@ -70,13 +70,14 @@ cje       call matxsin(nfile,nt6)
 c       check data validity
         if (nenergy /= 620 .and. nenergy /= 640 .and.
      &      nenergy /= 770 .and. nenergy /= 89  .and.
-     &      nenergy /= 48  .and. nenergy /= 725) then
+     &      nenergy /= 48  .and. nenergy /= 725 .and. 
+     &      nenergy /= 1102) then
           if (nenergy == 0) then
             STOP "*** Error *** - number of energy points = 0"
           end if
           write (nt6,2034) nenergy
 2034      format (1x, '*** warning *** number of energy points = ', i5,
-     &            /,17x, 'should be /770/725/640/8948 structure',
+     &            /,17x, 'should be /770/725/640/1102/8948 structure',
      &            ' for this filein option')
         end if
 
@@ -172,6 +173,11 @@ c
      1          file=optical//trim(jdir)//'sand771.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 771
+             else if (icon(5) == 7) then
+                open(unit=nfile, form='formatted',
+     1          file=optical//trim(jdir)//'UKAEA.nrg'
+     2          , status='old', iostat=ilook, err=909)
+                ilmt = 1102
              end if
           else
              open(unit=nfile, form='formatted',
@@ -240,6 +246,12 @@ c
      1          //'sand771.nrg'
      2          , status='old', iostat=ilook, err=909)
                 ilmt = 771
+             else if (icon(5) == 7) then
+                open(unit=nfile, form='formatted',
+     1          file=trim(optical)//trim(jdir)
+     1          //'UKAEA.nrg'
+     2          , status='old', iostat=ilook, err=909)
+                ilmt = 1102
              end if
           else
              open(unit=nfile, form='formatted',
@@ -488,6 +500,11 @@ c
               open(unit=nfile, form='formatted',
      1         file=trim(optical)//trim(jdir)//'IAEA725.nrg'
      2         , status='old', iostat=ilook, err=909)
+          else if (icon(5) == 7) then
+              nenergy = 1102
+              open(unit=nfile, form='formatted',
+     1         file=trim(optical)//trim(jdir)//'UKAEA.nrg'
+     2         , status='old', iostat=ilook, err=909)
           else
               write (6,7245) nenergy, icon(5)
  7245         format (1x, 'icon(5) error ', 2i6)
@@ -499,6 +516,8 @@ c
              ilmt = 641
           else if (icon(5) == 1) then
              ilmt = 771
+          else if (icon(5) == 7) then
+             ilmt = 1102
           end if
           if (icon(12) /= 1) then
              read (nfile,*) (energy(jk), jk=ilmt,1,-1)

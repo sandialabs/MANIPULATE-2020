@@ -77,7 +77,8 @@ C     .......... LEFT HAND EIGENVECTORS ARE BACK TRANSFORMED
 C                IF THE FOREGOING STATEMENT IS REPLACED BY
 C                S=1.0E0/SCALE(I). ..........
          DO 100 J = 1, M
-  100    Z(I,J) = Z(I,J) * S
+           Z(I,J) = Z(I,J) * S
+  100    continue
 C
   110 CONTINUE
 C     ......... FOR I=LOW-1 STEP -1 UNTIL 1,

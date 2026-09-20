@@ -1,22 +1,25 @@
        subroutine fold
-       common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1 lab_len(15), icurve(15), lab_file(15)
+      common /pltlab/ lab_lead(21), lab_trail(21), lab_nchar(21),
+     1                lab_len(21), icurve(21), lab_file(21)
        character*250 lab_file
        character*100 file_corr
        integer spc_tag_end, xsec_tag_end
        character*50 spc_tag, xsec_tag
        common /tag/ spc_tag, xsec_tag, spc_tag_end, xsec_tag_end
        common /sself/ file_corr
-       common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
        common /guide/ icon(40)
        common /io/ nt5, nt6, nfile, nplot
        common /fpnew/ alpha
-       dimension resp_frac(641), resp_eng(641)
+       dimension resp_frac(1103), resp_eng(1103)
        character*2256 FMT9011!, FMT8011
+       if ( icon(9) .le. 0) then 
+         write (nt6, 1145)
+1145     format (1x, 'ENTER Module FOLD' )
+       endif
        sum = 0.0
        sum2 = 0.0
        sum3 = 0.0
@@ -121,6 +124,22 @@ c     4        'response', 9x, 'folding',7x, 'increment', /,
 c     5        9x, 'energy', 10x, 'number', 9x,
 c     6        'function', 2x,/,
 c     7        9x, '(mev)', 10x, 'fraction', /)
+c
+c     Quick look at array_hlld components
+c
+         if (icon(9) .lt. 0) then 
+            write (6, 3619) (array_hld(j,1), j = 1, nenergy)
+3619        format (2x, 'FOLD first element: ',
+     1             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x, 
+     2             g14.7,1x, g14.7,1x, 
+     3             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x )
+            write (6, 3620) (array_hld(j,2), j = 1, nenergy)
+3620        format (2x, 'FOLD second element: ',
+     1             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x, 
+     2             g14.7,1x, g14.7,1x, 
+     3             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x )
+         endif
+c
        do ie = 1,nenergy_hld(1)
           xdeflt = emid_hld(ie,1)
           if ( xdeflt .le. 0.0) xdeflt = 1.0
@@ -147,6 +166,10 @@ c     7        9x, '(mev)', 10x, 'fraction', /)
                flu3_1 = flu3_1 + array_hld(ie,1)
                flu3_2 = flu3_2 + array_hld(ie,2)
           endif
+c       if ( icon(9) .le. 0) then 
+c         write (nt6, 3145)
+c 3145    format (1x, 'FOLD details', )
+c       endif
           if ( icon(9) .lt. 2) then
              write (nt6,9014) ie, emid_hld(ie,1),
      1            array_hld(ie,1),
@@ -225,5 +248,9 @@ c
      1      xsec_tag(1:xsec_tag_end), sum,
      1      e05, e10, e25, e50, e75, e90, e95
  2919  format ('EXTRACT ENG    ', a, 1x, a, 1x, 8g14.7)
+       if ( icon(9) .le. 0) then 
+         write (nt6, 2145)
+ 2145    format (1x, 'EXIT Module FOLD' )
+       endif
        return
        end

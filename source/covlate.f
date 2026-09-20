@@ -60,50 +60,49 @@ cje
        character*250 outfile, file_name
        common /whatever/ outfile
 cje
-       common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-       dimension range(1000)
-       dimension percent(1000)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+       dimension range(1500)
+       dimension percent(1500)
        character*100 file_corr
        integer spc_tag_end, xsec_tag_end
        character*50 spc_tag, xsec_tag
        common /tag/ spc_tag, xsec_tag, spc_tag_end, xsec_tag_end
        common /sself/ file_corr
        common /fpnew/ alpha
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
        common /guide/ icon(40)
        common /io/ nt5, nt6, nfile, nplot, npun
-       common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1                 lab_len(15), icurve(15), lab_file(15)
+      common /pltlab/ lab_lead(21), lab_trail(21), lab_nchar(21),
+     1                lab_len(21), icurve(21), lab_file(21)
        character*80 lab_file
       character*250 ovr
       character*145 job, ename
       character*106 xoptical
       character*80 name
-      common /statsum/ arr_mean(1000), arr_sq(1000),
-     1  arr_std(1000),
-     1  arr_var(1000)
+      common /statsum/ arr_mean(1500), arr_sq(1500),
+     1  arr_std(1500),
+     1  arr_var(1500)
       common /statinfo/ efactor, number_of_files, xoptical
       common /acov1/ icov(40), iself, ovr
-      common /bcov1/ icoveng1, coveng1(1001), covrsp1a(1000),
-     1  covrsp1b(1000), cov1(1001,1001), cor1(1001,1001),
-     1  icoveng2, coveng2(1001), covrsp2a(1000), covrsp2b(1000),
-     1  stddev1a(1000), stddev1b(1000), stddev2a(1000), stddev2b(1000),
-     1  cov2(1000,1000),
-     2  cor2(1000,1000)
-      common /covcmb/ icmbeng1(5), cmbeng1(5,1001), cmbrsp1a(5,1000),
-     1    cmbv1(5,5,1000,1000), cmbr1(5,5,1000,1000),
-     2    cmbstd1a(5,1000)
-      common /covcmb1/ icmbeng, cmbeng(1001), cmbrsp(1000),
-     1    cmbv(1000,1000), cmbr(1000,1000), cmbstd(1000)
+      common /bcov1/ icoveng1, coveng1(1501), covrsp1a(1500),
+     1  covrsp1b(1500), cov1(1501,1501), cor1(1501,1501),
+     1  icoveng2, coveng2(1501), covrsp2a(1500), covrsp2b(1500),
+     1  stddev1a(1500), stddev1b(1500), stddev2a(1500), stddev2b(1500),
+     1  cov2(1500,1500),
+     2  cor2(1500,1500)
+      common /covcmb/ icmbeng1(5), cmbeng1(5,1501), cmbrsp1a(5,1500),
+     1    cmbv1(5,5,1000,1500), cmbr1(5,5,1500,1500),
+     2    cmbstd1a(5,1500)
+      common /covcmb1/ icmbeng, cmbeng(1501), cmbrsp(1500),
+     1    cmbv(1500,1500), cmbr(1000,1500), cmbstd(1500)
       character*250 fmt1, fmt2, new_file_name, fmt3, fmt4
-      common /mone/ pdf(1000)
-      dimension scale(5,1000)
-      dimension coveng1_mid(1000)
-      dimension abs_cov(1001,1001), row_norm(1001)
-      dimension abs2_cov(1001,1001), rel_corr(1001, 1001)
+      common /mone/ pdf(1500)
+      dimension scale(5,1500)
+      dimension coveng1_mid(1500)
+      dimension abs_cov(1501,1501), row_norm(1501)
+      dimension abs2_cov(1501,1501), rel_corr(1501, 1501)
       character*256 epath
       common /new_io/ epath
       kdir = 'spectrum/'
@@ -138,9 +137,11 @@ c
      &              ' to 640 for fold ', 2i5)
                nenergy = 640
              else
-               write (nt6, 2892) nenergy, icoveng1
- 2892          format (1x, 'covlate ',
-     &              ' bypass check a ', 2i5)
+                if ( icon(9) .le. 0) then
+                     write (nt6, 2892) nenergy, icoveng1
+ 2892           format (1x, 'covlate ',
+     &                 ' bypass check a ', 2i5)
+                endif
              endif
              if ( icon(9) .le. 0) then
                 write (6,5629) (covrsp1a(jk), jk=1,icoveng1)
@@ -215,18 +216,22 @@ c
             if ( nenergy .ne. icoveng1 .or.
      &         (zap .gt. 0.1 .and. zap_reverse .gt. 0.1) ) then
                jstatus = 1
-               write (nt6, 3612) jstatus, nenergy, icoveng1,
-     &          emid_hld(1,isum),
-     1          emid_hld(nenergy,isum), coveng1_mid(1)*1.e-6,
-     1          coveng1_mid(icoveng1)*1.e-6, zap, zap_reverse
- 3612          format (1x, 'Covariance fold energy mis-match ',
-     1         3i8, 6g14.7)
+               if ( icon(9) .lt. 0) then
+                   write (nt6, 3612) jstatus, nenergy, icoveng1,
+     &             emid_hld(1,isum),
+     1             emid_hld(nenergy,isum), coveng1_mid(1)*1.e-6,
+     1             coveng1_mid(icoveng1)*1.e-6, zap, zap_reverse
+ 3612             format (1x, 'Covariance fold energy mis-match ',
+     1            3i8, 6g14.7)
+               endif
                zap_part = abs(coveng1_mid(icoveng1)*1.e-6 -
      &                emid_hld(1,isum))
-               write (6,9390)  coveng1_mid(icoveng1)*1.e-6,
-     &           emid_hld(1,isum), zap_part, zap_reverse
- 9390          format (1x, 'zap_reverse details ', 5g14.7)
-               if (icon(9) .le. 2) then
+               if ( icon(9) .lt. 0) then
+                  write (6,9390)  coveng1_mid(icoveng1)*1.e-6,
+     &              emid_hld(1,isum), zap_part, zap_reverse
+ 9390             format (1x, 'zap_reverse details ', 5g14.7)
+               endif
+               if (icon(9) .lt. 0) then
                   write (6,2390) iresp_call
  2390             format (1x, 'covlate iresp_call = ', i5)
                   write (6,2391) (emid_hld(jk,isum), jk=1,nenergy)
@@ -308,12 +313,12 @@ c
                ln2 = lnblnk(fmt2)
                write (nt6, 6801) fmt1(1:ln1), fmt2(1:ln2), sum,
      &            var3, avg2
- 6801          format (1x, 'Covariance Folding:',/,
-     1               1x, '       Func. 1:    = ', a,/,
-     2               1x, '       Func. 2:    = ', a,/,
-     3               1x, '       Fold        = ', g14.7,/,
-     4               1x, '       Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev. = ', g14.7, ' %')
+ 6801          format (/,1x, 'Covariance Folding:',/,
+     1               1x, '       Func. 1:       = ', a,/,
+     2               1x, '       Func. 2:       = ', a,/,
+     3               1x, '       Fold           = ', g14.7,/,
+     4               1x, '       Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2919) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -324,13 +329,13 @@ c
                ln3 = lnblnk(ovr)
                write (nt6, 6871) fmt1(1:ln1), ovr(1:ln3), fmt2(1:ln2),
      &                 sum, var3, avg2
- 6871          format (1x, 'Covariance Folding:',/,
-     1               1x, '       Func. 1:    = ', a,/,
+ 6871          format (/,1x, 'Covariance Folding:',/,
+     1               1x, '       Func. 1:       = ', a,/,
      1               1x, '          override response = ', a,/,
-     2               1x, '       Func. 2:    = ', a,/,
-     3               1x, '       Fold        = ', g14.7,/,
-     4               1x, '       Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev. = ', g14.7, ' %')
+     2               1x, '       Func. 2:       = ', a,/,
+     3               1x, '       Fold           = ', g14.7,/,
+     4               1x, '       Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2929) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -344,13 +349,13 @@ c
                write (nt6, 6807) fmt1(1:ln1), fmt2(1:ln2),
      &            file_corr(1:ln3),
      1            sum, var3, avg2
- 6807          format (1x, 'Covariance Folding:',/,
+ 6807          format (/,1x, 'Covariance Folding:',/,
      1               1x, '       Func. 1:       = ', a100,/,
      2               1x, '       Func. 2:       = ', a100,/,
      2               1x, '       Self-shielding = ', a100,/,
      3               1x, '       Fold           = ', g14.7,/,
      4               1x, '       Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev.    = ', g14.7, ' %')
+     5               1x, '       Avg. Std. Dev.    = ', g14.7, ' %')
                write (39, 2939) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -363,14 +368,14 @@ c
                write (nt6, 6877) fmt1(1:ln1), ovr(1:ln3),
      &            file_corr(1:ln4),
      1            fmt2(1:ln2), sum, var3, avg2
- 6877          format (1x, 'Covariance Folding:',/,
+ 6877          format (/,1x, 'Covariance Folding:',/,
      1               1x, '       Func. 1:       = ', a,/,
      1               1x, '          override response = ', a,/,
      2               1x, '       Self-shielding = ', a,/,
      2               1x, '       Func. 2:       = ', a,/,
      3               1x, '       Fold           = ', g14.7,/,
      4               1x, '       Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev.    = ', g14.7, ' %')
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2949) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -437,9 +442,11 @@ c             if ( icovfmt1 .eq. 7) icode = 0
                write (nt6, 2891) nenergy, icoveng1
                nenergy = 640
              else
-               write (nt6, 2893) nenergy, icoveng1
- 2893          format (1x, 'covlate ',
+               if ( icon(9) .le. 0) then
+                  write (nt6, 2893) nenergy, icoveng1
+ 2893             format (1x, 'covlate ',
      &              ' bypass check b ', 2i5)
+               endif
              endif
          else
              write (nt6, 7801) icov(1), icovfmt1
@@ -477,9 +484,11 @@ c            call filein(imode, new_file_name, ierr, ireverse)
      &              ' to 640 for fold ', 2i5)
                nenergy = 640
             else
+             if ( icon(9) .le. 0) then
                write (nt6, 3892) nenergy, icoveng1
  3892          format (1x, 'covlate ',
      &              ' bypass check c ', 2i5)
+             endif
             endif
 c
 c           save source data
@@ -524,9 +533,11 @@ c 8712          format (1x, 'COVLATE correct call', 4x, i5, a)
      1          coveng1_mid(icoveng1)*1.e-6, zap, zap_reverse
                zap_part = abs(coveng1_mid(icoveng1)*1.e-6 -
      &                emid_hld(1,isum))
-               write (6,9390)  coveng1_mid(icoveng1)*1.e-6,
-     &           emid_hld(1,isum), zap_part, zap_reverse
-               if (icon(9) .le. 2) then
+               if ( icon(9) .lt. 0) then 
+                 write (6,9390)  coveng1_mid(icoveng1)*1.e-6,
+     &             emid_hld(1,isum), zap_part, zap_reverse
+               endif
+               if (icon(9) .lt. 0) then
                   write (6,3390) iresp_call
  3390             format (1x, 'covlate-2 iresp_call = ', i5)
                   write (6,2391) (emid_hld(jk,isum), jk=1,nenergy)
@@ -646,11 +657,11 @@ c
                write (nt6, 6301) fmt1(1:ln1), fmt2(1:ln2),
      &           sum, var3, avg2
  6301          format (1x, 'Covariance  Spectrum Folding (1):',/,
-     1               1x, '       Func. 1:    = ', a100,/,
-     2               1x, '       Func. 2:    = ', a100,/,
-     3               1x, '       Fold        = ', g14.7,/,
-     4               1x, '       Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev. = ', g14.7, ' %')
+     1               1x, '       Func. 1:       = ', a100,/,
+     2               1x, '       Func. 2:       = ', a100,/,
+     3               1x, '       Fold           = ', g14.7,/,
+     4               1x, '       Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2959) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -664,10 +675,10 @@ c
  6371          format (1x, 'Covariance Spectrum Folding (2):',/,
      1               1x, '       Func. 1:    = ', a,/,
      1               1x, '          override response = ', a,/,
-     2               1x, '       Func. 2:    = ', a,/,
-     3               1x, '       Fold        = ', g14.7,/,
-     4               1x, '       Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev. = ', g14.7, ' %')
+     2               1x, '       Func. 2:       = ', a,/,
+     3               1x, '       Fold           = ', g14.7,/,
+     4               1x, '       Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2969) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -682,12 +693,12 @@ c
      &           file_corr(1:ln3),
      1           sum, var3, avg2
  6308          format (1x, 'Covariance  Spectrum Folding (3):',/,
-     1               1x, '       Func. 1:       = ', a,/,
-     2               1x, '       Func. 2:       = ', a,/,
-     2               1x, '       Self-shielding = ', a,/,
-     3               1x, '       Fold           = ', g14.7,/,
-     4               1x, '       Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev.    = ', g14.7, ' %')
+     1               1x, '       Func. 1:          = ', a,/,
+     2               1x, '       Func. 2:          = ', a,/,
+     2               1x, '       Self-shielding    = ', a,/,
+     3               1x, '       Fold              = ', g14.7,/,
+     4               1x, '       Uncertainty       = ', g14.7, ' %',/,
+     5               1x, '       Avg. Std. Dev.    = ', g14.7, ' %')
                write (39, 2979) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -707,7 +718,7 @@ c
      2               1x, '       Func. 2:       = ', a,/,
      3               1x, '       Fold           = ', g14.7,/,
      4               1x, '       Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Avg. Std. Dev.    = ', g14.7, ' %')
+     5               1x, '       Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2989) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -722,11 +733,11 @@ c
                write (nt6, 5301) fmt1(1:ln1), fmt2(1:ln2),
      &               sum, var3, avg2
  5301          format (1x, 'Covariance  Spectrum Folding (5):',/,
-     1               1x, '       Spc. Func. 1:    = ', a,/,
-     2               1x, '       Spc. Func. 2:    = ', a,/,
-     3               1x, '       Spc. Fold        = ', g14.7,/,
-     4               1x, '       Spc. Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Spc. Avg. Std. Dev. = ', g14.7, ' %')
+     1               1x, '       Spc. Func. 1:       = ', a,/,
+     2               1x, '       Spc. Func. 2:       = ', a,/,
+     3               1x, '       Spc. Fold           = ', g14.7,/,
+     4               1x, '       Spc. Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Spc. Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 2999) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -740,10 +751,10 @@ c
  5371          format (1x, 'Covariance Spectrum Folding (6):',/,
      1               1x, '       Spc. Func. 1:    = ', a,/,
      1               1x, '          Spc. override response = ', a,/,
-     2               1x, '       Spc. Func. 2:    = ', a,/,
-     3               1x, '       Spc. Fold        = ', g14.7,/,
-     4               1x, '       Spc. Uncertainty = ', g14.7, ' %',/,
-     5               1x, '    Spc. Avg. Std. Dev. = ', g14.7, ' %')
+     2               1x, '       Spc. Func. 2:       = ', a,/,
+     3               1x, '       Spc. Fold           = ', g14.7,/,
+     4               1x, '       Spc. Uncertainty    = ', g14.7, ' %',/,
+     5               1x, '       Spc. Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 3919) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -763,7 +774,7 @@ c
      2               1x, '       Self-shielding = ', a,/,
      3               1x, '       Spc. Fold           = ', g14.7,/,
      4               1x, '       Spc. Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Spc. Avg. Std. Dev.    = ', g14.7, ' %')
+     5               1x, '       Spc. Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 3929) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2
@@ -782,7 +793,7 @@ c
      2               1x, '       Spc. Func. 2:       = ', a,/,
      3               1x, '       Spc. Fold           = ', g14.7,/,
      4               1x, '       Spc. Uncertainty    = ', g14.7, ' %',/,
-     5               1x, '    Spc. Avg. Std. Dev.    = ', g14.7, ' %')
+     5               1x, '       Spc. Avg. Std. Dev. = ', g14.7, ' %')
                write (39, 3939) spc_tag(1:spc_tag_end),
      1              xsec_tag(1:xsec_tag_end),
      1              sum, var3, avg2

@@ -2,39 +2,40 @@
      &                   stddev1, covrsp2, stddev2, cov, cor, icode)
       include "location.cmn"
       common /io/ nt5, nt6, nfile, nplot, npun
-      common /datain/ nenergy, energy(1001), array(1000,15), emid(1001)
-      common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1                lab_len(15), icurve(15), lab_file(15)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /pltlab/ lab_lead(21), lab_trail(21), lab_nchar(21),
+     1                lab_len(21), icurve(21), lab_file(21)
       character*250 lab_file
       dimension alf(80), ilf(80), ytem(41), item(41)
       character*250 name, ovr, fmt, fmt3, file_corr
       common /guide/ icon(40)
       common /acov1/ icov(40), iself, ovr
       common /sself/ file_corr
-      common /mone/ pdf(1000)
+      common /mone/ pdf(1500)
       character*80 dummy
-      dimension engpdf(1001), outpdf(1001)
-      dimension cov(1001,1001), coveng(1001), covrsp1(1000),
-     1          covrsp2(1000), cor(1001,1001)
+      dimension engpdf(1501), outpdf(1501)
+      dimension cov(1501,1501), coveng(1501), covrsp1(1500),
+     1          covrsp2(1500), cor(1501,1501)
       real cov_cov
-      dimension covr(1001,1001), covreng(1001), corr(1001,1001),
-     1          covrrsp1(1000), covrrsp2(1000), stdrdev1(1000),
-     1          stdrdev2(1000), cov_cov(1001,1001)
-      dimension xstdrdev1(1000)
-      dimension xcov_cov(1001,1001)
+      dimension covr(1501,1501), covreng(1501), corr(1501,1501),
+     1          covrrsp1(1500), covrrsp2(1500), stdrdev1(1500),
+     1          stdrdev2(1500), cov_cov(1501,1501)
+      dimension xstdrdev1(1500)
+      dimension xcov_cov(1501,1501)
       dimension xhv(38226)
-      dimension stddev1(1000), stddev2(1000)
-      dimension engsnd(1001), emidsnd(1000)
-      real, dimension(1001) :: eigen_save
+      dimension stddev1(1500), stddev2(1500)
+      dimension engsnd(1501), emidsnd(1500)
+      real, dimension(1501) :: eigen_save
       character*145 ldir3, ldir4, job, ldir5
       character*106 xoptical
       character*250 file_name, new_file_name
       common /statinfo/ efactor, number_of_files, xoptical
       character*250 outfile
       common /whatever/ outfile
-      dimension xarray(1000), yarray(1000),itran(1000)
-      common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1                 array_hld(1000,15), emid_hld(1001,15)
+      dimension xarray(1500), yarray(1500),itran(1500)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
       equivalence (alf(1),ilf(1)),(item(1),ytem(1))
       integer*4 icov_1, icov_2, icov_3, icov_4, ilocate
       integer*4 irenorm_flag
@@ -367,7 +368,7 @@ c        check for covariance data
          if (icon(9) < -1) then
             write (6,3651) len_trim(optical), len_trim(fmt),
      &                     trim(optical), trim(fmt)
- 3651       format (1x, 'icovfmt=2 check ', 3i5,/, (5x, a))
+ 3651       format (1x, 'icovfmt=2 check ', 2i5,/, 2(5x, a))
          endif
 
           open(unit=nfile, form='formatted', file=trim(name),
@@ -381,7 +382,7 @@ c        check for covariance data
     5    format(80a1)
          read (nfile,*) icovreng1
          icovreng = icovreng - 1
-         if ( icon(9) <= 0 ) then
+         if ( icon(9) < 0 ) then
             write (6,5639) icovreng1
  5639       format (1x, 'ICOVRENG1: ', i9,/,
      &             (1x, '        ', 6g14.7)   )
@@ -454,7 +455,7 @@ c
 c        If LSL-format spectrum - these are number fractions
 c        ensure they are normalized to unity
 c
-         if ( icon(9) <= 0) then
+         if ( icon(9) < 0) then
             write (6,5619) icov(1), icovreng, nenergy
  5619       format (1x, 'COVREAD icov(1) check: ', 5i6)
          endif
@@ -620,7 +621,7 @@ c              make the correlation matrix a real number
 c
 c        Check correlation matrix for eigenvalues
 c
-         allocate( input_replace(1001, 1001),
+         allocate( input_replace(1501, 1501),
      $         STAT=iStat)
          if (iStat/=0) then
            write (6,25000) iStat
@@ -951,7 +952,7 @@ c
 c        Check correlation matrix for eigenvalues
 c
 c         call eigen_out(corr, icovreng)
-         allocate( input_replace(1001, 1001),
+         allocate( input_replace(1501, 1501),
      $         STAT=iStat)
          if (iStat/=0) then
            write (6,25001) iStat
@@ -1404,7 +1405,7 @@ c
  1457       format (1x, 'Illegal icov field ', i5)
             stop 'ICOV-3'
        endif
-       if ( icon(9) <= 0) then
+       if ( icon(9) < 0) then
             write (6,7869) icode, icoveng, icovreng, nenergy
  7869       format (1x, 'COVREAD before default fill ', 5i10)
        endif
@@ -1627,7 +1628,7 @@ c     &             2x, a)
                    ovr = file_name(ilead+1:iflast)
                 endif
                 write (nt6,5723) file_name(ilead+1:iflast)
- 5723           format (1x, 'Override function:  ', a75)
+ 5723           format (/,/,1x, 'Override function:  ', a)
 c
 c               save response data
 c
@@ -1949,7 +1950,7 @@ c 1076               format (1x, 'Correlation match ', 2i6, 3g14.7)
                 if ( icon(9) .lt. 0) then
                   write (6,1078) j1, j2,itran(j1), itran(j2), icoveng,
      &                  corr(itran(j1), itran(j2))
- 1078             format (1x, 'error check: ', 6i8, 1x, g14.6)
+ 1078             format (1x, 'error check: ', 5i8, 1x, g14.6, 2x, i8)
                 endif
                 cor(j1,j2) = corr(itran(j1), itran(j2))
                 cor(j2,j1) = cor(j1,j2)
@@ -2127,11 +2128,11 @@ c
 !7801      format (1x, 'COVREAD format not defined = ', i5)
            stop 'COVREAD-1'
       endif
-      if ( icon(9) .le. 0) then
+      if ( icon(9) .lt. 0) then
          write (6,6614) (covrsp1(jr), jr=1,icoveng)
  6614    format (1x, 'covread exit: ', 5g14.7)
       endif
-      if (icon(9) <= 0) then
+      if (icon(9) < 0) then
           write (6,6711)
  6711     format (1x, 'EXIT COVREAD ')
       endif

@@ -1,17 +1,17 @@
       subroutine correct (resp, file_name)
       include "location.cmn"
-      common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1                lab_len(15), icurve(15), lab_file(15)
+      common /pltlab/ lab_lead(21), lab_trail(21), lab_nchar(21),
+     1                lab_len(21), icurve(21), lab_file(21)
       character*250 file_name,lab_file,file_id
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1                emid(1001)
-      common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1                 array_hld(1000,15), emid_hld(1001,15)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
       common /guide/ icon(40)
       common /io/ nt5, nt6, nfile, nplot
       common /fpnew/ alpha
-      dimension resp(1000)
-      dimension corx(1000)
+      dimension resp(1500)
+      dimension corx(1500)
       external prune
 
       isum = 3
@@ -25,7 +25,7 @@ c     1        /, 15x, ' file = ', a100)
      1    'null#-void-bare') then
         write (nt6, 8923)
  8923   format (1x, 'Self-shielding non-existence bypass used',/,/)
-        do jk=1,770
+        do jk=1,1102
           corx(jk) = 1.0
         enddo
       else
@@ -33,12 +33,16 @@ c     1        /, 15x, ' file = ', a100)
         read (29, 2871) header
  2871   format (a100)
         read (29,*) (corx(ikl), ikl=1,640)
+c       no correction for high energy portion - beyond 20 MeV
+        do jk=641,1102
+          corx(jk) = 1.0
+        enddo
 c        write (6,3321) (corx(ikl),ikl=1,640)
 c3321    format ('ss-fct   ', 5(1pe13.6,1x),/,
 c     1         (   '         ', 5(1pe13.6,1x) )    )
         close (unit=29)
 c       do not use any attenution above 20 MeV
-        do jk=641,770
+        do jk=641,1102
           corx(jk) = 1.0
         enddo
       endif

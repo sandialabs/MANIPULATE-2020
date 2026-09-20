@@ -1,9 +1,8 @@
        subroutine spectra_out
-       common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1          array_hld(1000,15)
-     1         , emid_hld(1001,15)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
        character*80 comment
        character*5 bd1, bd2
        common /labx/ icomment, comment(20)

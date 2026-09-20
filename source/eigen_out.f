@@ -60,11 +60,11 @@ C.. Include Statements ..
 c      include "genpar.par"
 c      include "mpif.h"
 C.. Parameters
-      integer, parameter :: corSize = 1001
+      integer, parameter :: corSize = 1501
 C.. Formal Arguments .. 
       real, intent(inout), dimension(corSize, corSize) :: cor, 
      &                     input_replace
-      real, intent(inout), dimension(1001) :: eigen_save
+      real, intent(inout), dimension(1501) :: eigen_save
       integer, intent(in) :: icovreng
       integer, intent(inout) :: ipass
       logical, intent(inout) :: pos_def
@@ -130,8 +130,8 @@ c
       endif
       
       if ( ipass == 1) write (6,101) icovreng
- 101  format (/,/,1x, 'Relative correlation matrix (cor)',
-     &    ' has dimension = ', i5,/,/)
+ 101  format (/,1x, 'Relative correlation matrix (cor)',
+     &    ' has dimension = ', i5,/)
 c     
       do i = 1,icovreng
         if (cor(i,i)==0.) then

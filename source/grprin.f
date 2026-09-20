@@ -24,16 +24,17 @@ c***********************************************************************
       character*106 optical_old
       character*256 temp_file
       character*256 njoy2016_dir
+      character*256 image
       character*1 cdummy
       common /guide/ icon(40)
       common /io/ nt5, nt6, nfile, nplot, npun
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1                emid(1001)
-      dimension enghst(2001), xschst(2001)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      dimension enghst(3001), xschst(3001)
 c
 c open the input tape.
 c
-      if (icon(9) < 1) then
+      if (icon(9) < 0) then
         write (6,7823)
  7823   format (1x, '*** Enter GRPRIN ')
       end if
@@ -75,11 +76,11 @@ c       special re-direction for pka groupr files
       write (*,9012) trim(optical)//trim(idir) //trim(infile),
      1               trim(temp_file),trim(optical),trim(idir),
      1               trim(infile)
-9012  format (1x, 'opening file: =', a,'=',/,
-     &        1x, '  temp_file: =', a,'=',/,
-     &        1x, '     optical: =', a,'=',/,
-     &        1x, '        idir: =', a,'=',/,
-     &        1x, '      infile: =', a,'=',/)
+9012  format (1x, 'opening file:         =', a,' ',/,
+     &        1x, '        temp_file:    =', a,' ',/,
+     &        1x, '        optical:      =', a,' ',/,
+     &        1x, '        idir:         =', a,' ',/,
+     &        1x, '        infile:       =', a,' ',/)
       open(unit=7,file=trim(temp_file),status='unknown')
 c
 c read in the zaid of the material along with the atomic weight.
@@ -128,10 +129,12 @@ c
       end do
 c
 c now scan the tape for the reaction identifier.
+c   apply constraint that it be an MT=3 cross section entry
 c
       irxntemp = 0
-   10 read(7,600,end=20)irxntemp
-      if (irxntemp==irxn) then
+      imt_fix = 3
+   10 read(7,600,end=20) imt_temp, irxntemp
+      if (irxntemp==irxn .and. imt_temp==imt_fix) then
         go to 30
       end if
       go to 10
@@ -141,6 +144,7 @@ c die with error
 c
    20 write(*,*)
       write(*,*)'error : invalid reaction number :',irxn
+      write(*,*)'error : for MT identifier       :',imt_fix
       write(*,*)'error : program termination (grprin)'
       stop 'invalid-reaction'
       write(6,*)'error : invalid reaction number :',irxn
@@ -149,7 +153,7 @@ c continue processing the data.
 c
 c clear the xs array
 c
-   30 do i = 1,1000
+   30 do i = 1,1500
         array(i,1) = 1.0e-35
       end do
 c
@@ -160,8 +164,24 @@ c
       read(7,650)nend
       read(7,650)nstart
       backspace(unit=7)
-      do i = nstart,nend
-        read(7,110)index,irxn2
+      if (icon(9) < 0) then
+         write (6,908) nstart, nend, nenergy
+ 908     format (1x, 'Cross Section index/range: ', 3i8)
+      endif
+      do i = 1, nenergy
+c      do i = nstart,nend
+        read(7,909) image
+ 909    format (a)
+        if (icon(9) < 0) then
+           write (6,1909) i, image
+ 1909      format (1x, 'Image: ', i5, 2x, a)
+        endif
+c        read(7,110)index,irxn2
+        read(image,110)index,irxn2
+        if (icon(9) < 0) then
+           write (6,1908) index, irxn2, irxn
+ 1908      format (1x, 'check acceptance: ', 3i7)
+        endif
         if (irxn2/=irxn) go to 40
         read(7,1900)dummy,array(index,1)
         if (array(index,1)<1e-35) array(index,1) = 1.e-35
@@ -183,7 +203,7 @@ c energy interval and the cross section data.
 c
       write(*,800)irxn
       do i = 1,nenergy
-        write(*,900)energy(i),energy(i+1),emid(i),array(i,1)
+        write(*,900)i, energy(i),energy(i+1),emid(i),array(i,1)
       end do
 c
 c   If point interrogation is requested - do interpolation
@@ -230,20 +250,22 @@ c
       return
   100 format(2(e11.6))
  1900 format(2(e11.6))
-  110 format(63x,i3,6x,i3)
+  110 format(62x,i4,6x,i3)
   200 format(e11.6,12x,i10)
   300 format(6(e11.6))
   400 format(6(e11.6),i4,2(i5))
   500 format(6(e12.5))
-  600 format(72x,i3)
+  600 format(70x,i2,i3)
   650 format(63x,i3)
   700 format(//,1x,'material zaid              : ',i7,/,
      11x,'material atomic weight     : ',f7.3,/,
      21x,'cross section temperature  : ',f7.3,/,
      31x,'number of energy groups    : ',i7,/,
      41x,'time and date of execution : ',a24,//)
-  800 format(7x,'upper',8x,'  lower ',8x,'midpoint',9x,'reaction',/,
+  800 format(6x,
+     1       7x,'upper',8x,'  lower ',8x,'midpoint',9x,'reaction',/,
+     1       6x,
      1       7x,'(ev) ',8x,'  (ev)  ',8x,'  (ev)  ',9x,' (',i3,')  ')
-  900 format(3(3x,1pe12.5),5x,1pe12.5)
+  900 format(1x,i4,1x, 3(2x,1pe13.6),4x,1pe13.6)
 
       end subroutine grprin

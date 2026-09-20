@@ -10,17 +10,13 @@ c      character assignments
 
        common /whatever/ outfile
 
-       common /datain/ nenergy, energy(1001), array(1000,15)
-
-     1         , emid(1001)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
 
        common /fpnew/ alpha
 
-       common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-
-     1          array_hld(1000,15)
-
-     1         ,emid_hld(1001,15)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
 
        common /guide/ icon(40)
 
@@ -28,13 +24,13 @@ c      character assignments
 
       character*106 xoptical
 
-      common /statsum/ arr_mean(1000), arr_sq(1000), arr_std(1000)
+      common /statsum/ arr_mean(1500), arr_sq(1500), arr_std(1500)
 
-     1   ,arr_var(1000)
+     1   ,arr_var(1500)
 
       common /statinfo/ efactor, number_of_files, xoptical
 
-      do jk=1,1000
+      do jk=1,1500
 
           arr_mean(jk) = 0.0
 

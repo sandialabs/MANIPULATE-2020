@@ -10,11 +10,11 @@ c***********************************************************************
       character*145 idir_src
       character*250 new_file_name, name
       common /guide/ icon(40)
-      dimension elocal(1001), alocal(1001), dlocal(1001)
+      dimension elocal(1501), alocal(1501), dlocal(1501)
       character*250 outfile
       common /whatever/ outfile
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1                emid(1001)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
 c
 c get the name of the input tape.
 c
@@ -56,7 +56,7 @@ c
 c read in the data from the input tape.
 c
 !101  continue
-      do i=1,1000
+      do i=1,1500
         read (7,*, end=9013) emid(i), array(i,1)
         if (icon(9) < -1) then
           write (6,7812) i, emid(i), array(i,1)
@@ -93,6 +93,7 @@ c     set iflip = -1 if we need to reverse the order
 c
       iflip = 1
       if (emid(1) > emid(2)) then
+c       decreasing, order is high to low
         iflip = -1
       end if
 c
@@ -110,17 +111,44 @@ c
         end do
       end if
 c
-c calculate the energy bounds from midpoints an fill that array.
+c calculate the energy bounds from midpoints and fill that array.
 c
       if (emid(1) < emid(2)) then
+c        increasing energy order, low to high
+         if (icon(9) < 0) then
+            write (6,5892) nenergy, emid(1), emid(2)
+ 5892       format (1x, 'GRSPIN energy bound recreation ', i5, 2g14.7)
+         end if
          if (emid(1) > 1.e-4) then
              energy(1) = 1.e-4
          else
              energy(1) = 1.e-10
          end if
+c
+c        If UKAEA energy grid - over-ride this low energy bound
+c
+         if ( nenergy == 1102) then 
+            if (emid(1) > 1.e-5) then
+                energy(1) = 1.e-5
+            else
+                energy(1) = 1.e-11
+            end if
+         endif
+c
          do i = 2,nenergy+1
            energy(i) = 2.0*emid(i-1) - energy(i-1)
          end do
+c
+c        Debug print of energy grid
+c
+         if (icon(9) .lt. 0) then 
+            write (6, 3619) (energy(j), j = 1, nenergy+1)
+3619        format (2x, 'GRSPIN modified energy grid: ',
+     1             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x, 
+     2             g14.7,1x, g14.7,1x, 
+     3             g14.7,1x, g14.7,1x, g14.7,1x, g14.7,1x )
+         endif
+c
       else
          if (icon(9) < 0) then
             write (6,7892) nenergy, emid(1)
@@ -147,6 +175,15 @@ c         end if
                energy(1) = 150.0
             end if
          end if
+c        apply correction for UKAEA energy structure
+         if (nenergy == 1102) then
+            if (emid(1) > 9.774e+8) then
+               energy(1) = 1.0e+9
+            else
+               energy(1) = 1000.0
+            end if
+         end if
+c
          do i=2,nenergy+1
            energy(i) = 2.0*emid(i-1) - energy(i-1)
          end do
@@ -160,7 +197,7 @@ c     fix exact energy bounds if 640 sand-ii energy grid
 c
       if (icon(9) < 0) then
          write (6, 2781) nenergy, energy(1), energy(nenergy+1)
- 2781    format (1x, 'GRPSIN energy grid check ', i7, 2g14.7)
+ 2781    format (1x, 'GRSPIN energy grid check ', i7, 2g14.7)
       end if
 
       !Setup file location/naming variables

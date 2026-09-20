@@ -80,7 +80,8 @@ C
          SCALE = 0.0E0
 C     .......... SCALE COLUMN (ALGOL TOL THEN NOT NEEDED) ..........
          DO 90 I = M, IGH
-   90    SCALE = SCALE + ABS(A(I,M-1))
+           SCALE = SCALE + ABS(A(I,M-1))
+   90    continue
 C
          IF (SCALE .EQ. 0.0E0) GO TO 180
          MP = M + IGH

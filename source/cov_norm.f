@@ -4,9 +4,9 @@
       integer :: icovreng, ipass 
       integer :: iuc, jk1, jk2, il1, il2, iflag, jp, inc
       real :: flunorm, offset1, offset2, sum, error_max, dummx
-      real, dimension(1001, 1001) :: input_replace 
-      real, dimension(1000, 1000) :: abs_cov, abs2_cov
-      real, dimension(1000) :: covrrsp1, stdrdev1, row_norm
+      real, dimension(1501, 1501) :: input_replace 
+      real, dimension(1500, 1500) :: abs_cov, abs2_cov
+      real, dimension(1500) :: covrrsp1, stdrdev1, row_norm
 c      real icon
       integer jcon
       common /guide/ jcon(40)

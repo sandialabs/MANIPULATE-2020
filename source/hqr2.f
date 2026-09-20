@@ -107,7 +107,8 @@ C                AND COMPUTE MATRIX NORM ..........
       DO 50 I = 1, N
 C
          DO 40 J = K, N
-   40    NORM = NORM + ABS(H(I,J))
+           NORM = NORM + ABS(H(I,J))
+   40    continue
 C
          K = I
          IF (I .GE. LOW .AND. I .LE. IGH) GO TO 50
@@ -145,7 +146,8 @@ C     .......... FORM EXCEPTIONAL SHIFT ..........
       T = T + X
 C
       DO 120 I = LOW, EN
-  120 H(I,I) = H(I,I) - X
+        H(I,I) = H(I,I) - X
+  120 continue
 C
       S = ABS(H(EN,NA)) + ABS(H(NA,ENM2))
       X = 0.75E0 * S
@@ -316,7 +318,8 @@ C     .......... FOR I=EN-1 STEP -1 UNTIL 1 DO -- ..........
             IF (M .GT. NA) GO TO 620
 C
             DO 610 J = M, NA
-  610       R = R + H(I,J) * H(J,EN)
+              R = R + H(I,J) * H(J,EN)
+  610       continue
 C
   620       IF (WI(I) .GE. 0.0E0) GO TO 630
             ZZ = W
@@ -407,24 +410,27 @@ C                VECTORS OF ISOLATED ROOTS ..........
          IF (I .GE. LOW .AND. I .LE. IGH) GO TO 840
 C
          DO 820 J = I, N
-  820    Z(I,J) = H(I,J)
+           Z(I,J) = H(I,J)
+  820    continue
 C
   840 CONTINUE
 C     .......... MULTIPLY BY TRANSFORMATION MATRIX TO GIVE
 C                VECTORS OF ORIGINAL FULL MATRIX.
 C                FOR J=N STEP -1 UNTIL LOW DO -- ..........
-      DO 880 JJ = LOW, N
+      DO 8801 JJ = LOW, N
          J = N + LOW - JJ
          M = MIN(J,IGH)
 C
-         DO 880 I = LOW, IGH
+         DO 8802 I = LOW, IGH
             ZZ = 0.0E0
 C
             DO 860 K = LOW, M
-  860       ZZ = ZZ + Z(I,K) * H(K,J)
+              ZZ = ZZ + Z(I,K) * H(K,J)
+  860       continue
 C
             Z(I,J) = ZZ
-  880 CONTINUE
+ 8802    CONTINUE
+ 8801 continue
 C
       GO TO 1001
 C     .......... SET ERROR -- NO CONVERGENCE TO AN

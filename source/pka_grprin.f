@@ -33,16 +33,16 @@ c234567890
       character*15 ename
       common /io/ nt5, nt6, nfile, nplot, npun
 c
-      common /PKA/ ipka_low_energy(1000), ipka_high_energy(1000),
-     &             pka_spectrum(1000,1000),
-     &             pka_spectrum_dede(1000,1000),
-     &             robinson_DE(1000)
+      common /PKA/ ipka_low_energy(1500), ipka_high_energy(1500),
+     &             pka_spectrum(1500,1500),
+     &             pka_spectrum_dede(1500,1500),
+     &             robinson_DE(1500)
 c
 c common blocks.
 c
-      common /datain/ nenergy, energy(1001), array(1000,15)
-     1         , emid(1001)
-      dimension enghst(2001), xschst(2001)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      dimension enghst(3001), xschst(3001)
 c
 c open the input tape.
 c
@@ -52,7 +52,7 @@ c     zero out arrays
       pka_spectrum(:,:) = 0.0
       pka_spectrum_dede(:,:) = 0.0
       robinson_DE(:) = 0.0
-      do i = 1,1000
+      do i = 1,1500
         array(i,1) = 0.0
       end do
 c
@@ -111,11 +111,11 @@ c         special re-direction for pka groupr files
      1   //infile(1:iblank), temp_file1(1:iend1),
      &   optical(1:leopt), idir(1:iblank2),
      &   infile(1:iblank)
-9012  format (1x, 'opening file: =', a,'=',/,
-     &        1x, '  temp_file1: =', a,'=',/,
-     &        1x, '     optical: =', a,'=',/,
-     &        1x, '        idir: =', a,'=',/,
-     &        1x, '      infile: =', a,'=',/)
+9012  format (1x, 'opening file:         =', a,' ',/,
+     &        1x, '        temp_file1:   =', a,' ',/,
+     &        1x, '        optical:      =', a,' ',/,
+     &        1x, '        idir:         =', a,' ',/,
+     &        1x, '        infile:       =', a,' ',/)
       open(unit=7,file=temp_file1(1:iend1),
      1   status='unknown')
 c
@@ -129,7 +129,7 @@ c
 c read in the temperature and the number of groups.
 c
       read(7,200) temp,nenergy
-      if ( nenergy .gt.1000) then
+      if ( nenergy .gt.1500) then
           write (6,5612) nenergy
  5612     format (1x, 'ERROR in pka_grprin energy dimension ', i5)
           stop 'pka_grprin dimension'

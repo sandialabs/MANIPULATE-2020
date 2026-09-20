@@ -5,7 +5,10 @@ c     ************************************************
       program manipulate
 cpjg
 cpjg 6/27/2021 - Changes made to legacy manipulate code to rehost under Linux and GitHub
-cpjg
+cpjg 9/1/2024  - Changes made to add extraction of the recoil atom spectrum from NJOY-2016 processing of ENDF-6 files
+cpjg             Pending changes:
+cpjg               1) expand all arrays to address new UKAEA energy structure - 1102 groups
+cpjg               2) produce survey list of reactions with recoil spectra - TBD
 cje
 cje changes to this routine made 06 march 1992:
 cje
@@ -45,9 +48,10 @@ c              =13       expand an analytic function in 640 group structure
 c              =14       combine covariance files in LSL format (common energy structure) - NEW
 c              =15       extract PKA recoil spectrum for given reaction/energy - NEW
 c              =16       extract integrated PKA recoil spectrum for as a function of energy - NEW
+c              =17       extract recoil atom spectrum from NJOY-2016 processed spkaD of ENDF-6 files
 c
 c         icon(2)    input energy grid/data format
-c              = 0       njoy sand-ii 620/640/725/770 point neutron cross section
+c              = 0       njoy sand-ii 620/640/725/770/1102 point neutron cross section
 c                        (energies in ev, response data to be multiplied
 c                         by 10**-3 to yield kerma units of mev-mb)
 c              = 1       j. kelly sand-ii pun spectrum format
@@ -66,7 +70,8 @@ c                         by 10**-3 to kev)
 c              = 6       njoy matxsr interface file - arbitrary structure
 c              = 9       user defined - xxx.flux file
 c              =10       640 group response structure = xxx.res
-c              =11       arbitrary response structure = xxx.res
+c              =11       1102 group response structure = xxx.res
+c              =12       arbitrary response structure = xxx.res
 c
 c         icon(3)    display/output special option
 c              = 0       no action
@@ -84,6 +89,7 @@ c              = 2         89 groups - NuGET neutron
 c              = 3         48 groups - NuGET gamma
 c              = 5        175 group - Vitamin-J
 c              = 6        725 group - IAEA
+c              = 7       1102 group - UKAEA
 c
 c         icon(6)    inhibit renormalization
 c              = 0       normal
@@ -162,23 +168,24 @@ c
       integer iresp_call, spc_tag_end, xsec_tag_end
       character*80 title, label, outfile, putfile, job
       character*250 file_name, file_name2, file_corr
+      character*250 file_response_out
       character*3 number_file
       character*100 file_id
       character*50 spc_tag, xsec_tag
       common /tag/ spc_tag, xsec_tag, spc_tag_end, xsec_tag_end
       common /sself/ file_corr
       common /whatever/ outfile
-      common /datain/ nenergy, energy(1001), array(1000,15),
-     1                emid(1001)
-      dimension range(1000)
-      dimension percent(1000)
+      common /datain/ nenergy, energy(1501), array(1500,21),
+     1                emid(1501)
+      dimension range(1500)
+      dimension percent(1500)
       common /fpnew/ alpha
-      common /datahld/ nenergy_hld(15), energy_hld(1001,15),
-     1                 array_hld(1000,15), emid_hld(1001,15)
+      common /datahld/ nenergy_hld(21), energy_hld(1501,21),
+     1                 array_hld(1500,21), emid_hld(1501,21)
       common /guide/ icon(40)
       common /io/ nt5, nt6, nfile, nplot, npun
-      common /pltlab/ lab_lead(15), lab_trail(15), lab_nchar(15),
-     1                lab_len(15), icurve(15), lab_file(15)
+      common /pltlab/ lab_lead(21), lab_trail(21), lab_nchar(21),
+     1                lab_len(21), icurve(21), lab_file(21)
       character*250 lab_file
       character*22 lab
       character*20 labtdam(3)
@@ -188,8 +195,8 @@ c
       character*4   OS
       character*250 name
       common /misc/ lab(20), imaterial, noption, moption
-      common /statsum/ arr_mean(1000), arr_sq(1000),
-     1                 arr_std(1000), arr_var(1000)
+      common /statsum/ arr_mean(1500), arr_sq(1500),
+     1                 arr_std(1500), arr_var(1500)
       common /statinfo/ efactor, number_of_files, xoptical
       common /acov1/ icov(40),iself,ovr
       character*250 ovr
@@ -202,7 +209,8 @@ c
      2      'displacement damage ' /
       data labtdam /'total kerma', 'kinematic limit',
      1              'displacement damage' /
-      data icurve /1,13,4,2,3,5,6,7,8,9,10,11,12,14,15/
+      data icurve /1,13,4,2,3,5,6,7,8,9,10,11,12,14,15,16,
+     1             17, 18, 19, 20, 21/
 
       !Get operating system and set operating system specific variables:
       call getenv('os', OS)
@@ -224,8 +232,9 @@ c
  8698 format (1x, 'xoptical length ', i5, ' set = ', a)
 
       !Set location of LSL mcnp data:
-      mcnploc=trim(xoptical)//".."//slash//"snl-lsl"//slash//
-     &        "self-shield"
+c      mcnploc=trim(xoptical)//".."//slash//"snl-lsl"//slash//
+c     &        "self-shield"
+      mcnploc=trim(xoptical)//"self-shield"
 
 c       if (xoptical .ne. '/odsk1' .and.
 c     1     xoptical .ne. '/odsk2' .and.
@@ -284,12 +293,16 @@ c
              read (nt5, *) spc_tag, xsec_tag
              spc_tag_end = lnblnk(spc_tag)
              xsec_tag_end = lnblnk(xsec_tag)
+             write (nt6, 2834) spc_tag(1:spc_tag_end), 
+     1                         xsec_tag(1:xsec_tag_end)
+ 2834        format (5x, 'Spectrum tag: ', a,/,
+     1               5x, 'Response tag: ', a,/)
 c
  345        format (a80)
        endif
  304   continue
        write (nt6,2302) (icon(jk),jk=1,40)
-2302   format (1x, 'control parameters: ', 40i2)
+2302   format (1x, 'control parameters: ', 40i2,/)
        scale = 0.0
 102    format (40i2)
        if ( icon(1) .eq. -8) then
@@ -306,6 +319,8 @@ c
                nenergy = 175
            elseif ( icon(5) .eq. 6) then
                nenergy = 725
+           elseif ( icon(5) .eq. 7) then
+               nenergy = 1102
            else
                write (6,5245) nenergy, icon(5)
  5245          format (1x, 'icon(5) error ', 2i6)
@@ -314,7 +329,7 @@ c
            read (nt5, *) (icov(jk), jk=1,3)
            if( icov(2) .ne. 0) then
                 write (nt6, 4502) icov(2)
- 4502           format (1x, '*** Force fine definition of response',
+ 4502           format (1x, 'Note: Force fine definition of response',
      1          ' function: icov(2) =', i5)
            endif
            if( icov(3) .ne. 0) then
@@ -441,6 +456,8 @@ c               read (nfile,*) nenergy
                    nenergy = 175
                elseif ( icon(5) .eq. 6) then
                    nenergy = 725
+               elseif ( icon(5) .eq. 7) then
+                   nenergy = 1102
                else
                    write (6,7245) nenergy, icon(5)
  7245              format (1x, 'icon(5) error ', 2i6)
@@ -493,7 +510,7 @@ c     1                             jk=nenergy,1,-1)
                write (npun, 5745) title(1:60)
                write (npun,2341) ((array(jk,ik)*scale,ik=1,1),
      1                             jk=1,nenergy)
- 2341          format (5(e12.5,4x))
+ 2341          format (5(e13.6,4x))
 c              special punch format without zeros
 c              modify to allow for zeros being turned into small numbers
 c
@@ -600,7 +617,9 @@ c               iblank2 = lnblnk(idir)
                if ( icon(9) .lt. 0) then
                   write (6, 7412) leopt, jblank2, xoptical(1:leopt),
      &                jdir(1:jblank2), outfile
- 7412             format (1x, 'Main File 8: ', 2i5, /, (5x, a ))
+ 7412             format (/,1x, 'Main File 8: ', 2i5, /, (5x, a ))
+                  write (6, 7413) efactor, scale, emid(1)
+ 7413             format (1x, 'efactor/scale: ', 3g14.7)
                endif
                open(unit=8,file=xoptical(1:leopt)//
      2          jdir(1:jblank2)//outfile
@@ -621,6 +640,10 @@ c               iblank2 = lnblnk(idir)
                   end do
                endif
                close(unit=8)
+               file_response_out = xoptical(1:leopt)//
+     2          jdir(1:jblank2)//outfile
+               write (nt6,6519) file_response_out
+ 6519          format (/,1x, 'Response file created: ', a)
 cje
 c
 c              plot files
@@ -946,9 +969,9 @@ c           prepare multiple plot file
 c
             read (nt5, *) number_of_files, scale, outfile
             itype = 1
-            if ( number_of_files .gt. 15) then
+            if ( number_of_files .gt. 20) then
                 write (6,9845) number_of_files
- 9845           format (1x, 'number of files exceeds limit of 10 ',
+ 9845           format (1x, 'number of files exceeds limit of 20 ',
      1           i10 )
                  stop 'number_of_files'
             endif
@@ -992,8 +1015,8 @@ c
                lab_nchar(ifile) = nchar
                lab_len(ifile) = length
                nenergy_hld(ifile) = nenergy
-c               write (6,18923) ifile, nenergy
-c18923          format (1x, 'DEBUG: nenergy ', 2i5)
+               if ( icon(9) .lt. 0) write (6,18923) ifile, nenergy
+18923          format (1x, 'DEBUG: ifile/nenergy: ', 2i5)
                if ( nenergy .le. 0) then
                 write (6, 3471) nenergy
 3471            format (1x, 'ERROR: nenergy = 0, probable file exist',
@@ -1170,8 +1193,10 @@ c              special look loop
                    jkp = 0
  3945              continue
                    jkp = jkp + 1
-                   write (6,4512) jkp,isum, array_hld(jkp,isum)
- 4512              format (1x, 'test isum low: ', 2i5, g14.7)
+                   if ( icon(9) .lt. 0) then 
+                      write (6,4512) jkp,isum, array_hld(jkp,isum)
+ 4512                 format (1x, 'test isum low: ', 2i5, g14.7)
+                   endif
                    if ( array_hld(jkp,isum) .le. 1.e-32) then
                        ilow = jkp
                        if ( ilow < ihigh) go to 3945
@@ -1182,8 +1207,10 @@ c              special look loop
                    if ( icon(5) .eq. 2) jkp = 90
  3946              continue
                    jkp = jkp - 1
-                   write (6,5512) jkp,isum, array_hld(jkp,isum)
- 5512              format (1x, 'test isum high: ', 2i5, g14.7)
+                   if ( icon(9) .lt. 0) then 
+                      write (6,5512) jkp,isum, array_hld(jkp,isum)
+ 5512                 format (1x, 'test isum high: ', 2i5, g14.7)
+                   endif
                    if ( array_hld(jkp,isum) .le. 1.e-32) then
                        ihigh = jkp
                        if ( ihigh > 1) go to 3946
@@ -1272,10 +1299,10 @@ c            write (nplot, 8001)
 c                idir = '/app/manipulate-2/response/'
                 idir = 'response/'
                 iblank2 = lnblnk(idir)
-                if ( icon(9) < 0) then
+                if ( icon(9) < 3) then
                    write (*, 5634)  xoptical(1:leopt), idir(1:iblank2),
      &                             outfile
- 5634              format (1x, 'sum file name: xoptical = ', a,/,
+ 5634              format (/,1x, 'sum file name: xoptical = ', a,/,
      &                     1x, '               idir     = ', a,/,
      &                     1x, '               outfile  = ', a)
                 endif
@@ -1392,7 +1419,11 @@ c
             dif1 = abs( (emid(1) - emid_hld(1,1)) /emid(1))
             dif2 = abs( (emid(1) - emid_hld(nenergy_hld(1),1)) /emid(1))
 
-            WRITE(*,*)dif1,dif2
+            if (icon(9) .lt. 0) then 
+               WRITE(*,4781)  dif1,dif2
+ 4781          format (1x, 'MANIPULATE diff report: ', 2g14.7)
+            endif
+
             if (dif1 .lt. 1.e-3) then
                do ip=1,nenergy
                   emid_hld(ip,isum) = emid(ip)
@@ -1908,6 +1939,8 @@ c
                    nenergy = 175
             elseif ( icon(5) .eq. 6) then
                    nenergy = 725
+            elseif ( icon(5) .eq. 7) then
+                   nenergy = 1102
             else
                 write (6,7245) nenergy, icon(5)
                 stop 'icon(5)-2'
@@ -2008,6 +2041,11 @@ cdebug            write (*,9012) xoptical(1:leopt)//jdir(1:jblank2)
      1           file=xoptical(1:leopt)//jdir(1:jblank2)//'sand771.nrg'
      2           , status='old', iostat=ilook, err=909)
                ilmt = 771
+            elseif ( icon(5) .eq. 7) then
+               open(unit=nfile, form='formatted',
+     1           file=xoptical(1:leopt)//jdir(1:jblank2)//'UKAEA.nrg'
+     2           , status='old', iostat=ilook, err=909)
+               ilmt = 1102
             endif
             read(nfile, 781) title
  781        format (a80)
@@ -2075,6 +2113,54 @@ c                energy in kev for equation
      1              1x, 'interpolation method    = ', i5,/,
      1              1x, '              direction = ', i5,/)
             go to 101
+       elseif ( icon(1) .eq. 14) then
+c
+c         Treatment of recoil atom spectra
+c
+          noption = 1
+		  read(nt5,*) file_name,irxn,outfile,scale
+		  if ( irxn == 999) then 
+		     write (6,8992) irsn
+ 8992        format (1x, 'ERROR: reaction 999,all, not yet implemented',
+     *               ' for recoil spetra')
+	         stop 'irxn=999'
+		  endif
+c		  call grprin_spka_survey(file_name,irxn) 
+c          call grprin_spka(file_name,irxn)
+          nlen = lnblnk(file_name)
+          name = xoptical(1:leopt)//
+     2    jdir(1:jblank2)//file_name(1:nlen)
+          open(unit=nfile, form='formatted',
+     1         file=name, status='old', err=909)
+          imaterial = 1
+          if ( icon(5) .eq. 0) then
+                nenergy = 640
+          elseif ( icon(5) .eq. 1) then
+                nenergy = 770
+          elseif ( icon(5) .eq. 2) then
+                nenergy = 89
+          elseif ( icon(5) .eq. 5) then
+                nenergy = 175
+          elseif ( icon(5) .eq. 6) then
+                nenergy = 725
+	  elseif ( icon(5) .eq. 7) then
+		 nenergy = 1102
+          else
+                write (6,27245) nenergy, icon(5)
+27245           format (1x, 'icon(5) error in SPKA ', 2i6)
+                stop 'icon(5)'
+          endif
+c
+c         hold array initialization until array dimensions expanded to accomodate 1102 group UKAEA energy structure
+c
+c          do jkl=1,nenergy
+c            do jkp = 1,10
+c               array(jkl,jkp) = 0.0
+c             enddo
+c          enddo
+c
+          stop 'SPKA in development'
+c 
        elseif ( icon(1) .eq. 9) then
             close (unit=39)
             close (unit=nt6)
